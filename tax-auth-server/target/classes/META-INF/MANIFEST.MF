@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: tax-auth-server
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Administrator
+Implementation-Vendor-Id: com.ebuy
+Build-Jdk: 1.8.0_181
+Implementation-URL: http://projects.spring.io/spring-boot/tax/tax-auth
+ -server/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

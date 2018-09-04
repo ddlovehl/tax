@@ -1,0 +1,20 @@
+server: 
+   port: 8100
+spring: 
+   application: 
+      name: tax-eureka-server
+security:
+   basic: 
+      enable: false
+   user:
+      name: admin
+      password: admin
+
+eureka: 
+   instance: 
+      hostname: localhost
+   client: 
+      register-with-eureka: false
+      fetch-registry: false
+      service-url: #注册中心地址
+         defaultZone: http://admin:admin@${eureka.instance.hostname}:${server.port}/eureka/

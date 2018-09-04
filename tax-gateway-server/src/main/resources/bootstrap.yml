@@ -1,0 +1,19 @@
+server:
+   port: 8102
+
+spring:
+  application:
+    name: tax-gateway-server
+  cloud:
+    config:
+      name: tax-gateway-server
+      profile: dev
+      label: master
+      discovery:
+        enabled: true
+        service-id: tax-config-server
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:8100/eureka/
