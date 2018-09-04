@@ -7,4 +7,8 @@ package com.ebuy.tax.common.constants;
  */
 public class SysConstant {
 
+    public static final Integer ONE = 1;
+
+    /** 英文逗号 */
+    public static final String COMMA = ",";
 }

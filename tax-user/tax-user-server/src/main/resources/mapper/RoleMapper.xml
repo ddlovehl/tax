@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ebuy.tax.user.implementation.role.mapper.RoleMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="UserAll_column">
+         user.id as id,
+         user.role_name as roleName,
+         user.role_desc as roleDesc,
+         user.role_area as roleArea,
+         user.is_del as isDel,
+         user.create_time as createTime,
+         user.update_time as updateTime
+    </sql>
+
+
+    <sql id="UserAll_where">
+        <where>
+            1=1
+            <if test="id != null and id !=''">
+              AND user.id = #{id}
+            </if>
+
+            <if test="roleName != null and roleName !=''">
+                AND user.role_name like '%' #{roleName} '%'
+            </if>
+
+            <if test="roleDesc != null and roleDesc !=''">
+                AND user.role_desc = #{roleDesc}
+            </if>
+
+            <if test="roleArea != null and roleArea !=''">
+                AND user.role_area = #{roleArea}
+            </if>
+
+            <if test="isDel != null and isDel !=''">
+                AND user.is_del = #{isDel}
+            </if>
+
+            <if test="createTime != null and createTime !=''">
+                AND user.create_time = #{createTime}
+            </if>
+
+            <if test="updateTime != null and updateTime !=''">
+                AND user.update_time = #{updateTime}
+            </if>
+
+        </where>
+    </sql>
+
+    <sql id="UserAll_table">
+        FROM
+		tax_role role
+    </sql>
+
+    <!-- 查全部 -->
+    <select id="queryList" resultType="com.ebuy.tax.user.api.role.entity.Role"
+            parameterType="com.ebuy.tax.user.api.role.entity.Role">
+        SELECT
+        <include refid="UserAll_column" />
+        <include refid="UserAll_table" />
+        <include refid="UserAll_where" />
+    </select>
+
+    <!-- 查数量 -->
+    <select id="queryCount" resultType="java.lang.Integer"
+            parameterType="com.ebuy.tax.user.api.role.entity.Role">
+        SELECT
+        count(1)
+        <include refid="UserAll_table" />
+        <include refid="UserAll_where" />
+    </select>
+
+    <!-- 分页查询列表 -->
+    <select id="queryListForPage" resultType="com.ebuy.tax.user.api.role.entity.Role">
+        select
+        <include refid="UserAll_column" />
+        <include refid="UserAll_table" />
+        <if test="entity.id != null and entity.id !=''">
+            AND user.id = #{entity.id}
+        </if>
+        <if test="entity.roleName != null and entity.roleName !=''">
+            AND user.role_name like '%' #{entity.roleName} '%'
+        </if>
+        <if test="entity.roleDesc != null and entity.roleDesc !=''">
+            AND user.role_desc = #{entity.roleDesc}
+        </if>
+        <if test="entity.roleArea != null and entity.roleArea !=''">
+            AND user.role_area = #{entity.roleArea}
+        </if>
+        <if test="entity.isDel != null and entity.isDel !=''">
+            AND user.is_del = #{entity.isDel}
+        </if>
+        <if test="entity.createTime != null and entity.createTime !=''">
+            AND user.create_time = #{entity.createTime}
+        </if>
+        <if test="entity.updateTime != null and entity.updateTime !=''">
+            AND user.update_time = #{entity.updateTime}
+        </if>
+        order by CREATE_TIME desc
+        limit #{start,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER};
+    </select>
+
+    <select id="queryEntityByRoleEntity" resultType="com.ebuy.tax.user.api.role.entity.Role">
+        SELECT
+        <include refid="UserAll_column" />
+        <include refid="UserAll_table" />
+        <include refid="UserAll_where" />
+    </select>
+</mapper>

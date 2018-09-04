@@ -36,6 +36,12 @@
 		<tax-common.version>0.0.1-SNAPSHOT</tax-common.version>
 		<swagger2.version>2.6.1</swagger2.version>
 		<lombok.version>1.16.20</lombok.version>
+		<mybatis-plus-boot-starter.version>3.0-beta</mybatis-plus-boot-starter.version>
+		<json-lib-version>2.4</json-lib-version>
+		<commons-codec-version>1.10</commons-codec-version>
+		<fastjson.version>1.2.47</fastjson.version>
+		<commons-lang-version>3.4</commons-lang-version>
+        <mysql.connector.version>5.1.46</mysql.connector.version>
 	</properties>
 	
 	<dependencies>
@@ -74,11 +80,53 @@
 	            <version>${tax-common.version}</version>
 	        </dependency>
 			<!--tax end  -->
+
+			<!-- mybatis-plus begin -->
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-boot-starter</artifactId>
+				<version>${mybatis-plus-boot-starter.version}</version>
+			</dependency>
+
+			<!--util包-->
+			<dependency>
+				<groupId>net.sf.json-lib</groupId>
+				<artifactId>json-lib</artifactId>
+				<version>${json-lib-version}</version>
+				<classifier>jdk15</classifier>
+			</dependency>
+			<!-- fastjson -->
+            <dependency>
+                <groupId>net.sf.json-lib</groupId>
+                <artifactId>json-lib</artifactId>
+                <version>${json-lib-version}</version>
+                <classifier>jdk15</classifier>
+            </dependency>
+			<!--commons-code-->
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${commons-codec-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang-version}</version>
+			</dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.connector.version}</version>
+            </dependency>
 		</dependencies>
+
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 	</dependencyManagement>
 
 
-	<repositories>
+	<!--<repositories>
 		<repository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
@@ -114,6 +162,6 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</pluginRepository>
-	</pluginRepositories>
+	</pluginRepositories>-->
 	
 </project>

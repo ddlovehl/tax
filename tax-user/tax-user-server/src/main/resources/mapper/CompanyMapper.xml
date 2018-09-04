@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ebuy.tax.user.implementation.company.mapper.CompanyMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="UserAll_column">
+         user.id as id,
+         user.company_name as companyName,
+         user.company_tel as companyTel,
+         user.company_scope as companyScope,
+         user.company_name_short as companyNameShort,
+         user.legal_name as legalName,
+         user.legal_mobile as legalMobile,
+         user.tax_reg_no as taxRegNo,
+         user.business_license_no as businessLicenseNo,
+         user.certificate_pic_attach_ids as certificatePicAttachIds,
+         user.legal_certificate_front__attach_id as legalCertificateFrontAttachId,
+         user.legal_certificate_back__attach_id as legalCertificateBackAttachId,
+         user.build_time as buildTime,
+         user.location_province as locationProvince,
+         user.location_city as locationCity,
+         user.location_county as locationCounty,
+         user.location_detail as locationDetail,
+         user.pay_tax_property as payTaxProperty,
+         user.industry_id as industryId,
+         user.official_website as officialWebsite,
+         user.bear_id as bearId,
+         user.bear_name as bearName,
+         user.bear_mobile as bearMobile,
+         user.bear_position as bearPosition,
+         user.reseve1 as reseve1,
+         user.reseve2 as reseve2,
+         user.reseve3 as reseve3,
+         user.remark as remark,
+         user.is_default as isDefault,
+         user.is_del as isDel,
+         user.create_time as createTime,
+         user.update_time as updateTime
+    </sql>
+
+
+    <sql id="UserAll_where">
+        <where>
+            1=1
+            <if test="id != null and id !=''">
+              AND user.id = #{id}
+            </if>
+
+            <if test="companyName != null and companyName !=''">
+                AND user.company_name like '%' #{companyName} '%'
+            </if>
+
+            <if test="companyTel != null and companyTel !=''">
+                AND user.company_tel = #{companyTel}
+            </if>
+
+            <if test="companyScope != null and companyScope !=''">
+                AND user.company_scope = #{companyScope}
+            </if>
+
+            <if test="companyNameShort != null and companyNameShort !=''">
+                AND user.company_name_short = #{companyNameShort}
+            </if>
+
+            <if test="legalName != null and legalName !=''">
+                AND user.legal_name = #{legalName}
+            </if>
+
+            <if test="legalMobile != null and legalMobile !=''">
+                AND user.legal_mobile = #{legalMobile}
+            </if>
+
+            <if test="taxRegNo != null and taxRegNo !=''">
+                AND user.tax_reg_no = #{taxRegNo}
+            </if>
+
+            <if test="businessLicenseNo != null and businessLicenseNo !=''">
+                AND user.business_license_no = #{businessLicenseNo}
+            </if>
+
+            <if test="certificatePicAttachIds != null and certificatePicAttachIds !=''">
+                AND user.certificate_pic_attach_ids = #{certificatePicAttachIds}
+            </if>
+
+            <if test="legalCertificateFrontAttachId != null and legalCertificateFrontAttachId !=''">
+                AND user.legal_certificate_front__attach_id = #{legalCertificateFrontAttachId}
+            </if>
+
+            <if test="legalCertificateBackAttachId != null and legalCertificateBackAttachId !=''">
+                AND user.legal_certificate_back__attach_id = #{legalCertificateBackAttachId}
+            </if>
+
+            <if test="buildTime != null and buildTime !=''">
+                AND user.build_time = #{buildTime}
+            </if>
+
+            <if test="locationProvince != null and locationProvince !=''">
+                AND user.location_province = #{locationProvince}
+            </if>
+
+            <if test="locationCity != null and locationCity !=''">
+                AND user.location_city = #{locationCity}
+            </if>
+
+            <if test="locationCounty != null and locationCounty !=''">
+                AND user.location_county = #{locationCounty}
+            </if>
+
+            <if test="locationDetail != null and locationDetail !=''">
+                AND user.location_detail = #{locationDetail}
+            </if>
+
+            <if test="payTaxProperty != null and payTaxProperty !=''">
+                AND user.pay_tax_property = #{payTaxProperty}
+            </if>
+
+            <if test="industryId != null and industryId !=''">
+                AND user.industry_id = #{industryId}
+            </if>
+
+            <if test="officialWebsite != null and officialWebsite !=''">
+                AND user.official_website = #{officialWebsite}
+            </if>
+
+            <if test="bearId != null and bearId !=''">
+                AND user.bear_id = #{bearId}
+            </if>
+
+            <if test="bearName != null and bearName !=''">
+                AND user.bear_name = #{bearName}
+            </if>
+
+            <if test="bearMobile != null and bearMobile !=''">
+                AND user.bear_mobile = #{bearMobile}
+            </if>
+
+            <if test="bearPosition != null and bearPosition !=''">
+                AND user.bear_position = #{bearPosition}
+            </if>
+
+            <if test="reseve1 != null and reseve1 !=''">
+                AND user.reseve1 = #{reseve1}
+            </if>
+
+            <if test="reseve2 != null and reseve2 !=''">
+                AND user.reseve2 = #{reseve2}
+            </if>
+
+            <if test="reseve3 != null and reseve3 !=''">
+                AND user.reseve3 = #{reseve3}
+            </if>
+
+            <if test="remark != null and remark !=''">
+                AND user.remark = #{remark}
+            </if>
+
+            <if test="isDefault != null and isDefault !=''">
+                AND user.is_default = #{isDefault}
+            </if>
+
+            <if test="isDel != null and isDel !=''">
+                AND user.is_del = #{isDel}
+            </if>
+
+            <if test="createTime != null and createTime !=''">
+                AND user.create_time = #{createTime}
+            </if>
+
+            <if test="updateTime != null and updateTime !=''">
+                AND user.update_time = #{updateTime}
+            </if>
+
+        </where>
+    </sql>
+
+    <sql id="UserAll_table">
+        FROM
+		tax_company company
+    </sql>
+
+    <!-- 查全部 -->
+    <select id="queryList" resultType="com.ebuy.tax.user.api.company.entity.Company"
+            parameterType="com.ebuy.tax.user.api.company.entity.Company">
+        SELECT
+        <include refid="UserAll_column" />
+        <include refid="UserAll_table" />
+        <include refid="UserAll_where" />
+    </select>
+
+    <!-- 查数量 -->
+    <select id="queryCount" resultType="java.lang.Integer"
+            parameterType="com.ebuy.tax.user.api.company.entity.Company">
+        SELECT
+        count(1)
+        <include refid="UserAll_table" />
+        <include refid="UserAll_where" />
+    </select>
+
+    <!-- 分页查询列表 -->
+    <select id="queryListForPage" resultType="com.ebuy.tax.user.api.company.entity.Company">
+        select
+        <include refid="UserAll_column" />
+        <include refid="UserAll_table" />
+        <if test="entity.id != null and entity.id !=''">
+            AND user.id = #{entity.id}
+        </if>
+        <if test="entity.companyName != null and entity.companyName !=''">
+            AND user.company_name like '%' #{entity.companyName} '%'
+        </if>
+        <if test="entity.companyTel != null and entity.companyTel !=''">
+            AND user.company_tel = #{entity.companyTel}
+        </if>
+        <if test="entity.companyScope != null and entity.companyScope !=''">
+            AND user.company_scope = #{entity.companyScope}
+        </if>
+        <if test="entity.companyNameShort != null and entity.companyNameShort !=''">
+            AND user.company_name_short = #{entity.companyNameShort}
+        </if>
+        <if test="entity.legalName != null and entity.legalName !=''">
+            AND user.legal_name = #{entity.legalName}
+        </if>
+        <if test="entity.legalMobile != null and entity.legalMobile !=''">
+            AND user.legal_mobile = #{entity.legalMobile}
+        </if>
+        <if test="entity.taxRegNo != null and entity.taxRegNo !=''">
+            AND user.tax_reg_no = #{entity.taxRegNo}
+        </if>
+        <if test="entity.businessLicenseNo != null and entity.businessLicenseNo !=''">
+            AND user.business_license_no = #{entity.businessLicenseNo}
+        </if>
+        <if test="entity.certificatePicAttachIds != null and entity.certificatePicAttachIds !=''">
+            AND user.certificate_pic_attach_ids = #{entity.certificatePicAttachIds}
+        </if>
+        <if test="entity.legalCertificateFrontAttachId != null and entity.legalCertificateFrontAttachId !=''">
+            AND user.legal_certificate_front__attach_id = #{entity.legalCertificateFrontAttachId}
+        </if>
+        <if test="entity.legalCertificateBackAttachId != null and entity.legalCertificateBackAttachId !=''">
+            AND user.legal_certificate_back__attach_id = #{entity.legalCertificateBackAttachId}
+        </if>
+        <if test="entity.buildTime != null and entity.buildTime !=''">
+            AND user.build_time = #{entity.buildTime}
+        </if>
+        <if test="entity.locationProvince != null and entity.locationProvince !=''">
+            AND user.location_province = #{entity.locationProvince}
+        </if>
+        <if test="entity.locationCity != null and entity.locationCity !=''">
+            AND user.location_city = #{entity.locationCity}
+        </if>
+        <if test="entity.locationCounty != null and entity.locationCounty !=''">
+            AND user.location_county = #{entity.locationCounty}
+        </if>
+        <if test="entity.locationDetail != null and entity.locationDetail !=''">
+            AND user.location_detail = #{entity.locationDetail}
+        </if>
+        <if test="entity.payTaxProperty != null and entity.payTaxProperty !=''">
+            AND user.pay_tax_property = #{entity.payTaxProperty}
+        </if>
+        <if test="entity.industryId != null and entity.industryId !=''">
+            AND user.industry_id = #{entity.industryId}
+        </if>
+        <if test="entity.officialWebsite != null and entity.officialWebsite !=''">
+            AND user.official_website = #{entity.officialWebsite}
+        </if>
+        <if test="entity.bearId != null and entity.bearId !=''">
+            AND user.bear_id = #{entity.bearId}
+        </if>
+        <if test="entity.bearName != null and entity.bearName !=''">
+            AND user.bear_name = #{entity.bearName}
+        </if>
+        <if test="entity.bearMobile != null and entity.bearMobile !=''">
+            AND user.bear_mobile = #{entity.bearMobile}
+        </if>
+        <if test="entity.bearPosition != null and entity.bearPosition !=''">
+            AND user.bear_position = #{entity.bearPosition}
+        </if>
+        <if test="entity.reseve1 != null and entity.reseve1 !=''">
+            AND user.reseve1 = #{entity.reseve1}
+        </if>
+        <if test="entity.reseve2 != null and entity.reseve2 !=''">
+            AND user.reseve2 = #{entity.reseve2}
+        </if>
+        <if test="entity.reseve3 != null and entity.reseve3 !=''">
+            AND user.reseve3 = #{entity.reseve3}
+        </if>
+        <if test="entity.remark != null and entity.remark !=''">
+            AND user.remark = #{entity.remark}
+        </if>
+        <if test="entity.isDefault != null and entity.isDefault !=''">
+            AND user.is_default = #{entity.isDefault}
+        </if>
+        <if test="entity.isDel != null and entity.isDel !=''">
+            AND user.is_del = #{entity.isDel}
+        </if>
+        <if test="entity.createTime != null and entity.createTime !=''">
+            AND user.create_time = #{entity.createTime}
+        </if>
+        <if test="entity.updateTime != null and entity.updateTime !=''">
+            AND user.update_time = #{entity.updateTime}
+        </if>
+        order by CREATE_TIME desc
+        limit #{start,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER};
+    </select>
+
+    <select id="queryEntityByCompanyEntity" resultType="com.ebuy.tax.user.api.company.entity.Company">
+        SELECT
+        <include refid="UserAll_column" />
+        <include refid="UserAll_table" />
+        <include refid="UserAll_where" />
+    </select>
+</mapper>
