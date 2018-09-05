@@ -1,5 +1,6 @@
 package com.ebuy.tax.user.implementation.account_detail.dao;
 
+import com.ebuy.tax.user.api.account_detail.dao.IAccountDetailDao;
 import com.ebuy.tax.user.api.account_detail.entity.AccountDetail;
 import com.ebuy.tax.user.implementation.account_detail.mapper.AccountDetailMapper;
 

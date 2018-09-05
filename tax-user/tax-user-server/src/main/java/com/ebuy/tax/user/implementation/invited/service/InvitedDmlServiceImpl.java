@@ -1,7 +1,7 @@
 package com.ebuy.tax.user.implementation.invited.service;
 
 import com.ebuy.tax.user.api.invited.entity.Invited;
-import com.ebuy.tax.user.api.user.dao.IUserDao;
+import com.ebuy.tax.user.api.invited.dao.IInvitedDao;
 import com.ebuy.tax.user.api.invited.service.InvitedDmlService;
 import com.ebuy.tax.common.constants.ResponseConstant;
 import org.slf4j.Logger;
@@ -14,11 +14,12 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.transaction.annotation.Transactional;
 import com.ebuy.tax.common.exception.SystemException;
+import javax.annotation.Resource;
 
 /**
  * @Package com.ebuy.tax.user.implementation.invited.dao
  * @author hdq
- * @Date 2018-09-04 21:45:10
+ * @Date 2018-09-05 09:35:19
  * @Description è¢«é‚€è¯·è¡¨ 操作服务
  */
 @CacheConfig(cacheNames = {"InvitedCache}"})
@@ -26,6 +27,7 @@ public class InvitedDmlServiceImpl implements InvitedDmlService {
 
     private static final Logger log = LoggerFactory.getLogger(InvitedDmlServiceImpl.class);
 
+    @Resource(name = "invitedDao")
     private IInvitedDao invitedDao;
 
     /**
@@ -33,7 +35,7 @@ public class InvitedDmlServiceImpl implements InvitedDmlService {
      * @see         [Invited]
      * @return      boolean
      * @Description 添加信息
-     * @date        2018-09-04 21:45:10
+     * @date        2018-09-05 09:35:19
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -53,7 +55,7 @@ public class InvitedDmlServiceImpl implements InvitedDmlService {
      * @see         [Invited]
      * @return      boolean
      * @Description 批量增加
-     * @date        2018-09-04 21:45:10
+     * @date        2018-09-05 09:35:19
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -73,7 +75,7 @@ public class InvitedDmlServiceImpl implements InvitedDmlService {
      * @see         [Invited]
      * @return      boolean
      * @Description 增加or更新
-     * @date        2018-09-04 21:45:10
+     * @date        2018-09-05 09:35:19
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -94,7 +96,7 @@ public class InvitedDmlServiceImpl implements InvitedDmlService {
      * @see         [Invited]
      * @return      boolean
      * @Description 更新
-     * @date        2018-09-04 21:45:10
+     * @date        2018-09-05 09:35:19
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -114,7 +116,7 @@ public class InvitedDmlServiceImpl implements InvitedDmlService {
      * @see         [Invited]
      * @return      boolean
      * @Description 更新
-     * @date        2018-09-04 21:45:10
+     * @date        2018-09-05 09:35:19
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -134,7 +136,7 @@ public class InvitedDmlServiceImpl implements InvitedDmlService {
      * @see         [Invited]
      * @return      boolean
      * @Description 删除
-     * @date        2018-09-04 21:45:10
+     * @date        2018-09-05 09:35:19
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -154,7 +156,7 @@ public class InvitedDmlServiceImpl implements InvitedDmlService {
      * @see         [Invited]
      * @return      boolean
      * @Description 根据id批量删除
-     * @date        2018-09-04 21:45:10
+     * @date        2018-09-05 09:35:19
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)

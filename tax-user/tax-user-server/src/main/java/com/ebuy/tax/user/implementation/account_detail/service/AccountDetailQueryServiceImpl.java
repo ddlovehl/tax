@@ -1,7 +1,7 @@
 package com.ebuy.tax.user.implementation.account_detail.service;
 
+import com.ebuy.tax.user.api.account_detail.dao.IAccountDetailDao;
 import com.ebuy.tax.user.api.account_detail.entity.AccountDetail;
-import com.ebuy.tax.user.api.user.dao.IUserDao;
 import com.ebuy.tax.user.api.account_detail.service.AccountDetailQueryService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -19,8 +19,8 @@ import java.math.BigInteger;
 @CacheConfig(cacheNames = {"AccountDetailCache"})
 public class AccountDetailQueryServiceImpl implements AccountDetailQueryService{
 
-    @Resource(name = "account_detailDao")
-    private IAccountDetailDao account_detailDao;
+    @Resource(name = "accountDetailDao")
+    private IAccountDetailDao accountDetailDao;
 
     /**
      * @author      hdq
@@ -31,7 +31,7 @@ public class AccountDetailQueryServiceImpl implements AccountDetailQueryService{
      */
     @Override
     public AccountDetail queryById(BigInteger id){
-        return account_detailDao.selectById(id);
+        return accountDetailDao.selectById(id);
     }
 
     /**
@@ -43,7 +43,7 @@ public class AccountDetailQueryServiceImpl implements AccountDetailQueryService{
      */
         @Override
     public List<AccountDetail> queryByIds(List<BigInteger> ids){
-        return (List<AccountDetail>)account_detailDao.selectBatchIds(ids);
+        return (List<AccountDetail>)accountDetailDao.selectBatchIds(ids);
     }
 
     /**
@@ -55,7 +55,7 @@ public class AccountDetailQueryServiceImpl implements AccountDetailQueryService{
      */
     @Override
     public int queryCountAccountDetail(AccountDetail account_detail){
-        return account_detailDao.queryCount(account_detail);
+        return accountDetailDao.queryCount(account_detail);
     }
 
     /**
@@ -67,7 +67,7 @@ public class AccountDetailQueryServiceImpl implements AccountDetailQueryService{
      */
     @Override
     public List<AccountDetail> queryAllAccountDetail(AccountDetail account_detail){
-        return account_detailDao.queryList(account_detail);
+        return accountDetailDao.queryList(account_detail);
     }
 
     /**
@@ -79,7 +79,7 @@ public class AccountDetailQueryServiceImpl implements AccountDetailQueryService{
      */
     @Override
     public List<AccountDetail> queryListForPageAccountDetail(AccountDetail account_detail,Integer pageNo,Integer pageSize){
-        return account_detailDao.queryListForPage(account_detail,pageNo,pageSize);
+        return accountDetailDao.queryListForPage(account_detail,pageNo,pageSize);
     }
 
     /**
@@ -91,7 +91,7 @@ public class AccountDetailQueryServiceImpl implements AccountDetailQueryService{
      */
     @Override
     public AccountDetail queryEntityByAccountDetailEntity(AccountDetail account_detail){
-        return account_detailDao.queryEntityByAccountDetailEntity(account_detail);
+        return accountDetailDao.queryEntityByAccountDetailEntity(account_detail);
     }
 
 

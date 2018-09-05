@@ -1,9 +1,8 @@
 package com.ebuy.tax.user.implementation.role.dao;
 
+import com.ebuy.tax.user.api.role.dao.IRoleDao;
 import com.ebuy.tax.user.api.role.entity.Role;
 import com.ebuy.tax.user.implementation.role.mapper.RoleMapper;
-
-import com.ebuy.tax.user.api.user.dao.IUserDao;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ebuy.tax.common.constants.SysConstant;

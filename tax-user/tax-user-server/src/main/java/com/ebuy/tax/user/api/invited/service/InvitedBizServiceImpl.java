@@ -16,7 +16,7 @@ import com.ebuy.tax.common.entity.PageResult;
 /**
  * @Package com.ebuy.tax.user.api.invited.dao
  * @author hdq
- * @Date 2018-09-04 21:45:10
+ * @Date 2018-09-05 09:35:19
  * @Description
  */
 public class InvitedBizServiceImpl implements InvitedBizService{
@@ -32,7 +32,7 @@ public class InvitedBizServiceImpl implements InvitedBizService{
      * @see         [Invited]
      * @return      List<Invited>
      * @Description 查询列表
-     * @date        2018-09-04 21:45:10
+     * @date        2018-09-05 09:35:19
      */
     public List<Invited> queryList(Invited invited){
         return invitedQueryService.queryAllInvited(invited);
@@ -43,7 +43,7 @@ public class InvitedBizServiceImpl implements InvitedBizService{
      * @see         [Invited] [pageNo] [pageSize]
      * @return          PageResult
      * @Description 查询列表(分页)
-     * @date        2018-09-04 21:45:10
+     * @date        2018-09-05 09:35:19
      */
     public PageResult queryListPage(Invited invited, Integer pageNo, Integer  pageSize){
         //查询分页列表总数
@@ -60,7 +60,7 @@ public class InvitedBizServiceImpl implements InvitedBizService{
      * @see         [id]
      * @return      Invited
      * @Description 按id查询
-     * @date        2018-09-04 21:45:10
+     * @date        2018-09-05 09:35:19
      */
     public Invited queryById(BigInteger id){
         return invitedQueryService.queryById(id);
@@ -71,7 +71,7 @@ public class InvitedBizServiceImpl implements InvitedBizService{
      * @see         [ids]
      * @return      List<Invited>
      * @Description 按ids查询列表
-     * @date        2018-09-04 21:45:10
+     * @date        2018-09-05 09:35:19
      */
     public List<Invited> queryByIds(List<BigInteger> ids){
         return invitedQueryService.queryByIds(ids);
@@ -82,7 +82,7 @@ public class InvitedBizServiceImpl implements InvitedBizService{
      * @see         [Invited]
      * @return      Invited
      * @Description 根据entity查询一条记录
-     * @date        2018-09-04 21:45:10
+     * @date        2018-09-05 09:35:19
      */
     public Invited queryByParam(Invited invited){
         return invitedQueryService.queryEntityByInvitedEntity(invited);
@@ -93,7 +93,7 @@ public class InvitedBizServiceImpl implements InvitedBizService{
      * @see         [Invited]
      * @return
      * @Description 添加
-     * @date        2018-09-04 21:45:10
+     * @date        2018-09-05 09:35:19
      */
     public void insert(Invited invited){
         invitedDmlService.insertInvited(invited);
@@ -104,7 +104,7 @@ public class InvitedBizServiceImpl implements InvitedBizService{
      * @see         [Invited]
      * @return
      * @Description 添加or更新
-     * @date        2018-09-04 21:45:10
+     * @date        2018-09-05 09:35:19
      */
     public void insertOrUpdate(Invited invited){
         invitedDmlService.insertOrUpdateInvited(invited);
@@ -115,7 +115,7 @@ public class InvitedBizServiceImpl implements InvitedBizService{
      * @see         [Invited]
      * @return
      * @Description 更新
-     * @date        2018-09-04 21:45:10
+     * @date        2018-09-05 09:35:19
      */
     public void update(Invited invited){
         invitedDmlService.updateInvited(invited);

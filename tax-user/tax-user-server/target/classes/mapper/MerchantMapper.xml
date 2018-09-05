@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ebuy.tax.user.implementation.user.mapper.MerchantMapper">
+<mapper namespace="com.ebuy.tax.user.implementation.merchant.mapper.MerchantMapper">
 
     <!-- 通用查询结果列 -->
     <sql id="UserAll_column">
@@ -100,12 +100,12 @@
 
     <sql id="UserAll_table">
         FROM
-		tax_merchant user
+		tax_merchant merchant
     </sql>
 
     <!-- 查全部 -->
-    <select id="queryList" resultType="com.ebuy.tax.user.api.user.entity.Merchant"
-            parameterType="com.ebuy.tax.user.api.user.entity.Merchant">
+    <select id="queryList" resultType="com.ebuy.tax.user.api.merchant.entity.Merchant"
+            parameterType="com.ebuy.tax.user.api.merchant.entity.Merchant">
         SELECT
         <include refid="UserAll_column" />
         <include refid="UserAll_table" />
@@ -114,7 +114,7 @@
 
     <!-- 查数量 -->
     <select id="queryCount" resultType="java.lang.Integer"
-            parameterType="com.ebuy.tax.user.api.user.entity.Merchant">
+            parameterType="com.ebuy.tax.user.api.merchant.entity.Merchant">
         SELECT
         count(1)
         <include refid="UserAll_table" />
@@ -122,7 +122,7 @@
     </select>
 
     <!-- 分页查询列表 -->
-    <select id="queryListForPage" resultType="com.ebuy.tax.user.api.user.entity.Merchant">
+    <select id="queryListForPage" resultType="com.ebuy.tax.user.api.merchant.entity.Merchant">
         select
         <include refid="UserAll_column" />
         <include refid="UserAll_table" />
@@ -181,7 +181,7 @@
         limit #{start,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER};
     </select>
 
-    <select id="queryEntityByMerchantEntity" resultType="com.ebuy.tax.user.api.user.entity.Merchant">
+    <select id="queryEntityByMerchantEntity" resultType="com.ebuy.tax.user.api.merchant.entity.Merchant">
         SELECT
         <include refid="UserAll_column" />
         <include refid="UserAll_table" />

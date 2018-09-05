@@ -1,5 +1,6 @@
 package com.ebuy.tax.user.implementation.customer.service;
 
+import com.ebuy.tax.user.api.customer.dao.ICustomerDao;
 import com.ebuy.tax.user.api.customer.entity.Customer;
 import com.ebuy.tax.user.api.user.dao.IUserDao;
 import com.ebuy.tax.user.api.customer.service.CustomerDmlService;
@@ -15,6 +16,8 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.transaction.annotation.Transactional;
 import com.ebuy.tax.common.exception.SystemException;
 
+import javax.annotation.Resource;
+
 /**
  * @Package com.ebuy.tax.user.implementation.customer.dao
  * @author hdq
@@ -26,6 +29,7 @@ public class CustomerDmlServiceImpl implements CustomerDmlService {
 
     private static final Logger log = LoggerFactory.getLogger(CustomerDmlServiceImpl.class);
 
+    @Resource(name = "customerDao")
     private ICustomerDao customerDao;
 
     /**

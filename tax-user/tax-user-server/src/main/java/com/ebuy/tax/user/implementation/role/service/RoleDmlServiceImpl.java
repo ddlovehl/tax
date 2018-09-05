@@ -1,7 +1,7 @@
 package com.ebuy.tax.user.implementation.role.service;
 
+import com.ebuy.tax.user.api.role.dao.IRoleDao;
 import com.ebuy.tax.user.api.role.entity.Role;
-import com.ebuy.tax.user.api.user.dao.IUserDao;
 import com.ebuy.tax.user.api.role.service.RoleDmlService;
 import com.ebuy.tax.common.constants.ResponseConstant;
 import org.slf4j.Logger;
@@ -15,6 +15,8 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.transaction.annotation.Transactional;
 import com.ebuy.tax.common.exception.SystemException;
 
+import javax.annotation.Resource;
+
 /**
  * @Package com.ebuy.tax.user.implementation.role.dao
  * @author hdq
@@ -26,6 +28,7 @@ public class RoleDmlServiceImpl implements RoleDmlService {
 
     private static final Logger log = LoggerFactory.getLogger(RoleDmlServiceImpl.class);
 
+    @Resource(name = "roleDao")
     private IRoleDao roleDao;
 
     /**

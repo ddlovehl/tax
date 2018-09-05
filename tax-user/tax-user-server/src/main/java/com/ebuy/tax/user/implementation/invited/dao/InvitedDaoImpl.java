@@ -3,7 +3,7 @@ package com.ebuy.tax.user.implementation.invited.dao;
 import com.ebuy.tax.user.api.invited.entity.Invited;
 import com.ebuy.tax.user.implementation.invited.mapper.InvitedMapper;
 
-import com.ebuy.tax.user.api.user.dao.IUserDao;
+import com.ebuy.tax.user.api.invited.dao.IInvitedDao;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ebuy.tax.common.constants.SysConstant;
@@ -16,7 +16,7 @@ import java.util.List;
  * @Project new_project
  * @Package com.ebuy.tax.user.implementation.invited.dao
  * @author hdq
- * @Date 2018-09-04 21:45:10
+ * @Date 2018-09-05 09:35:19
  * @Description
  */
 @Repository(value = "invitedDao")

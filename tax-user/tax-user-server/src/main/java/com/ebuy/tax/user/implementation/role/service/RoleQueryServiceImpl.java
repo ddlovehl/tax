@@ -1,7 +1,7 @@
 package com.ebuy.tax.user.implementation.role.service;
 
+import com.ebuy.tax.user.api.role.dao.IRoleDao;
 import com.ebuy.tax.user.api.role.entity.Role;
-import com.ebuy.tax.user.api.user.dao.IUserDao;
 import com.ebuy.tax.user.api.role.service.RoleQueryService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;

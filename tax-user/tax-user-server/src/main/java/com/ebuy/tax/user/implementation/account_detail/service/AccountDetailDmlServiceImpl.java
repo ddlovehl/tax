@@ -1,7 +1,7 @@
 package com.ebuy.tax.user.implementation.account_detail.service;
 
+import com.ebuy.tax.user.api.account_detail.dao.IAccountDetailDao;
 import com.ebuy.tax.user.api.account_detail.entity.AccountDetail;
-import com.ebuy.tax.user.api.user.dao.IUserDao;
 import com.ebuy.tax.user.api.account_detail.service.AccountDetailDmlService;
 import com.ebuy.tax.common.constants.ResponseConstant;
 import org.slf4j.Logger;
@@ -15,6 +15,8 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.transaction.annotation.Transactional;
 import com.ebuy.tax.common.exception.SystemException;
 
+import javax.annotation.Resource;
+
 /**
  * @Package com.ebuy.tax.user.implementation.account_detail.dao
  * @author hdq
@@ -26,6 +28,7 @@ public class AccountDetailDmlServiceImpl implements AccountDetailDmlService {
 
     private static final Logger log = LoggerFactory.getLogger(AccountDetailDmlServiceImpl.class);
 
+    @Resource(name = "iAccountDetailDao")
     private IAccountDetailDao account_detailDao;
 
     /**

@@ -1,7 +1,7 @@
 package com.ebuy.tax.user.implementation.merchant.service;
 
+import com.ebuy.tax.user.api.merchant.dao.IMerchantDao;
 import com.ebuy.tax.user.api.merchant.entity.Merchant;
-import com.ebuy.tax.user.api.user.dao.IUserDao;
 import com.ebuy.tax.user.api.merchant.service.MerchantQueryService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;

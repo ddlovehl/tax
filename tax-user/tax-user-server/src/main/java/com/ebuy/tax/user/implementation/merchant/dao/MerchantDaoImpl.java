@@ -1,9 +1,9 @@
 package com.ebuy.tax.user.implementation.merchant.dao;
 
+import com.ebuy.tax.user.api.merchant.dao.IMerchantDao;
 import com.ebuy.tax.user.api.merchant.entity.Merchant;
 import com.ebuy.tax.user.implementation.merchant.mapper.MerchantMapper;
 
-import com.ebuy.tax.user.api.user.dao.IUserDao;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ebuy.tax.common.constants.SysConstant;

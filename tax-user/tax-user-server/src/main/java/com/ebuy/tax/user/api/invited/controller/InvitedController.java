@@ -14,7 +14,7 @@ import org.springframework.stereotype.Controller;
  * @Project new_project
  * @Package com.ebuy.tax.user.api.invited.dao
  * @Author hdq
- * @Date 2018-09-04 21:45:10
+ * @Date 2018-09-05 09:35:19
  * @Description invitedController
  */
 
@@ -29,7 +29,7 @@ public class InvitedController {
      * @return java.lang.String
      * @author hdq
      * @Description 根据ID查询单条记录
-     * @date 2018-09-04 21:45:10
+     * @date 2018-09-05 09:35:19
      *  @see   [obj]
      */
     @PostMapping(value = "/queryById")

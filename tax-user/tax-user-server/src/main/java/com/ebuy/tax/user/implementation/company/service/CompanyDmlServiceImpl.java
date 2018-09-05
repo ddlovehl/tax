@@ -1,7 +1,7 @@
 package com.ebuy.tax.user.implementation.company.service;
 
+import com.ebuy.tax.user.api.company.dao.ICompanyDao;
 import com.ebuy.tax.user.api.company.entity.Company;
-import com.ebuy.tax.user.api.user.dao.IUserDao;
 import com.ebuy.tax.user.api.company.service.CompanyDmlService;
 import com.ebuy.tax.common.constants.ResponseConstant;
 import org.slf4j.Logger;
@@ -15,6 +15,8 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.transaction.annotation.Transactional;
 import com.ebuy.tax.common.exception.SystemException;
 
+import javax.annotation.Resource;
+
 /**
  * @Package com.ebuy.tax.user.implementation.company.dao
  * @author hdq
@@ -26,6 +28,7 @@ public class CompanyDmlServiceImpl implements CompanyDmlService {
 
     private static final Logger log = LoggerFactory.getLogger(CompanyDmlServiceImpl.class);
 
+    @Resource(name = "companyDao")
     private ICompanyDao companyDao;
 
     /**

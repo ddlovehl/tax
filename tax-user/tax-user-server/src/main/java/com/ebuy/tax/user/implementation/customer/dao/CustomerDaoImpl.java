@@ -1,9 +1,9 @@
 package com.ebuy.tax.user.implementation.customer.dao;
 
+import com.ebuy.tax.user.api.customer.dao.ICustomerDao;
 import com.ebuy.tax.user.api.customer.entity.Customer;
 import com.ebuy.tax.user.implementation.customer.mapper.CustomerMapper;
 
-import com.ebuy.tax.user.api.user.dao.IUserDao;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ebuy.tax.common.constants.SysConstant;

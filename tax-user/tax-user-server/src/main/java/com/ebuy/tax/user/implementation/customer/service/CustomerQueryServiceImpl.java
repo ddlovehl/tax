@@ -1,5 +1,6 @@
 package com.ebuy.tax.user.implementation.customer.service;
 
+import com.ebuy.tax.user.api.customer.dao.ICustomerDao;
 import com.ebuy.tax.user.api.customer.entity.Customer;
 import com.ebuy.tax.user.api.user.dao.IUserDao;
 import com.ebuy.tax.user.api.customer.service.CustomerQueryService;

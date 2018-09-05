@@ -1,5 +1,6 @@
 package com.ebuy.tax.user.implementation.user_account.service;
 
+import com.ebuy.tax.user.api.user_account.dao.IUserAccountDao;
 import com.ebuy.tax.user.api.user_account.entity.UserAccount;
 import com.ebuy.tax.user.api.user.dao.IUserDao;
 import com.ebuy.tax.user.api.user_account.service.UserAccountQueryService;
@@ -19,8 +20,8 @@ import java.math.BigInteger;
 @CacheConfig(cacheNames = {"UserAccountCache"})
 public class UserAccountQueryServiceImpl implements UserAccountQueryService{
 
-    @Resource(name = "user_accountDao")
-    private IUserAccountDao user_accountDao;
+    @Resource(name = "userAccountDao")
+    private IUserAccountDao userAccountDao;
 
     /**
      * @author      hdq
@@ -31,7 +32,7 @@ public class UserAccountQueryServiceImpl implements UserAccountQueryService{
      */
     @Override
     public UserAccount queryById(BigInteger id){
-        return user_accountDao.selectById(id);
+        return userAccountDao.selectById(id);
     }
 
     /**
@@ -43,7 +44,7 @@ public class UserAccountQueryServiceImpl implements UserAccountQueryService{
      */
         @Override
     public List<UserAccount> queryByIds(List<BigInteger> ids){
-        return (List<UserAccount>)user_accountDao.selectBatchIds(ids);
+        return (List<UserAccount>)userAccountDao.selectBatchIds(ids);
     }
 
     /**
@@ -55,7 +56,7 @@ public class UserAccountQueryServiceImpl implements UserAccountQueryService{
      */
     @Override
     public int queryCountUserAccount(UserAccount user_account){
-        return user_accountDao.queryCount(user_account);
+        return userAccountDao.queryCount(user_account);
     }
 
     /**
@@ -67,7 +68,7 @@ public class UserAccountQueryServiceImpl implements UserAccountQueryService{
      */
     @Override
     public List<UserAccount> queryAllUserAccount(UserAccount user_account){
-        return user_accountDao.queryList(user_account);
+        return userAccountDao.queryList(user_account);
     }
 
     /**
@@ -79,7 +80,7 @@ public class UserAccountQueryServiceImpl implements UserAccountQueryService{
      */
     @Override
     public List<UserAccount> queryListForPageUserAccount(UserAccount user_account,Integer pageNo,Integer pageSize){
-        return user_accountDao.queryListForPage(user_account,pageNo,pageSize);
+        return userAccountDao.queryListForPage(user_account,pageNo,pageSize);
     }
 
     /**
@@ -91,7 +92,7 @@ public class UserAccountQueryServiceImpl implements UserAccountQueryService{
      */
     @Override
     public UserAccount queryEntityByUserAccountEntity(UserAccount user_account){
-        return user_accountDao.queryEntityByUserAccountEntity(user_account);
+        return userAccountDao.queryEntityByUserAccountEntity(user_account);
     }
 
 

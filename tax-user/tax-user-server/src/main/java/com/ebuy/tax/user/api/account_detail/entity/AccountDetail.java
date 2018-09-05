@@ -2,6 +2,7 @@ package com.ebuy.tax.user.api.account_detail.entity;
 
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableField;

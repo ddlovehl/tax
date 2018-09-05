@@ -1,7 +1,7 @@
 package com.ebuy.tax.user.implementation.merchant.service;
 
+import com.ebuy.tax.user.api.merchant.dao.IMerchantDao;
 import com.ebuy.tax.user.api.merchant.entity.Merchant;
-import com.ebuy.tax.user.api.user.dao.IUserDao;
 import com.ebuy.tax.user.api.merchant.service.MerchantDmlService;
 import com.ebuy.tax.common.constants.ResponseConstant;
 import org.slf4j.Logger;
@@ -15,6 +15,8 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.transaction.annotation.Transactional;
 import com.ebuy.tax.common.exception.SystemException;
 
+import javax.annotation.Resource;
+
 /**
  * @Package com.ebuy.tax.user.implementation.merchant.dao
  * @author hdq
@@ -26,6 +28,7 @@ public class MerchantDmlServiceImpl implements MerchantDmlService {
 
     private static final Logger log = LoggerFactory.getLogger(MerchantDmlServiceImpl.class);
 
+    @Resource(name = "merchantDao")
     private IMerchantDao merchantDao;
 
     /**

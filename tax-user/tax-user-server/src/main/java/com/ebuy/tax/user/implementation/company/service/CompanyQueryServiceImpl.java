@@ -1,7 +1,7 @@
 package com.ebuy.tax.user.implementation.company.service;
 
+import com.ebuy.tax.user.api.company.dao.ICompanyDao;
 import com.ebuy.tax.user.api.company.entity.Company;
-import com.ebuy.tax.user.api.user.dao.IUserDao;
 import com.ebuy.tax.user.api.company.service.CompanyQueryService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
