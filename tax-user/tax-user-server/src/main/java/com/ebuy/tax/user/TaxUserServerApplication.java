@@ -7,7 +7,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@MapperScan("com.ebuy.tax.user.implementation.*.mapper*")
+@MapperScan(basePackages = "com.ebuy.tax.user.implementation.*.mapper*")
 public class TaxUserServerApplication {
 
 	public static void main(String[] args) {
