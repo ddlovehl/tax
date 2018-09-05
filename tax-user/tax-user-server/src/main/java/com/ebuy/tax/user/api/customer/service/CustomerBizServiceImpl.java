@@ -16,9 +16,10 @@ import com.ebuy.tax.common.entity.PageResult;
 /**
  * @Package com.ebuy.tax.user.api.customer.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:55
  * @Description
  */
+@Service(value = "customerBizService")
 public class CustomerBizServiceImpl implements CustomerBizService{
 
     private static final Logger logger = LoggerFactory.getLogger(CustomerBizServiceImpl.class);
@@ -32,8 +33,9 @@ public class CustomerBizServiceImpl implements CustomerBizService{
      * @see         [Customer]
      * @return      List<Customer>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public List<Customer> queryList(Customer customer){
         return customerQueryService.queryAllCustomer(customer);
     }
@@ -43,8 +45,9 @@ public class CustomerBizServiceImpl implements CustomerBizService{
      * @see         [Customer] [pageNo] [pageSize]
      * @return          PageResult
      * @Description 查询列表(分页)
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public PageResult queryListPage(Customer customer, Integer pageNo, Integer  pageSize){
         //查询分页列表总数
         int count = customerQueryService.queryCountCustomer(customer);
@@ -60,8 +63,9 @@ public class CustomerBizServiceImpl implements CustomerBizService{
      * @see         [id]
      * @return      Customer
      * @Description 按id查询
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public Customer queryById(BigInteger id){
         return customerQueryService.queryById(id);
     }
@@ -71,8 +75,9 @@ public class CustomerBizServiceImpl implements CustomerBizService{
      * @see         [ids]
      * @return      List<Customer>
      * @Description 按ids查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public List<Customer> queryByIds(List<BigInteger> ids){
         return customerQueryService.queryByIds(ids);
     }
@@ -82,8 +87,9 @@ public class CustomerBizServiceImpl implements CustomerBizService{
      * @see         [Customer]
      * @return      Customer
      * @Description 根据entity查询一条记录
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public Customer queryByParam(Customer customer){
         return customerQueryService.queryEntityByCustomerEntity(customer);
     }
@@ -93,8 +99,9 @@ public class CustomerBizServiceImpl implements CustomerBizService{
      * @see         [Customer]
      * @return
      * @Description 添加
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public void insert(Customer customer){
         customerDmlService.insertCustomer(customer);
     }
@@ -104,8 +111,9 @@ public class CustomerBizServiceImpl implements CustomerBizService{
      * @see         [Customer]
      * @return
      * @Description 添加or更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public void insertOrUpdate(Customer customer){
         customerDmlService.insertOrUpdateCustomer(customer);
     }
@@ -115,8 +123,9 @@ public class CustomerBizServiceImpl implements CustomerBizService{
      * @see         [Customer]
      * @return
      * @Description 更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public void update(Customer customer){
         customerDmlService.updateCustomer(customer);
     }

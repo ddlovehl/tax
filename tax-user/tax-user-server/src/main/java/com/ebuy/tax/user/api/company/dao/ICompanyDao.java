@@ -9,7 +9,7 @@ import java.util.List;
  * @Project new_project
  * @Package com.ebuy.tax.user.api.company.dao
  * @Author hdq
- * @Date 2018-09-05 09:57:24
+ * @Date 2018-09-05 18:26:55
  * @Description IcompanyDao
  */
 public interface ICompanyDao extends IService<Company> {
@@ -19,7 +19,7 @@ public interface ICompanyDao extends IService<Company> {
      * @see         [Company]
      * @return      java.lang.Long
      * @Description 查询列表总数
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public int queryCount(Company company);
 
@@ -28,7 +28,7 @@ public interface ICompanyDao extends IService<Company> {
      * @see         [Company]
      * @return      List<Company>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public List<Company> queryList(Company company);
 
@@ -37,7 +37,7 @@ public interface ICompanyDao extends IService<Company> {
      * @see         List<Company>
      * @return      java.lang.Long
      * @Description 查询列表
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public List<Company>  queryListForPage(Company company,Integer pageNo,Integer pageSize);
 
@@ -46,7 +46,7 @@ public interface ICompanyDao extends IService<Company> {
      * @see         [Company]
      * @return      List<Company>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public Company queryEntityByCompanyEntity(Company company);
 }

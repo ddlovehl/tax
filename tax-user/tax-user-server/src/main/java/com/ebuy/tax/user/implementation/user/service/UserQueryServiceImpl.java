@@ -13,7 +13,7 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.implementation.user.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:56
  * @Description ç”¨æˆ·è¡¨ 查询服务
  */
 @CacheConfig(cacheNames = {"UserCache"})
@@ -27,7 +27,7 @@ public class UserQueryServiceImpl implements UserQueryService{
      * @see         [User]
      * @return      boolean
      * @Description 根据id查询
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     @Override
     public User queryById(BigInteger id){
@@ -39,7 +39,7 @@ public class UserQueryServiceImpl implements UserQueryService{
      * @see         [User]
      * @return      boolean
      * @Description 根据ids查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
         @Override
     public List<User> queryByIds(List<BigInteger> ids){
@@ -51,7 +51,7 @@ public class UserQueryServiceImpl implements UserQueryService{
      * @see         [User]
      * @return      boolean
      * @Description 查询列表总数
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     @Override
     public int queryCountUser(User user){
@@ -63,7 +63,7 @@ public class UserQueryServiceImpl implements UserQueryService{
      * @see         [User]
      * @return      boolean
      * @Description 查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     @Override
     public List<User> queryAllUser(User user){
@@ -75,7 +75,7 @@ public class UserQueryServiceImpl implements UserQueryService{
      * @see         [User]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     @Override
     public List<User> queryListForPageUser(User user,Integer pageNo,Integer pageSize){
@@ -87,7 +87,7 @@ public class UserQueryServiceImpl implements UserQueryService{
      * @see         [User]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     @Override
     public User queryEntityByUserEntity(User user){

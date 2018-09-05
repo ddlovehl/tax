@@ -9,7 +9,7 @@ import java.util.List;
  * @Project new_project
  * @Package com.ebuy.tax.user.api.accountDetail.dao
  * @Author hdq
- * @Date 2018-09-05 09:57:24
+ * @Date 2018-09-05 18:26:55
  * @Description IaccountDetailDao
  */
 public interface IAccountDetailDao extends IService<AccountDetail> {
@@ -19,7 +19,7 @@ public interface IAccountDetailDao extends IService<AccountDetail> {
      * @see         [AccountDetail]
      * @return      java.lang.Long
      * @Description 查询列表总数
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public int queryCount(AccountDetail accountDetail);
 
@@ -28,7 +28,7 @@ public interface IAccountDetailDao extends IService<AccountDetail> {
      * @see         [AccountDetail]
      * @return      List<AccountDetail>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public List<AccountDetail> queryList(AccountDetail accountDetail);
 
@@ -37,7 +37,7 @@ public interface IAccountDetailDao extends IService<AccountDetail> {
      * @see         List<AccountDetail>
      * @return      java.lang.Long
      * @Description 查询列表
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public List<AccountDetail>  queryListForPage(AccountDetail accountDetail,Integer pageNo,Integer pageSize);
 
@@ -46,7 +46,7 @@ public interface IAccountDetailDao extends IService<AccountDetail> {
      * @see         [AccountDetail]
      * @return      List<AccountDetail>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public AccountDetail queryEntityByAccountDetailEntity(AccountDetail accountDetail);
 }

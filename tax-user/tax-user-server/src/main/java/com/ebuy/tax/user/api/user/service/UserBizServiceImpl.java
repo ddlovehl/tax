@@ -16,9 +16,10 @@ import com.ebuy.tax.common.entity.PageResult;
 /**
  * @Package com.ebuy.tax.user.api.user.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:56
  * @Description
  */
+@Service(value = "userBizService")
 public class UserBizServiceImpl implements UserBizService{
 
     private static final Logger logger = LoggerFactory.getLogger(UserBizServiceImpl.class);
@@ -32,8 +33,9 @@ public class UserBizServiceImpl implements UserBizService{
      * @see         [User]
      * @return      List<User>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
+    @Override
     public List<User> queryList(User user){
         return userQueryService.queryAllUser(user);
     }
@@ -43,8 +45,9 @@ public class UserBizServiceImpl implements UserBizService{
      * @see         [User] [pageNo] [pageSize]
      * @return          PageResult
      * @Description 查询列表(分页)
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
+    @Override
     public PageResult queryListPage(User user, Integer pageNo, Integer  pageSize){
         //查询分页列表总数
         int count = userQueryService.queryCountUser(user);
@@ -60,8 +63,9 @@ public class UserBizServiceImpl implements UserBizService{
      * @see         [id]
      * @return      User
      * @Description 按id查询
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
+    @Override
     public User queryById(BigInteger id){
         return userQueryService.queryById(id);
     }
@@ -71,8 +75,9 @@ public class UserBizServiceImpl implements UserBizService{
      * @see         [ids]
      * @return      List<User>
      * @Description 按ids查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
+    @Override
     public List<User> queryByIds(List<BigInteger> ids){
         return userQueryService.queryByIds(ids);
     }
@@ -82,8 +87,9 @@ public class UserBizServiceImpl implements UserBizService{
      * @see         [User]
      * @return      User
      * @Description 根据entity查询一条记录
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
+    @Override
     public User queryByParam(User user){
         return userQueryService.queryEntityByUserEntity(user);
     }
@@ -93,8 +99,9 @@ public class UserBizServiceImpl implements UserBizService{
      * @see         [User]
      * @return
      * @Description 添加
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
+    @Override
     public void insert(User user){
         userDmlService.insertUser(user);
     }
@@ -104,8 +111,9 @@ public class UserBizServiceImpl implements UserBizService{
      * @see         [User]
      * @return
      * @Description 添加or更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
+    @Override
     public void insertOrUpdate(User user){
         userDmlService.insertOrUpdateUser(user);
     }
@@ -115,8 +123,9 @@ public class UserBizServiceImpl implements UserBizService{
      * @see         [User]
      * @return
      * @Description 更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
+    @Override
     public void update(User user){
         userDmlService.updateUser(user);
     }

@@ -16,9 +16,10 @@ import com.ebuy.tax.common.entity.PageResult;
 /**
  * @Package com.ebuy.tax.user.api.userAccount.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:56
  * @Description
  */
+@Service(value = "userAccountBizService")
 public class UserAccountBizServiceImpl implements UserAccountBizService{
 
     private static final Logger logger = LoggerFactory.getLogger(UserAccountBizServiceImpl.class);
@@ -32,8 +33,9 @@ public class UserAccountBizServiceImpl implements UserAccountBizService{
      * @see         [UserAccount]
      * @return      List<UserAccount>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
+    @Override
     public List<UserAccount> queryList(UserAccount userAccount){
         return userAccountQueryService.queryAllUserAccount(userAccount);
     }
@@ -43,8 +45,9 @@ public class UserAccountBizServiceImpl implements UserAccountBizService{
      * @see         [UserAccount] [pageNo] [pageSize]
      * @return          PageResult
      * @Description 查询列表(分页)
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
+    @Override
     public PageResult queryListPage(UserAccount userAccount, Integer pageNo, Integer  pageSize){
         //查询分页列表总数
         int count = userAccountQueryService.queryCountUserAccount(userAccount);
@@ -60,8 +63,9 @@ public class UserAccountBizServiceImpl implements UserAccountBizService{
      * @see         [id]
      * @return      UserAccount
      * @Description 按id查询
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
+    @Override
     public UserAccount queryById(BigInteger id){
         return userAccountQueryService.queryById(id);
     }
@@ -71,8 +75,9 @@ public class UserAccountBizServiceImpl implements UserAccountBizService{
      * @see         [ids]
      * @return      List<UserAccount>
      * @Description 按ids查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
+    @Override
     public List<UserAccount> queryByIds(List<BigInteger> ids){
         return userAccountQueryService.queryByIds(ids);
     }
@@ -82,8 +87,9 @@ public class UserAccountBizServiceImpl implements UserAccountBizService{
      * @see         [UserAccount]
      * @return      UserAccount
      * @Description 根据entity查询一条记录
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
+    @Override
     public UserAccount queryByParam(UserAccount userAccount){
         return userAccountQueryService.queryEntityByUserAccountEntity(userAccount);
     }
@@ -93,8 +99,9 @@ public class UserAccountBizServiceImpl implements UserAccountBizService{
      * @see         [UserAccount]
      * @return
      * @Description 添加
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
+    @Override
     public void insert(UserAccount userAccount){
         userAccountDmlService.insertUserAccount(userAccount);
     }
@@ -104,8 +111,9 @@ public class UserAccountBizServiceImpl implements UserAccountBizService{
      * @see         [UserAccount]
      * @return
      * @Description 添加or更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
+    @Override
     public void insertOrUpdate(UserAccount userAccount){
         userAccountDmlService.insertOrUpdateUserAccount(userAccount);
     }
@@ -115,8 +123,9 @@ public class UserAccountBizServiceImpl implements UserAccountBizService{
      * @see         [UserAccount]
      * @return
      * @Description 更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
+    @Override
     public void update(UserAccount userAccount){
         userAccountDmlService.updateUserAccount(userAccount);
     }

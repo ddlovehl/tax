@@ -9,7 +9,7 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.api.customer.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:55
  * @Description å®¢æˆ·è¡¨ 查询服务
  */
 public interface CustomerQueryService{
@@ -19,7 +19,7 @@ public interface CustomerQueryService{
      * @see         [Customer]
      * @return      boolean
      * @Description 根据id查询
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public Customer queryById(BigInteger id);
 
@@ -28,7 +28,7 @@ public interface CustomerQueryService{
      * @see         [Customer]
      * @return      boolean
      * @Description 根据ids查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public List<Customer> queryByIds(List<BigInteger> ids);
 
@@ -37,7 +37,7 @@ public interface CustomerQueryService{
      * @see         [Customer]
      * @return      boolean
      * @Description 查询列表总数
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public int queryCountCustomer(Customer customer);
 
@@ -46,7 +46,7 @@ public interface CustomerQueryService{
      * @see         [Customer]
      * @return      boolean
      * @Description 查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public List<Customer> queryAllCustomer(Customer customer);
 
@@ -55,7 +55,7 @@ public interface CustomerQueryService{
      * @see         [Customer]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public List<Customer> queryListForPageCustomer(Customer customer,Integer pageNo,Integer pageSize);
 
@@ -64,7 +64,7 @@ public interface CustomerQueryService{
      * @see         [Customer]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public Customer queryEntityByCustomerEntity(Customer customer);
 

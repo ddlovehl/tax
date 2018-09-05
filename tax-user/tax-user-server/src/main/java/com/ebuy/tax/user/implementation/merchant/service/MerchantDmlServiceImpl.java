@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 /**
  * @Package com.ebuy.tax.user.implementation.merchant.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:55
  * @Description  操作服务
  */
 @CacheConfig(cacheNames = {"MerchantCache}"})
@@ -35,7 +35,7 @@ public class MerchantDmlServiceImpl implements MerchantDmlService {
      * @see         [Merchant]
      * @return      boolean
      * @Description 添加信息
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -55,7 +55,7 @@ public class MerchantDmlServiceImpl implements MerchantDmlService {
      * @see         [Merchant]
      * @return      boolean
      * @Description 批量增加
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -75,7 +75,7 @@ public class MerchantDmlServiceImpl implements MerchantDmlService {
      * @see         [Merchant]
      * @return      boolean
      * @Description 增加or更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -96,7 +96,7 @@ public class MerchantDmlServiceImpl implements MerchantDmlService {
      * @see         [Merchant]
      * @return      boolean
      * @Description 更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -116,7 +116,7 @@ public class MerchantDmlServiceImpl implements MerchantDmlService {
      * @see         [Merchant]
      * @return      boolean
      * @Description 更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -136,7 +136,7 @@ public class MerchantDmlServiceImpl implements MerchantDmlService {
      * @see         [Merchant]
      * @return      boolean
      * @Description 删除
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -156,7 +156,7 @@ public class MerchantDmlServiceImpl implements MerchantDmlService {
      * @see         [Merchant]
      * @return      boolean
      * @Description 根据id批量删除
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)

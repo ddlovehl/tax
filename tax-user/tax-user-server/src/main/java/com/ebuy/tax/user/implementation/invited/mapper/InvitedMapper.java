@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @Package com.ebuy.tax.user.implementation.invited.dao
  * @author hdq
- * @Date 2018-09-05 09:57:24
+ * @Date 2018-09-05 18:26:55
  * @Description è¢«é‚€è¯·è¡¨ Mapper 接口
  */
 public interface InvitedMapper extends SuperMapper<Invited> {

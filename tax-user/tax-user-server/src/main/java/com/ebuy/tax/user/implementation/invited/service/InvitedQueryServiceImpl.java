@@ -13,7 +13,7 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.implementation.invited.dao
  * @author hdq
- * @Date 2018-09-05 09:57:24
+ * @Date 2018-09-05 18:26:55
  * @Description è¢«é‚€è¯·è¡¨ 查询服务
  */
 @CacheConfig(cacheNames = {"InvitedCache"})
@@ -27,7 +27,7 @@ public class InvitedQueryServiceImpl implements InvitedQueryService{
      * @see         [Invited]
      * @return      boolean
      * @Description 根据id查询
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     @Override
     public Invited queryById(BigInteger id){
@@ -39,7 +39,7 @@ public class InvitedQueryServiceImpl implements InvitedQueryService{
      * @see         [Invited]
      * @return      boolean
      * @Description 根据ids查询列表
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
         @Override
     public List<Invited> queryByIds(List<BigInteger> ids){
@@ -51,7 +51,7 @@ public class InvitedQueryServiceImpl implements InvitedQueryService{
      * @see         [Invited]
      * @return      boolean
      * @Description 查询列表总数
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     @Override
     public int queryCountInvited(Invited invited){
@@ -63,7 +63,7 @@ public class InvitedQueryServiceImpl implements InvitedQueryService{
      * @see         [Invited]
      * @return      boolean
      * @Description 查询列表
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     @Override
     public List<Invited> queryAllInvited(Invited invited){
@@ -75,7 +75,7 @@ public class InvitedQueryServiceImpl implements InvitedQueryService{
      * @see         [Invited]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     @Override
     public List<Invited> queryListForPageInvited(Invited invited,Integer pageNo,Integer pageSize){
@@ -87,7 +87,7 @@ public class InvitedQueryServiceImpl implements InvitedQueryService{
      * @see         [Invited]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     @Override
     public Invited queryEntityByInvitedEntity(Invited invited){

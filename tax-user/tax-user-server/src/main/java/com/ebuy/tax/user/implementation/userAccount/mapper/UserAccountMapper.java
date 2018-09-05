@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @Package com.ebuy.tax.user.implementation.userAccount.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:56
  * @Description è´¦æˆ·è¡¨ Mapper 接口
  */
 public interface UserAccountMapper extends SuperMapper<UserAccount> {

@@ -9,7 +9,7 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.api.merchant.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:55
  * @Description Merchant操作服务
  */
 public interface MerchantDmlService{
@@ -19,7 +19,7 @@ public interface MerchantDmlService{
      * @see         [Merchant]
      * @return      boolean
      * @Description 添加信息
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public boolean insertMerchant(Merchant merchant);
 
@@ -28,7 +28,7 @@ public interface MerchantDmlService{
      * @see         [Merchant]
      * @return      boolean
      * @Description 批量增加
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public boolean insertMerchants(List<Merchant> list);
 
@@ -37,7 +37,7 @@ public interface MerchantDmlService{
      * @see         [Merchant]
      * @return      boolean
      * @Description 增加or更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public boolean insertOrUpdateMerchant(Merchant merchant);
 
@@ -46,7 +46,7 @@ public interface MerchantDmlService{
      * @see         [Merchant]
      * @return      boolean
      * @Description 更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public boolean updateMerchant(Merchant merchant);
 
@@ -55,7 +55,7 @@ public interface MerchantDmlService{
      * @see         [Merchant]
      * @return      boolean
      * @Description 更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public boolean updateMerchants(List<Merchant> list);
 
@@ -64,7 +64,7 @@ public interface MerchantDmlService{
      * @see         [Merchant]
      * @return      boolean
      * @Description 删除
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public boolean deleteMerchant(BigInteger id);
 
@@ -73,7 +73,7 @@ public interface MerchantDmlService{
      * @see         [Merchant]
      * @return      boolean
      * @Description 根据id批量删除
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public boolean deleteMerchants(List<BigInteger> ids);
 }
