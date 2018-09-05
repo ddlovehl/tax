@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ebuy.tax.user.implementation.invited.mapper.InvitedMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="InvitedAll_column">
+         invited.id as id,
+         invited.invite_user_id as inviteUserId,
+         invited.invited_user_id as invitedUserId,
+         invited.invited_name as invitedName,
+         invited.invited_mobile as invitedMobile,
+         invited.invited_sex as invitedSex,
+         invited.company_id as companyId,
+         invited.invited_age as invitedAge,
+         invited.invited_position as invitedPosition,
+         invited.reseve1 as reseve1,
+         invited.reseve2 as reseve2,
+         invited.reseve3 as reseve3,
+         invited.is_del as isDel,
+         invited.create_time as createTime,
+         invited.update_time as updateTime
+    </sql>
+
+
+    <sql id="InvitedAll_where">
+        <where>
+            1=1
+            <if test="id != null and id !=''">
+              AND invited.id = #{id}
+            </if>
+
+            <if test="inviteUserId != null and inviteUserId !=''">
+                AND invited.invite_user_id = #{inviteUserId}
+            </if>
+
+            <if test="invitedUserId != null and invitedUserId !=''">
+                AND invited.invited_user_id = #{invitedUserId}
+            </if>
+
+            <if test="invitedName != null and invitedName !=''">
+                AND invited.invited_name like '%' #{invitedName} '%'
+            </if>
+
+            <if test="invitedMobile != null and invitedMobile !=''">
+                AND invited.invited_mobile = #{invitedMobile}
+            </if>
+
+            <if test="invitedSex != null and invitedSex !=''">
+                AND invited.invited_sex = #{invitedSex}
+            </if>
+
+            <if test="companyId != null and companyId !=''">
+                AND invited.company_id = #{companyId}
+            </if>
+
+            <if test="invitedAge != null and invitedAge !=''">
+                AND invited.invited_age = #{invitedAge}
+            </if>
+
+            <if test="invitedPosition != null and invitedPosition !=''">
+                AND invited.invited_position = #{invitedPosition}
+            </if>
+
+            <if test="reseve1 != null and reseve1 !=''">
+                AND invited.reseve1 = #{reseve1}
+            </if>
+
+            <if test="reseve2 != null and reseve2 !=''">
+                AND invited.reseve2 = #{reseve2}
+            </if>
+
+            <if test="reseve3 != null and reseve3 !=''">
+                AND invited.reseve3 = #{reseve3}
+            </if>
+
+            <if test="isDel != null and isDel !=''">
+                AND invited.is_del = #{isDel}
+            </if>
+
+            <if test="createTime != null and createTime !=''">
+                AND invited.create_time = #{createTime}
+            </if>
+
+            <if test="updateTime != null and updateTime !=''">
+                AND invited.update_time = #{updateTime}
+            </if>
+
+        </where>
+    </sql>
+
+    <sql id="InvitedAll_table">
+        FROM
+		tax_invited invited
+    </sql>
+
+    <!-- 查全部 -->
+    <select id="queryList" resultType="com.ebuy.tax.user.api.invited.entity.Invited"
+            parameterType="com.ebuy.tax.user.api.invited.entity.Invited">
+        SELECT
+        <include refid="InvitedAll_column" />
+        <include refid="InvitedAll_table" />
+        <include refid="InvitedAll_where" />
+    </select>
+
+    <!-- 查数量 -->
+    <select id="queryCount" resultType="java.lang.Integer"
+            parameterType="com.ebuy.tax.user.api.invited.entity.Invited">
+        SELECT
+        count(1)
+        <include refid="InvitedAll_table" />
+        <include refid="InvitedAll_where" />
+    </select>
+
+    <!-- 分页查询列表 -->
+    <select id="queryListForPage" resultType="com.ebuy.tax.user.api.invited.entity.Invited">
+        select
+        <include refid="InvitedAll_column" />
+        <include refid="InvitedAll_table" />
+        <if test="entity.id != null and entity.id !=''">
+            AND invited.id = #{entity.id}
+        </if>
+        <if test="entity.inviteUserId != null and entity.inviteUserId !=''">
+            AND invited.invite_user_id = #{entity.inviteUserId}
+        </if>
+        <if test="entity.invitedUserId != null and entity.invitedUserId !=''">
+            AND invited.invited_user_id = #{entity.invitedUserId}
+        </if>
+        <if test="entity.invitedName != null and entity.invitedName !=''">
+            AND invited.invited_name like '%' #{entity.invitedName} '%'
+        </if>
+        <if test="entity.invitedMobile != null and entity.invitedMobile !=''">
+            AND invited.invited_mobile = #{entity.invitedMobile}
+        </if>
+        <if test="entity.invitedSex != null and entity.invitedSex !=''">
+            AND invited.invited_sex = #{entity.invitedSex}
+        </if>
+        <if test="entity.companyId != null and entity.companyId !=''">
+            AND invited.company_id = #{entity.companyId}
+        </if>
+        <if test="entity.invitedAge != null and entity.invitedAge !=''">
+            AND invited.invited_age = #{entity.invitedAge}
+        </if>
+        <if test="entity.invitedPosition != null and entity.invitedPosition !=''">
+            AND invited.invited_position = #{entity.invitedPosition}
+        </if>
+        <if test="entity.reseve1 != null and entity.reseve1 !=''">
+            AND invited.reseve1 = #{entity.reseve1}
+        </if>
+        <if test="entity.reseve2 != null and entity.reseve2 !=''">
+            AND invited.reseve2 = #{entity.reseve2}
+        </if>
+        <if test="entity.reseve3 != null and entity.reseve3 !=''">
+            AND invited.reseve3 = #{entity.reseve3}
+        </if>
+        <if test="entity.isDel != null and entity.isDel !=''">
+            AND invited.is_del = #{entity.isDel}
+        </if>
+        <if test="entity.createTime != null and entity.createTime !=''">
+            AND invited.create_time = #{entity.createTime}
+        </if>
+        <if test="entity.updateTime != null and entity.updateTime !=''">
+            AND invited.update_time = #{entity.updateTime}
+        </if>
+        order by CREATE_TIME desc
+        limit #{start,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER};
+    </select>
+
+    <select id="queryEntityByInvitedEntity" resultType="com.ebuy.tax.user.api.invited.entity.Invited">
+        SELECT
+        <include refid="InvitedAll_column" />
+        <include refid="InvitedAll_table" />
+        <include refid="InvitedAll_where" />
+    </select>
+</mapper>
