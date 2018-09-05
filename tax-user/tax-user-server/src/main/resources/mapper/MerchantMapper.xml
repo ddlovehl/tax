@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ebuy.tax.user.implementation.merchant.mapper.MerchantMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="MerchantAll_column">
+         merchant.id as id,
+         merchant.user_id as userId,
+         merchant.company_id as companyId,
+         merchant.service_type as serviceType,
+         merchant.merchant_source as merchantSource,
+         merchant.merchant_status as merchantStatus,
+         merchant.allot_user_id as allotUserId,
+         merchant.allot_user_name as allotUserName,
+         merchant.receive_type as receiveType,
+         merchant.receive_clause as receiveClause,
+         merchant.audit_status as auditStatus,
+         merchant.remark as remark,
+         merchant.reseve1 as reseve1,
+         merchant.reseve2 as reseve2,
+         merchant.reseve3 as reseve3,
+         merchant.create_time as createTime,
+         merchant.update_time as updateTime
+    </sql>
+
+
+    <sql id="MerchantAll_where">
+        <where>
+            1=1
+            <if test="id != null and id !=''">
+              AND merchant.id = #{id}
+            </if>
+
+            <if test="userId != null and userId !=''">
+                AND merchant.user_id = #{userId}
+            </if>
+
+            <if test="companyId != null and companyId !=''">
+                AND merchant.company_id = #{companyId}
+            </if>
+
+            <if test="serviceType != null and serviceType !=''">
+                AND merchant.service_type = #{serviceType}
+            </if>
+
+            <if test="merchantSource != null and merchantSource !=''">
+                AND merchant.merchant_source = #{merchantSource}
+            </if>
+
+            <if test="merchantStatus != null and merchantStatus !=''">
+                AND merchant.merchant_status = #{merchantStatus}
+            </if>
+
+            <if test="allotUserId != null and allotUserId !=''">
+                AND merchant.allot_user_id = #{allotUserId}
+            </if>
+
+            <if test="allotUserName != null and allotUserName !=''">
+                AND merchant.allot_user_name = #{allotUserName}
+            </if>
+
+            <if test="receiveType != null and receiveType !=''">
+                AND merchant.receive_type = #{receiveType}
+            </if>
+
+            <if test="receiveClause != null and receiveClause !=''">
+                AND merchant.receive_clause = #{receiveClause}
+            </if>
+
+            <if test="auditStatus != null and auditStatus !=''">
+                AND merchant.audit_status = #{auditStatus}
+            </if>
+
+            <if test="remark != null and remark !=''">
+                AND merchant.remark = #{remark}
+            </if>
+
+            <if test="reseve1 != null and reseve1 !=''">
+                AND merchant.reseve1 = #{reseve1}
+            </if>
+
+            <if test="reseve2 != null and reseve2 !=''">
+                AND merchant.reseve2 = #{reseve2}
+            </if>
+
+            <if test="reseve3 != null and reseve3 !=''">
+                AND merchant.reseve3 = #{reseve3}
+            </if>
+
+            <if test="createTime != null and createTime !=''">
+                AND merchant.create_time = #{createTime}
+            </if>
+
+            <if test="updateTime != null and updateTime !=''">
+                AND merchant.update_time = #{updateTime}
+            </if>
+
+        </where>
+    </sql>
+
+    <sql id="MerchantAll_table">
+        FROM
+		tax_merchant merchant
+    </sql>
+
+    <!-- 查全部 -->
+    <select id="queryList" resultType="com.ebuy.tax.user.api.merchant.entity.Merchant"
+            parameterType="com.ebuy.tax.user.api.merchant.entity.Merchant">
+        SELECT
+        <include refid="MerchantAll_column" />
+        <include refid="MerchantAll_table" />
+        <include refid="MerchantAll_where" />
+    </select>
+
+    <!-- 查数量 -->
+    <select id="queryCount" resultType="java.lang.Integer"
+            parameterType="com.ebuy.tax.user.api.merchant.entity.Merchant">
+        SELECT
+        count(1)
+        <include refid="MerchantAll_table" />
+        <include refid="MerchantAll_where" />
+    </select>
+
+    <!-- 分页查询列表 -->
+    <select id="queryListForPage" resultType="com.ebuy.tax.user.api.merchant.entity.Merchant">
+        select
+        <include refid="MerchantAll_column" />
+        <include refid="MerchantAll_table" />
+        <if test="entity.id != null and entity.id !=''">
+            AND merchant.id = #{entity.id}
+        </if>
+        <if test="entity.userId != null and entity.userId !=''">
+            AND merchant.user_id = #{entity.userId}
+        </if>
+        <if test="entity.companyId != null and entity.companyId !=''">
+            AND merchant.company_id = #{entity.companyId}
+        </if>
+        <if test="entity.serviceType != null and entity.serviceType !=''">
+            AND merchant.service_type = #{entity.serviceType}
+        </if>
+        <if test="entity.merchantSource != null and entity.merchantSource !=''">
+            AND merchant.merchant_source = #{entity.merchantSource}
+        </if>
+        <if test="entity.merchantStatus != null and entity.merchantStatus !=''">
+            AND merchant.merchant_status = #{entity.merchantStatus}
+        </if>
+        <if test="entity.allotUserId != null and entity.allotUserId !=''">
+            AND merchant.allot_user_id = #{entity.allotUserId}
+        </if>
+        <if test="entity.allotUserName != null and entity.allotUserName !=''">
+            AND merchant.allot_user_name = #{entity.allotUserName}
+        </if>
+        <if test="entity.receiveType != null and entity.receiveType !=''">
+            AND merchant.receive_type = #{entity.receiveType}
+        </if>
+        <if test="entity.receiveClause != null and entity.receiveClause !=''">
+            AND merchant.receive_clause = #{entity.receiveClause}
+        </if>
+        <if test="entity.auditStatus != null and entity.auditStatus !=''">
+            AND merchant.audit_status = #{entity.auditStatus}
+        </if>
+        <if test="entity.remark != null and entity.remark !=''">
+            AND merchant.remark = #{entity.remark}
+        </if>
+        <if test="entity.reseve1 != null and entity.reseve1 !=''">
+            AND merchant.reseve1 = #{entity.reseve1}
+        </if>
+        <if test="entity.reseve2 != null and entity.reseve2 !=''">
+            AND merchant.reseve2 = #{entity.reseve2}
+        </if>
+        <if test="entity.reseve3 != null and entity.reseve3 !=''">
+            AND merchant.reseve3 = #{entity.reseve3}
+        </if>
+        <if test="entity.createTime != null and entity.createTime !=''">
+            AND merchant.create_time = #{entity.createTime}
+        </if>
+        <if test="entity.updateTime != null and entity.updateTime !=''">
+            AND merchant.update_time = #{entity.updateTime}
+        </if>
+        order by CREATE_TIME desc
+        limit #{start,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER};
+    </select>
+
+    <select id="queryEntityByMerchantEntity" resultType="com.ebuy.tax.user.api.merchant.entity.Merchant">
+        SELECT
+        <include refid="MerchantAll_column" />
+        <include refid="MerchantAll_table" />
+        <include refid="MerchantAll_where" />
+    </select>
+</mapper>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ebuy.tax.user.implementation.userAccount.mapper.UserAccountMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="UserAccountAll_column">
+         userAccount.id as id,
+         userAccount.user_id as userId,
+         userAccount.balance as balance,
+         userAccount.remak as remak,
+         userAccount.status as status,
+         userAccount.reseve1 as reseve1,
+         userAccount.reseve2 as reseve2,
+         userAccount.reseve3 as reseve3,
+         userAccount.create_time as createTime,
+         userAccount.update_time as updateTime
+    </sql>
+
+
+    <sql id="UserAccountAll_where">
+        <where>
+            1=1
+            <if test="id != null and id !=''">
+              AND userAccount.id = #{id}
+            </if>
+
+            <if test="userId != null and userId !=''">
+                AND userAccount.user_id = #{userId}
+            </if>
+
+            <if test="balance != null and balance !=''">
+                AND userAccount.balance = #{balance}
+            </if>
+
+            <if test="remak != null and remak !=''">
+                AND userAccount.remak = #{remak}
+            </if>
+
+            <if test="status != null and status !=''">
+                AND userAccount.status = #{status}
+            </if>
+
+            <if test="reseve1 != null and reseve1 !=''">
+                AND userAccount.reseve1 = #{reseve1}
+            </if>
+
+            <if test="reseve2 != null and reseve2 !=''">
+                AND userAccount.reseve2 = #{reseve2}
+            </if>
+
+            <if test="reseve3 != null and reseve3 !=''">
+                AND userAccount.reseve3 = #{reseve3}
+            </if>
+
+            <if test="createTime != null and createTime !=''">
+                AND userAccount.create_time = #{createTime}
+            </if>
+
+            <if test="updateTime != null and updateTime !=''">
+                AND userAccount.update_time = #{updateTime}
+            </if>
+
+        </where>
+    </sql>
+
+    <sql id="UserAccountAll_table">
+        FROM
+		tax_user_account userAccount
+    </sql>
+
+    <!-- 查全部 -->
+    <select id="queryList" resultType="com.ebuy.tax.user.api.userAccount.entity.UserAccount"
+            parameterType="com.ebuy.tax.user.api.userAccount.entity.UserAccount">
+        SELECT
+        <include refid="UserAccountAll_column" />
+        <include refid="UserAccountAll_table" />
+        <include refid="UserAccountAll_where" />
+    </select>
+
+    <!-- 查数量 -->
+    <select id="queryCount" resultType="java.lang.Integer"
+            parameterType="com.ebuy.tax.user.api.userAccount.entity.UserAccount">
+        SELECT
+        count(1)
+        <include refid="UserAccountAll_table" />
+        <include refid="UserAccountAll_where" />
+    </select>
+
+    <!-- 分页查询列表 -->
+    <select id="queryListForPage" resultType="com.ebuy.tax.user.api.userAccount.entity.UserAccount">
+        select
+        <include refid="UserAccountAll_column" />
+        <include refid="UserAccountAll_table" />
+        <if test="entity.id != null and entity.id !=''">
+            AND userAccount.id = #{entity.id}
+        </if>
+        <if test="entity.userId != null and entity.userId !=''">
+            AND userAccount.user_id = #{entity.userId}
+        </if>
+        <if test="entity.balance != null and entity.balance !=''">
+            AND userAccount.balance = #{entity.balance}
+        </if>
+        <if test="entity.remak != null and entity.remak !=''">
+            AND userAccount.remak = #{entity.remak}
+        </if>
+        <if test="entity.status != null and entity.status !=''">
+            AND userAccount.status = #{entity.status}
+        </if>
+        <if test="entity.reseve1 != null and entity.reseve1 !=''">
+            AND userAccount.reseve1 = #{entity.reseve1}
+        </if>
+        <if test="entity.reseve2 != null and entity.reseve2 !=''">
+            AND userAccount.reseve2 = #{entity.reseve2}
+        </if>
+        <if test="entity.reseve3 != null and entity.reseve3 !=''">
+            AND userAccount.reseve3 = #{entity.reseve3}
+        </if>
+        <if test="entity.createTime != null and entity.createTime !=''">
+            AND userAccount.create_time = #{entity.createTime}
+        </if>
+        <if test="entity.updateTime != null and entity.updateTime !=''">
+            AND userAccount.update_time = #{entity.updateTime}
+        </if>
+        order by CREATE_TIME desc
+        limit #{start,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER};
+    </select>
+
+    <select id="queryEntityByUserAccountEntity" resultType="com.ebuy.tax.user.api.userAccount.entity.UserAccount">
+        SELECT
+        <include refid="UserAccountAll_column" />
+        <include refid="UserAccountAll_table" />
+        <include refid="UserAccountAll_where" />
+    </select>
+</mapper>
