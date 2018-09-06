@@ -793,4 +793,24 @@ public final class StringUtils {
             return (new StringBuilder()).append(Character.toUpperCase(s.charAt(0))).append(s.substring(1)).toString();
         }
     }
+	/**
+	 * 判断手机号码是否正确
+	 * 
+	 * @param mobiles
+	 * @return
+	 */
+	public static boolean isMobileNO(String mobiles) {
+		if (mobiles == null || "".equals(mobiles)) {
+			return false;
+		}
+		Pattern p = null;
+		Matcher m = null;
+		boolean b = false;
+		//p = Pattern.compile("^1\\d{10}$"); // 验证手机号
+		p = Pattern.compile("^((13[0-9])|14[0-9]|15[0-9]|17[0-9]|18[0-9]|19[0-9])\\d{8}$"); // 验证手机号  
+		m = p.matcher(mobiles);
+		b = m.matches();
+		return b;
+	}
+
 }

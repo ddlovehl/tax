@@ -20,7 +20,7 @@ import java.util.List;
  * @Description
  */
 @Repository(value = "userDao")
-
+@Service
 public class UserDaoImpl extends ServiceImpl<UserMapper, User> implements IUserDao {
 
         private static final Logger logger = LoggerFactory.getLogger(IUserDao.class);

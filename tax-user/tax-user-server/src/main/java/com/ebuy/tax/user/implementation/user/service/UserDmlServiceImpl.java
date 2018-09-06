@@ -4,6 +4,7 @@ import com.ebuy.tax.user.api.user.entity.User;
 import com.ebuy.tax.user.api.user.dao.IUserDao;
 import com.ebuy.tax.user.api.user.service.UserDmlService;
 import com.ebuy.tax.common.constants.ResponseConstant;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,8 +13,11 @@ import java.math.BigInteger;
 
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.ebuy.tax.common.exception.SystemException;
+
 import javax.annotation.Resource;
 
 /**
@@ -23,6 +27,7 @@ import javax.annotation.Resource;
  * @Description ç”¨æˆ·è¡¨ 操作服务
  */
 @CacheConfig(cacheNames = {"UserCache}"})
+@Service
 public class UserDmlServiceImpl implements UserDmlService {
 
     private static final Logger log = LoggerFactory.getLogger(UserDmlServiceImpl.class);

@@ -3,14 +3,18 @@ package com.ebuy.tax.user.api.user.service;
 import com.ebuy.tax.user.api.user.entity.User;
 
 
+
 import javax.servlet.http.HttpServletResponse;
+
 import java.util.List;
 import java.math.BigInteger;
 import java.util.LinkedList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.ebuy.tax.common.entity.PageResult;
 
 /**
@@ -19,12 +23,13 @@ import com.ebuy.tax.common.entity.PageResult;
  * @Date 2018-09-05 09:57:25
  * @Description
  */
+@Service
 public class UserBizServiceImpl implements UserBizService{
 
     private static final Logger logger = LoggerFactory.getLogger(UserBizServiceImpl.class);
-
+    @Autowired
     private UserDmlService userDmlService;
-
+    @Autowired
     private UserQueryService userQueryService;
 
     /**
