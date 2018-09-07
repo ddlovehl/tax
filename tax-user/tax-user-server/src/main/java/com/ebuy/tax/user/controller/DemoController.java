@@ -2,9 +2,11 @@ package com.ebuy.tax.user.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ebuy.tax.common.constants.SysConstant;
+import com.ebuy.tax.common.vo.Result;
 import com.ebuy.tax.user.entity.User;
 
 import io.swagger.annotations.Api;
@@ -22,8 +24,8 @@ import io.swagger.annotations.ApiOperation;
 public class DemoController {
 	
 	//读取配置中心的配置
-	@Value(value="${demo.username}")
-	String username;
+	/*@Value(value="${demo.username}")
+	String username;*/
 
 	@ApiOperation(value="获取单个用户信息", notes="根据用户名获取用户信息")// 使用该注解描述接口方法信息
     @ApiImplicitParams({

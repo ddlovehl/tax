@@ -3,10 +3,13 @@ package com.ebuy.tax.user.implementation.user.service;
 import com.ebuy.tax.user.api.user.entity.User;
 import com.ebuy.tax.user.api.user.dao.IUserDao;
 import com.ebuy.tax.user.api.user.service.UserQueryService;
+
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+
 import java.util.List;
 import java.math.BigInteger;
 
@@ -17,6 +20,7 @@ import java.math.BigInteger;
  * @Description ç”¨æˆ·è¡¨ 查询服务
  */
 @CacheConfig(cacheNames = {"UserCache"})
+@Service
 public class UserQueryServiceImpl implements UserQueryService{
 
     @Resource(name = "userDao")

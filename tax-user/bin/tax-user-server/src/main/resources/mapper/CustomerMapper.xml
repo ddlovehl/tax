@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ebuy.tax.user.implementation.customer.mapper.CustomerMapper">
+
+    <!-- 通用查询结果列 -->
+    <sql id="CustomerAll_column">
+         customer.id as id,
+         customer.user_id as userId,
+         customer.company_id as companyId,
+         customer.allot_merchant_id as allotMerchantId,
+         customer.allot_kefu_user_id as allotKefuUserId,
+         customer.allot_bursar_user_id as allotBursarUserId,
+         customer.allot_merchant_status as allotMerchantStatus,
+         customer.allot_kefu_status as allotKefuStatus,
+         customer.allot_bursar_stauts as allotBursarStauts,
+         customer.customer_status as customerStatus,
+         customer.customer_source as customerSource,
+         customer.reserve1 as reserve1,
+         customer.reserve2 as reserve2,
+         customer.reserve3 as reserve3,
+         customer.remark as remark,
+         customer.create_time as createTime,
+         customer.update_time as updateTime
+    </sql>
+
+
+    <sql id="CustomerAll_where">
+        <where>
+            1=1
+            <if test="id != null and id !=''">
+              AND customer.id = #{id}
+            </if>
+
+            <if test="userId != null and userId !=''">
+                AND customer.user_id = #{userId}
+            </if>
+
+            <if test="companyId != null and companyId !=''">
+                AND customer.company_id = #{companyId}
+            </if>
+
+            <if test="allotMerchantId != null and allotMerchantId !=''">
+                AND customer.allot_merchant_id = #{allotMerchantId}
+            </if>
+
+            <if test="allotKefuUserId != null and allotKefuUserId !=''">
+                AND customer.allot_kefu_user_id = #{allotKefuUserId}
+            </if>
+
+            <if test="allotBursarUserId != null and allotBursarUserId !=''">
+                AND customer.allot_bursar_user_id = #{allotBursarUserId}
+            </if>
+
+            <if test="allotMerchantStatus != null and allotMerchantStatus !=''">
+                AND customer.allot_merchant_status = #{allotMerchantStatus}
+            </if>
+
+            <if test="allotKefuStatus != null and allotKefuStatus !=''">
+                AND customer.allot_kefu_status = #{allotKefuStatus}
+            </if>
+
+            <if test="allotBursarStauts != null and allotBursarStauts !=''">
+                AND customer.allot_bursar_stauts = #{allotBursarStauts}
+            </if>
+
+            <if test="customerStatus != null and customerStatus !=''">
+                AND customer.customer_status = #{customerStatus}
+            </if>
+
+            <if test="customerSource != null and customerSource !=''">
+                AND customer.customer_source = #{customerSource}
+            </if>
+
+            <if test="reserve1 != null and reserve1 !=''">
+                AND customer.reserve1 = #{reserve1}
+            </if>
+
+            <if test="reserve2 != null and reserve2 !=''">
+                AND customer.reserve2 = #{reserve2}
+            </if>
+
+            <if test="reserve3 != null and reserve3 !=''">
+                AND customer.reserve3 = #{reserve3}
+            </if>
+
+            <if test="remark != null and remark !=''">
+                AND customer.remark = #{remark}
+            </if>
+
+            <if test="createTime != null and createTime !=''">
+                AND customer.create_time = #{createTime}
+            </if>
+
+            <if test="updateTime != null and updateTime !=''">
+                AND customer.update_time = #{updateTime}
+            </if>
+
+        </where>
+    </sql>
+
+    <sql id="CustomerAll_table">
+        FROM
+		tax_customer customer
+    </sql>
+
+    <!-- 查全部 -->
+    <select id="queryList" resultType="com.ebuy.tax.user.api.customer.entity.Customer"
+            parameterType="com.ebuy.tax.user.api.customer.entity.Customer">
+        SELECT
+        <include refid="CustomerAll_column" />
+        <include refid="CustomerAll_table" />
+        <include refid="CustomerAll_where" />
+    </select>
+
+    <!-- 查数量 -->
+    <select id="queryCount" resultType="java.lang.Integer"
+            parameterType="com.ebuy.tax.user.api.customer.entity.Customer">
+        SELECT
+        count(1)
+        <include refid="CustomerAll_table" />
+        <include refid="CustomerAll_where" />
+    </select>
+
+    <!-- 分页查询列表 -->
+    <select id="queryListForPage" resultType="com.ebuy.tax.user.api.customer.entity.Customer">
+        select
+        <include refid="CustomerAll_column" />
+        <include refid="CustomerAll_table" />
+        <if test="entity.id != null and entity.id !=''">
+            AND customer.id = #{entity.id}
+        </if>
+        <if test="entity.userId != null and entity.userId !=''">
+            AND customer.user_id = #{entity.userId}
+        </if>
+        <if test="entity.companyId != null and entity.companyId !=''">
+            AND customer.company_id = #{entity.companyId}
+        </if>
+        <if test="entity.allotMerchantId != null and entity.allotMerchantId !=''">
+            AND customer.allot_merchant_id = #{entity.allotMerchantId}
+        </if>
+        <if test="entity.allotKefuUserId != null and entity.allotKefuUserId !=''">
+            AND customer.allot_kefu_user_id = #{entity.allotKefuUserId}
+        </if>
+        <if test="entity.allotBursarUserId != null and entity.allotBursarUserId !=''">
+            AND customer.allot_bursar_user_id = #{entity.allotBursarUserId}
+        </if>
+        <if test="entity.allotMerchantStatus != null and entity.allotMerchantStatus !=''">
+            AND customer.allot_merchant_status = #{entity.allotMerchantStatus}
+        </if>
+        <if test="entity.allotKefuStatus != null and entity.allotKefuStatus !=''">
+            AND customer.allot_kefu_status = #{entity.allotKefuStatus}
+        </if>
+        <if test="entity.allotBursarStauts != null and entity.allotBursarStauts !=''">
+            AND customer.allot_bursar_stauts = #{entity.allotBursarStauts}
+        </if>
+        <if test="entity.customerStatus != null and entity.customerStatus !=''">
+            AND customer.customer_status = #{entity.customerStatus}
+        </if>
+        <if test="entity.customerSource != null and entity.customerSource !=''">
+            AND customer.customer_source = #{entity.customerSource}
+        </if>
+        <if test="entity.reserve1 != null and entity.reserve1 !=''">
+            AND customer.reserve1 = #{entity.reserve1}
+        </if>
+        <if test="entity.reserve2 != null and entity.reserve2 !=''">
+            AND customer.reserve2 = #{entity.reserve2}
+        </if>
+        <if test="entity.reserve3 != null and entity.reserve3 !=''">
+            AND customer.reserve3 = #{entity.reserve3}
+        </if>
+        <if test="entity.remark != null and entity.remark !=''">
+            AND customer.remark = #{entity.remark}
+        </if>
+        <if test="entity.createTime != null and entity.createTime !=''">
+            AND customer.create_time = #{entity.createTime}
+        </if>
+        <if test="entity.updateTime != null and entity.updateTime !=''">
+            AND customer.update_time = #{entity.updateTime}
+        </if>
+        order by CREATE_TIME desc
+        limit #{start,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER};
+    </select>
+
+    <select id="queryEntityByCustomerEntity" resultType="com.ebuy.tax.user.api.customer.entity.Customer">
+        SELECT
+        <include refid="CustomerAll_column" />
+        <include refid="CustomerAll_table" />
+        <include refid="CustomerAll_where" />
+    </select>
+</mapper>
