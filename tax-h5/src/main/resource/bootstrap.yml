@@ -1,0 +1,21 @@
+spring:
+   application:
+      name: tax-h5-server
+   cloud:
+      config:
+         name: tax-h5-server
+         profile: dev
+         label: master
+         discovery:
+            enabled: true
+            service-id: tax-config-server
+
+server:
+   port: 8112
+
+eureka:
+   instance:
+      status-page-url: http://127.0.0.1:8102/swagger-ui.html
+   client:
+      service-url:
+         defaultZone: http://admin:admin@localhost:8100/eureka/
