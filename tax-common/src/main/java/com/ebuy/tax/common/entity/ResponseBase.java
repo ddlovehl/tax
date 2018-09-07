@@ -3,6 +3,7 @@
  */
 package com.ebuy.tax.common.entity;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 /**
@@ -12,6 +13,7 @@ import lombok.Data;
  */
 @SuppressWarnings("serial")
 @Data
+@ApiModel
 public class ResponseBase implements IBaseModel {
 
     /**

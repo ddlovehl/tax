@@ -11,7 +11,7 @@ import lombok.Data;
  * @Date 2018/7/25 18:40
  * @Description
  */
-@ApiModel("value=登陆接口返回数据封装")
+@ApiModel(value="登陆接口返回数据封装")
 @Data
 public class LoginResponse {
 

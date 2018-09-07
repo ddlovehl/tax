@@ -5,6 +5,7 @@ import com.ebuy.tax.user.api.user.dao.IUserDao;
 import com.ebuy.tax.user.api.user.service.UserQueryService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.math.BigInteger;
  * @Date 2018-09-05 18:26:56
  * @Description ç”¨æˆ·è¡¨ 查询服务
  */
+@Service(value = "userQueryService")
 @CacheConfig(cacheNames = {"UserCache"})
 public class UserQueryServiceImpl implements UserQueryService{
 

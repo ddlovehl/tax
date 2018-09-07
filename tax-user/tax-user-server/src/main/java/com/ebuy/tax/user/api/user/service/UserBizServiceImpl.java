@@ -3,6 +3,7 @@ package com.ebuy.tax.user.api.user.service;
 import com.ebuy.tax.user.api.user.entity.User;
 
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.math.BigInteger;
@@ -24,8 +25,10 @@ public class UserBizServiceImpl implements UserBizService{
 
     private static final Logger logger = LoggerFactory.getLogger(UserBizServiceImpl.class);
 
+    @Resource(name = "userDmlService")
     private UserDmlService userDmlService;
 
+    @Resource(name = "userQueryService")
     private UserQueryService userQueryService;
 
     /**

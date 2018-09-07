@@ -9,6 +9,7 @@
   </parent>
   
   <artifactId>tax-user-server</artifactId>
+    <packaging>war</packaging>
   <name>tax-user-server</name>
   
   	<dependencies>

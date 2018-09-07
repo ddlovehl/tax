@@ -12,6 +12,7 @@ import java.math.BigInteger;
 
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.ebuy.tax.common.exception.SystemException;
 import javax.annotation.Resource;
@@ -22,6 +23,7 @@ import javax.annotation.Resource;
  * @Date 2018-09-05 18:26:56
  * @Description ç”¨æˆ·è¡¨ 操作服务
  */
+@Service(value = "userDmlService")
 @CacheConfig(cacheNames = {"UserCache}"})
 public class UserDmlServiceImpl implements UserDmlService {
 

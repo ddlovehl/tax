@@ -11,9 +11,9 @@ import lombok.Data;
  * @Date 2018/7/25 18:40
  * @Description
  */
-@ApiModel(value="登陆接口接受参数封装")
+@ApiModel(value="获取用户信息接口接受参数封装")
 @Data
-public class LoginRequest {
+public class QueryUserInfoRequest {
 
     /**
      *  手机号
@@ -21,9 +21,4 @@ public class LoginRequest {
     @ApiModelProperty(value="手机号",name="mobile")
     private String mobile;
 
-    /**
-     *  短信码
-     */
-    @ApiModelProperty(value="短信码",name="smsCode")
-    private String smsCode;
 }
