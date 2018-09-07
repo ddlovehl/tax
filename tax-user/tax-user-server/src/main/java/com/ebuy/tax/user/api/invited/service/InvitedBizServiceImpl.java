@@ -16,9 +16,10 @@ import com.ebuy.tax.common.entity.PageResult;
 /**
  * @Package com.ebuy.tax.user.api.invited.dao
  * @author hdq
- * @Date 2018-09-05 09:57:24
+ * @Date 2018-09-05 18:26:54
  * @Description
  */
+@Service(value = "invitedBizService")
 public class InvitedBizServiceImpl implements InvitedBizService{
 
     private static final Logger logger = LoggerFactory.getLogger(InvitedBizServiceImpl.class);
@@ -32,8 +33,9 @@ public class InvitedBizServiceImpl implements InvitedBizService{
      * @see         [Invited]
      * @return      List<Invited>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:54
      */
+    @Override
     public List<Invited> queryList(Invited invited){
         return invitedQueryService.queryAllInvited(invited);
     }
@@ -43,8 +45,9 @@ public class InvitedBizServiceImpl implements InvitedBizService{
      * @see         [Invited] [pageNo] [pageSize]
      * @return          PageResult
      * @Description 查询列表(分页)
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:54
      */
+    @Override
     public PageResult queryListPage(Invited invited, Integer pageNo, Integer  pageSize){
         //查询分页列表总数
         int count = invitedQueryService.queryCountInvited(invited);
@@ -60,8 +63,9 @@ public class InvitedBizServiceImpl implements InvitedBizService{
      * @see         [id]
      * @return      Invited
      * @Description 按id查询
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:54
      */
+    @Override
     public Invited queryById(BigInteger id){
         return invitedQueryService.queryById(id);
     }
@@ -71,8 +75,9 @@ public class InvitedBizServiceImpl implements InvitedBizService{
      * @see         [ids]
      * @return      List<Invited>
      * @Description 按ids查询列表
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:54
      */
+    @Override
     public List<Invited> queryByIds(List<BigInteger> ids){
         return invitedQueryService.queryByIds(ids);
     }
@@ -82,8 +87,9 @@ public class InvitedBizServiceImpl implements InvitedBizService{
      * @see         [Invited]
      * @return      Invited
      * @Description 根据entity查询一条记录
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:54
      */
+    @Override
     public Invited queryByParam(Invited invited){
         return invitedQueryService.queryEntityByInvitedEntity(invited);
     }
@@ -93,8 +99,9 @@ public class InvitedBizServiceImpl implements InvitedBizService{
      * @see         [Invited]
      * @return
      * @Description 添加
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:54
      */
+    @Override
     public void insert(Invited invited){
         invitedDmlService.insertInvited(invited);
     }
@@ -104,8 +111,9 @@ public class InvitedBizServiceImpl implements InvitedBizService{
      * @see         [Invited]
      * @return
      * @Description 添加or更新
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:54
      */
+    @Override
     public void insertOrUpdate(Invited invited){
         invitedDmlService.insertOrUpdateInvited(invited);
     }
@@ -115,8 +123,9 @@ public class InvitedBizServiceImpl implements InvitedBizService{
      * @see         [Invited]
      * @return
      * @Description 更新
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:54
      */
+    @Override
     public void update(Invited invited){
         invitedDmlService.updateInvited(invited);
     }

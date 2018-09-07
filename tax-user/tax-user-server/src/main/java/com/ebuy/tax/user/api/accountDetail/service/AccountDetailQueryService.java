@@ -9,7 +9,7 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.api.accountDetail.dao
  * @author hdq
- * @Date 2018-09-05 09:57:24
+ * @Date 2018-09-05 18:26:55
  * @Description  查询服务
  */
 public interface AccountDetailQueryService{
@@ -19,7 +19,7 @@ public interface AccountDetailQueryService{
      * @see         [AccountDetail]
      * @return      boolean
      * @Description 根据id查询
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public AccountDetail queryById(BigInteger id);
 
@@ -28,7 +28,7 @@ public interface AccountDetailQueryService{
      * @see         [AccountDetail]
      * @return      boolean
      * @Description 根据ids查询列表
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public List<AccountDetail> queryByIds(List<BigInteger> ids);
 
@@ -37,7 +37,7 @@ public interface AccountDetailQueryService{
      * @see         [AccountDetail]
      * @return      boolean
      * @Description 查询列表总数
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public int queryCountAccountDetail(AccountDetail accountDetail);
 
@@ -46,7 +46,7 @@ public interface AccountDetailQueryService{
      * @see         [AccountDetail]
      * @return      boolean
      * @Description 查询列表
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public List<AccountDetail> queryAllAccountDetail(AccountDetail accountDetail);
 
@@ -55,7 +55,7 @@ public interface AccountDetailQueryService{
      * @see         [AccountDetail]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public List<AccountDetail> queryListForPageAccountDetail(AccountDetail accountDetail,Integer pageNo,Integer pageSize);
 
@@ -64,7 +64,7 @@ public interface AccountDetailQueryService{
      * @see         [AccountDetail]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public AccountDetail queryEntityByAccountDetailEntity(AccountDetail accountDetail);
 

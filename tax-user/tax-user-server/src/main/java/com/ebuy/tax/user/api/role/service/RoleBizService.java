@@ -11,7 +11,7 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.api.role.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:55
  * @Description
  */
 public interface RoleBizService{
@@ -21,7 +21,7 @@ public interface RoleBizService{
      * @see         [Role]
      * @return      List<Role>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public List<Role> queryList(Role role);
 
@@ -30,7 +30,7 @@ public interface RoleBizService{
      * @see         [Role] [pageNo] [pageSize]
      * @return          PageResult
      * @Description 查询列表(分页)
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public PageResult queryListPage(Role role, Integer pageNo, Integer  pageSize);
 
@@ -39,7 +39,7 @@ public interface RoleBizService{
      * @see         [id]
      * @return      Role
      * @Description 按id查询
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public Role queryById(BigInteger id);
 
@@ -48,7 +48,7 @@ public interface RoleBizService{
      * @see         [ids]
      * @return      List<Role>
      * @Description 按ids查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public List<Role> queryByIds(List<BigInteger> ids);
 
@@ -57,7 +57,7 @@ public interface RoleBizService{
      * @see         [Role]
      * @return      Role
      * @Description 根据entity查询一条记录
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public Role queryByParam(Role role);
 
@@ -66,7 +66,7 @@ public interface RoleBizService{
      * @see         [Role]
      * @return
      * @Description 添加
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public void insert(Role role);
 
@@ -75,7 +75,7 @@ public interface RoleBizService{
      * @see         [Role]
      * @return
      * @Description 添加or更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public void insertOrUpdate(Role role);
 
@@ -84,7 +84,7 @@ public interface RoleBizService{
      * @see         [Role]
      * @return
      * @Description 更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public void update(Role role);
 

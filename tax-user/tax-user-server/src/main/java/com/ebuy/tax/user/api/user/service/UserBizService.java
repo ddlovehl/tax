@@ -11,7 +11,7 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.api.user.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:56
  * @Description
  */
 public interface UserBizService{
@@ -21,7 +21,7 @@ public interface UserBizService{
      * @see         [User]
      * @return      List<User>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     public List<User> queryList(User user);
 
@@ -30,7 +30,7 @@ public interface UserBizService{
      * @see         [User] [pageNo] [pageSize]
      * @return          PageResult
      * @Description 查询列表(分页)
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     public PageResult queryListPage(User user, Integer pageNo, Integer  pageSize);
 
@@ -39,7 +39,7 @@ public interface UserBizService{
      * @see         [id]
      * @return      User
      * @Description 按id查询
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     public User queryById(BigInteger id);
 
@@ -48,7 +48,7 @@ public interface UserBizService{
      * @see         [ids]
      * @return      List<User>
      * @Description 按ids查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     public List<User> queryByIds(List<BigInteger> ids);
 
@@ -57,7 +57,7 @@ public interface UserBizService{
      * @see         [User]
      * @return      User
      * @Description 根据entity查询一条记录
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     public User queryByParam(User user);
 
@@ -66,7 +66,7 @@ public interface UserBizService{
      * @see         [User]
      * @return
      * @Description 添加
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     public void insert(User user);
 
@@ -75,7 +75,7 @@ public interface UserBizService{
      * @see         [User]
      * @return
      * @Description 添加or更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     public void insertOrUpdate(User user);
 
@@ -84,7 +84,7 @@ public interface UserBizService{
      * @see         [User]
      * @return
      * @Description 更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     public void update(User user);
 
