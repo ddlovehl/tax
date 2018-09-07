@@ -9,7 +9,7 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.api.company.dao
  * @author hdq
- * @Date 2018-09-05 09:57:24
+ * @Date 2018-09-05 18:26:55
  * @Description å…¬å¸è¡¨ 查询服务
  */
 public interface CompanyQueryService{
@@ -19,7 +19,7 @@ public interface CompanyQueryService{
      * @see         [Company]
      * @return      boolean
      * @Description 根据id查询
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public Company queryById(BigInteger id);
 
@@ -28,7 +28,7 @@ public interface CompanyQueryService{
      * @see         [Company]
      * @return      boolean
      * @Description 根据ids查询列表
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public List<Company> queryByIds(List<BigInteger> ids);
 
@@ -37,7 +37,7 @@ public interface CompanyQueryService{
      * @see         [Company]
      * @return      boolean
      * @Description 查询列表总数
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public int queryCountCompany(Company company);
 
@@ -46,7 +46,7 @@ public interface CompanyQueryService{
      * @see         [Company]
      * @return      boolean
      * @Description 查询列表
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public List<Company> queryAllCompany(Company company);
 
@@ -55,7 +55,7 @@ public interface CompanyQueryService{
      * @see         [Company]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public List<Company> queryListForPageCompany(Company company,Integer pageNo,Integer pageSize);
 
@@ -64,7 +64,7 @@ public interface CompanyQueryService{
      * @see         [Company]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 09:57:24
+     * @date        2018-09-05 18:26:55
      */
     public Company queryEntityByCompanyEntity(Company company);
 

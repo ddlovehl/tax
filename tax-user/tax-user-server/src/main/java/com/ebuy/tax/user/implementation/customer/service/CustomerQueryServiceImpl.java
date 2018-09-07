@@ -13,7 +13,7 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.implementation.customer.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:55
  * @Description å®¢æˆ·è¡¨ 查询服务
  */
 @CacheConfig(cacheNames = {"CustomerCache"})
@@ -27,7 +27,7 @@ public class CustomerQueryServiceImpl implements CustomerQueryService{
      * @see         [Customer]
      * @return      boolean
      * @Description 根据id查询
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     @Override
     public Customer queryById(BigInteger id){
@@ -39,7 +39,7 @@ public class CustomerQueryServiceImpl implements CustomerQueryService{
      * @see         [Customer]
      * @return      boolean
      * @Description 根据ids查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
         @Override
     public List<Customer> queryByIds(List<BigInteger> ids){
@@ -51,7 +51,7 @@ public class CustomerQueryServiceImpl implements CustomerQueryService{
      * @see         [Customer]
      * @return      boolean
      * @Description 查询列表总数
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     @Override
     public int queryCountCustomer(Customer customer){
@@ -63,7 +63,7 @@ public class CustomerQueryServiceImpl implements CustomerQueryService{
      * @see         [Customer]
      * @return      boolean
      * @Description 查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     @Override
     public List<Customer> queryAllCustomer(Customer customer){
@@ -75,7 +75,7 @@ public class CustomerQueryServiceImpl implements CustomerQueryService{
      * @see         [Customer]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     @Override
     public List<Customer> queryListForPageCustomer(Customer customer,Integer pageNo,Integer pageSize){
@@ -87,7 +87,7 @@ public class CustomerQueryServiceImpl implements CustomerQueryService{
      * @see         [Customer]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     @Override
     public Customer queryEntityByCustomerEntity(Customer customer){

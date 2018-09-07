@@ -16,9 +16,10 @@ import com.ebuy.tax.common.entity.PageResult;
 /**
  * @Package com.ebuy.tax.user.api.merchant.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:55
  * @Description
  */
+@Service(value = "merchantBizService")
 public class MerchantBizServiceImpl implements MerchantBizService{
 
     private static final Logger logger = LoggerFactory.getLogger(MerchantBizServiceImpl.class);
@@ -32,8 +33,9 @@ public class MerchantBizServiceImpl implements MerchantBizService{
      * @see         [Merchant]
      * @return      List<Merchant>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public List<Merchant> queryList(Merchant merchant){
         return merchantQueryService.queryAllMerchant(merchant);
     }
@@ -43,8 +45,9 @@ public class MerchantBizServiceImpl implements MerchantBizService{
      * @see         [Merchant] [pageNo] [pageSize]
      * @return          PageResult
      * @Description 查询列表(分页)
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public PageResult queryListPage(Merchant merchant, Integer pageNo, Integer  pageSize){
         //查询分页列表总数
         int count = merchantQueryService.queryCountMerchant(merchant);
@@ -60,8 +63,9 @@ public class MerchantBizServiceImpl implements MerchantBizService{
      * @see         [id]
      * @return      Merchant
      * @Description 按id查询
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public Merchant queryById(BigInteger id){
         return merchantQueryService.queryById(id);
     }
@@ -71,8 +75,9 @@ public class MerchantBizServiceImpl implements MerchantBizService{
      * @see         [ids]
      * @return      List<Merchant>
      * @Description 按ids查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public List<Merchant> queryByIds(List<BigInteger> ids){
         return merchantQueryService.queryByIds(ids);
     }
@@ -82,8 +87,9 @@ public class MerchantBizServiceImpl implements MerchantBizService{
      * @see         [Merchant]
      * @return      Merchant
      * @Description 根据entity查询一条记录
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public Merchant queryByParam(Merchant merchant){
         return merchantQueryService.queryEntityByMerchantEntity(merchant);
     }
@@ -93,8 +99,9 @@ public class MerchantBizServiceImpl implements MerchantBizService{
      * @see         [Merchant]
      * @return
      * @Description 添加
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public void insert(Merchant merchant){
         merchantDmlService.insertMerchant(merchant);
     }
@@ -104,8 +111,9 @@ public class MerchantBizServiceImpl implements MerchantBizService{
      * @see         [Merchant]
      * @return
      * @Description 添加or更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public void insertOrUpdate(Merchant merchant){
         merchantDmlService.insertOrUpdateMerchant(merchant);
     }
@@ -115,8 +123,9 @@ public class MerchantBizServiceImpl implements MerchantBizService{
      * @see         [Merchant]
      * @return
      * @Description 更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public void update(Merchant merchant){
         merchantDmlService.updateMerchant(merchant);
     }

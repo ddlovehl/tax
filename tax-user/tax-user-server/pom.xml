@@ -10,6 +10,7 @@
   
   <artifactId>tax-user-server</artifactId>
   <name>tax-user-server</name>
+  <packaging>war</packaging>
   
   	<dependencies>
 		<dependency>

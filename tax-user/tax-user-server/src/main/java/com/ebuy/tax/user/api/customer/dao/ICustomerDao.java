@@ -9,7 +9,7 @@ import java.util.List;
  * @Project new_project
  * @Package com.ebuy.tax.user.api.customer.dao
  * @Author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:55
  * @Description IcustomerDao
  */
 public interface ICustomerDao extends IService<Customer> {
@@ -19,7 +19,7 @@ public interface ICustomerDao extends IService<Customer> {
      * @see         [Customer]
      * @return      java.lang.Long
      * @Description 查询列表总数
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public int queryCount(Customer customer);
 
@@ -28,7 +28,7 @@ public interface ICustomerDao extends IService<Customer> {
      * @see         [Customer]
      * @return      List<Customer>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public List<Customer> queryList(Customer customer);
 
@@ -37,7 +37,7 @@ public interface ICustomerDao extends IService<Customer> {
      * @see         List<Customer>
      * @return      java.lang.Long
      * @Description 查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public List<Customer>  queryListForPage(Customer customer,Integer pageNo,Integer pageSize);
 
@@ -46,7 +46,7 @@ public interface ICustomerDao extends IService<Customer> {
      * @see         [Customer]
      * @return      List<Customer>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public Customer queryEntityByCustomerEntity(Customer customer);
 }

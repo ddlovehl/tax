@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.ebuy.tax.common.entity.SuperEntity;
 
-
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -24,6 +24,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
+@ApiModel
 @TableName("tax_user_account")
 public class UserAccount extends SuperEntity<UserAccount> {
 

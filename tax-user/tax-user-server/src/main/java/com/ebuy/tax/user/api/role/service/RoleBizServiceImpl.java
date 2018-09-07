@@ -16,9 +16,10 @@ import com.ebuy.tax.common.entity.PageResult;
 /**
  * @Package com.ebuy.tax.user.api.role.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:55
  * @Description
  */
+@Service(value = "roleBizService")
 public class RoleBizServiceImpl implements RoleBizService{
 
     private static final Logger logger = LoggerFactory.getLogger(RoleBizServiceImpl.class);
@@ -32,8 +33,9 @@ public class RoleBizServiceImpl implements RoleBizService{
      * @see         [Role]
      * @return      List<Role>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public List<Role> queryList(Role role){
         return roleQueryService.queryAllRole(role);
     }
@@ -43,8 +45,9 @@ public class RoleBizServiceImpl implements RoleBizService{
      * @see         [Role] [pageNo] [pageSize]
      * @return          PageResult
      * @Description 查询列表(分页)
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public PageResult queryListPage(Role role, Integer pageNo, Integer  pageSize){
         //查询分页列表总数
         int count = roleQueryService.queryCountRole(role);
@@ -60,8 +63,9 @@ public class RoleBizServiceImpl implements RoleBizService{
      * @see         [id]
      * @return      Role
      * @Description 按id查询
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public Role queryById(BigInteger id){
         return roleQueryService.queryById(id);
     }
@@ -71,8 +75,9 @@ public class RoleBizServiceImpl implements RoleBizService{
      * @see         [ids]
      * @return      List<Role>
      * @Description 按ids查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public List<Role> queryByIds(List<BigInteger> ids){
         return roleQueryService.queryByIds(ids);
     }
@@ -82,8 +87,9 @@ public class RoleBizServiceImpl implements RoleBizService{
      * @see         [Role]
      * @return      Role
      * @Description 根据entity查询一条记录
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public Role queryByParam(Role role){
         return roleQueryService.queryEntityByRoleEntity(role);
     }
@@ -93,8 +99,9 @@ public class RoleBizServiceImpl implements RoleBizService{
      * @see         [Role]
      * @return
      * @Description 添加
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public void insert(Role role){
         roleDmlService.insertRole(role);
     }
@@ -104,8 +111,9 @@ public class RoleBizServiceImpl implements RoleBizService{
      * @see         [Role]
      * @return
      * @Description 添加or更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public void insertOrUpdate(Role role){
         roleDmlService.insertOrUpdateRole(role);
     }
@@ -115,8 +123,9 @@ public class RoleBizServiceImpl implements RoleBizService{
      * @see         [Role]
      * @return
      * @Description 更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public void update(Role role){
         roleDmlService.updateRole(role);
     }

@@ -16,9 +16,10 @@ import com.ebuy.tax.common.entity.PageResult;
 /**
  * @Package com.ebuy.tax.user.api.company.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:55
  * @Description
  */
+@Service(value = "companyBizService")
 public class CompanyBizServiceImpl implements CompanyBizService{
 
     private static final Logger logger = LoggerFactory.getLogger(CompanyBizServiceImpl.class);
@@ -32,8 +33,9 @@ public class CompanyBizServiceImpl implements CompanyBizService{
      * @see         [Company]
      * @return      List<Company>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public List<Company> queryList(Company company){
         return companyQueryService.queryAllCompany(company);
     }
@@ -43,8 +45,9 @@ public class CompanyBizServiceImpl implements CompanyBizService{
      * @see         [Company] [pageNo] [pageSize]
      * @return          PageResult
      * @Description 查询列表(分页)
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public PageResult queryListPage(Company company, Integer pageNo, Integer  pageSize){
         //查询分页列表总数
         int count = companyQueryService.queryCountCompany(company);
@@ -60,8 +63,9 @@ public class CompanyBizServiceImpl implements CompanyBizService{
      * @see         [id]
      * @return      Company
      * @Description 按id查询
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public Company queryById(BigInteger id){
         return companyQueryService.queryById(id);
     }
@@ -71,8 +75,9 @@ public class CompanyBizServiceImpl implements CompanyBizService{
      * @see         [ids]
      * @return      List<Company>
      * @Description 按ids查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public List<Company> queryByIds(List<BigInteger> ids){
         return companyQueryService.queryByIds(ids);
     }
@@ -82,8 +87,9 @@ public class CompanyBizServiceImpl implements CompanyBizService{
      * @see         [Company]
      * @return      Company
      * @Description 根据entity查询一条记录
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public Company queryByParam(Company company){
         return companyQueryService.queryEntityByCompanyEntity(company);
     }
@@ -93,8 +99,9 @@ public class CompanyBizServiceImpl implements CompanyBizService{
      * @see         [Company]
      * @return
      * @Description 添加
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public void insert(Company company){
         companyDmlService.insertCompany(company);
     }
@@ -104,8 +111,9 @@ public class CompanyBizServiceImpl implements CompanyBizService{
      * @see         [Company]
      * @return
      * @Description 添加or更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public void insertOrUpdate(Company company){
         companyDmlService.insertOrUpdateCompany(company);
     }
@@ -115,8 +123,9 @@ public class CompanyBizServiceImpl implements CompanyBizService{
      * @see         [Company]
      * @return
      * @Description 更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
+    @Override
     public void update(Company company){
         companyDmlService.updateCompany(company);
     }

@@ -16,7 +16,7 @@ import java.util.List;
  * @Project new_project
  * @Package com.ebuy.tax.user.implementation.company.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:55
  * @Description
  */
 @Repository(value = "companyDao")

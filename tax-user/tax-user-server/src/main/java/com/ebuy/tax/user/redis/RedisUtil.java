@@ -110,6 +110,7 @@ public class RedisUtil {
 	 * 
 	 * @param key
 	 * @param value
+	 * @param expireTime  单位秒
 	 * @return
 	 */
 	public boolean set(final String key, Object value, Long expireTime) {

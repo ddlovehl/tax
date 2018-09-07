@@ -11,7 +11,7 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.api.customer.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:55
  * @Description
  */
 public interface CustomerBizService{
@@ -21,7 +21,7 @@ public interface CustomerBizService{
      * @see         [Customer]
      * @return      List<Customer>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public List<Customer> queryList(Customer customer);
 
@@ -30,7 +30,7 @@ public interface CustomerBizService{
      * @see         [Customer] [pageNo] [pageSize]
      * @return          PageResult
      * @Description 查询列表(分页)
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public PageResult queryListPage(Customer customer, Integer pageNo, Integer  pageSize);
 
@@ -39,7 +39,7 @@ public interface CustomerBizService{
      * @see         [id]
      * @return      Customer
      * @Description 按id查询
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public Customer queryById(BigInteger id);
 
@@ -48,7 +48,7 @@ public interface CustomerBizService{
      * @see         [ids]
      * @return      List<Customer>
      * @Description 按ids查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public List<Customer> queryByIds(List<BigInteger> ids);
 
@@ -57,7 +57,7 @@ public interface CustomerBizService{
      * @see         [Customer]
      * @return      Customer
      * @Description 根据entity查询一条记录
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public Customer queryByParam(Customer customer);
 
@@ -66,7 +66,7 @@ public interface CustomerBizService{
      * @see         [Customer]
      * @return
      * @Description 添加
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public void insert(Customer customer);
 
@@ -75,7 +75,7 @@ public interface CustomerBizService{
      * @see         [Customer]
      * @return
      * @Description 添加or更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public void insertOrUpdate(Customer customer);
 
@@ -84,7 +84,7 @@ public interface CustomerBizService{
      * @see         [Customer]
      * @return
      * @Description 更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:55
      */
     public void update(Customer customer);
 

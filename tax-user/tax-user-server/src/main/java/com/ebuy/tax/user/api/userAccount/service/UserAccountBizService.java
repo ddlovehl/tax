@@ -11,7 +11,7 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.api.userAccount.dao
  * @author hdq
- * @Date 2018-09-05 09:57:25
+ * @Date 2018-09-05 18:26:56
  * @Description
  */
 public interface UserAccountBizService{
@@ -21,7 +21,7 @@ public interface UserAccountBizService{
      * @see         [UserAccount]
      * @return      List<UserAccount>
      * @Description 查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     public List<UserAccount> queryList(UserAccount userAccount);
 
@@ -30,7 +30,7 @@ public interface UserAccountBizService{
      * @see         [UserAccount] [pageNo] [pageSize]
      * @return          PageResult
      * @Description 查询列表(分页)
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     public PageResult queryListPage(UserAccount userAccount, Integer pageNo, Integer  pageSize);
 
@@ -39,7 +39,7 @@ public interface UserAccountBizService{
      * @see         [id]
      * @return      UserAccount
      * @Description 按id查询
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     public UserAccount queryById(BigInteger id);
 
@@ -48,7 +48,7 @@ public interface UserAccountBizService{
      * @see         [ids]
      * @return      List<UserAccount>
      * @Description 按ids查询列表
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     public List<UserAccount> queryByIds(List<BigInteger> ids);
 
@@ -57,7 +57,7 @@ public interface UserAccountBizService{
      * @see         [UserAccount]
      * @return      UserAccount
      * @Description 根据entity查询一条记录
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     public UserAccount queryByParam(UserAccount userAccount);
 
@@ -66,7 +66,7 @@ public interface UserAccountBizService{
      * @see         [UserAccount]
      * @return
      * @Description 添加
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     public void insert(UserAccount userAccount);
 
@@ -75,7 +75,7 @@ public interface UserAccountBizService{
      * @see         [UserAccount]
      * @return
      * @Description 添加or更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     public void insertOrUpdate(UserAccount userAccount);
 
@@ -84,7 +84,7 @@ public interface UserAccountBizService{
      * @see         [UserAccount]
      * @return
      * @Description 更新
-     * @date        2018-09-05 09:57:25
+     * @date        2018-09-05 18:26:56
      */
     public void update(UserAccount userAccount);
 

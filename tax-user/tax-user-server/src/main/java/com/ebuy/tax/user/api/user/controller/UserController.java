@@ -6,27 +6,19 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import net.sf.json.JSONObject;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +32,10 @@ import com.ebuy.tax.common.utils.VerifyUtils;
 import com.ebuy.tax.common.vo.Result;
 import com.ebuy.tax.user.api.user.entity.User;
 import com.ebuy.tax.user.api.user.service.UserBizService;
+import com.ebuy.tax.user.api.user.vo.GetImgCodeVo;
+import com.ebuy.tax.user.api.user.vo.GetSmsCodeVo;
+import com.ebuy.tax.user.api.user.vo.RegisterVo;
+import com.ebuy.tax.user.api.user.vo.WxIsBindMobileVo;
 import com.ebuy.tax.user.redis.RedisUtil;
 
 /**
@@ -60,9 +56,6 @@ public class UserController {
 	@Autowired
 	private RedisUtil redisUtil;
 
-	@Autowired
-	private RedisTemplate redisTemplate;
-	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
    
 	/**
@@ -94,37 +87,19 @@ public class UserController {
     public static final Long CACHE_TIMEOUT_PHONE_VERIFY_CODE = 180L;
 
     /**
-     * @return java.lang.String
-     * @author hdq
-     * @Description 根据ID查询单条记录
-     * @date 2018-09-05 09:57:25
-     *  @see   [obj]
-     */
-    @PostMapping(value = "/queryById")
-    public String queryById(@RequestBody JSONObject obj) throws Exception {
-        //json字符串转成request封装类型
-        //QueryByIdRequest用于接收转化json对象的封装类
-        //QueryByIdRequest req = JsonUtil.jsonObjctToBean(obj,QueryByIdRequest.class);
-        //User user = userBizService.queryById(new BigInteger(req.getId()));
-        //QueryByIdResponse用于返回转化json字符串的封装类
-        //QueryByIdResponse res = new QueryByIdResponse();
-        //BeanUtils.copyProperties(user,res);
-        //return ResponseUtil.fillResponseToJson(res);
-        return null;
-    }
-    /**
      * 注册、登陆、微信登陆
      * @return
      */
 	@ApiOperation(value="注册、登陆、微信登陆", notes="注册、登陆、微信登陆")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "mobile", value = "手机号码", required = true, dataType = "String", paramType="path"),
-            @ApiImplicitParam(name = "smsCode", value = "短信验证码", required = true, dataType = "String", paramType="path"),
-            @ApiImplicitParam(name = "openId", value = "openId", required = false, dataType = "String", paramType="path")
-    })
     @PostMapping(value = "/register")
-    public Result<Object> register(String mobile,String smsCode,String openId,HttpServletResponse response){
-		logger.info("用户发起注册用户或登陆请求,手机号码:{},短信验证码:{}",mobile,smsCode);
+    public Result<Object> register(@RequestBody RegisterVo registerVo,HttpServletResponse response){
+		//手机号
+		String mobile = registerVo.getMobile();
+		//短信验证码
+		String smsCode = registerVo.getSmsCode();
+		//openid
+		String openId = registerVo.getOpenId();
+		logger.info("用户发起注册用户或登陆请求,参数:{}",JSON.toJSONString(registerVo));
 		//check
 		if(StringUtils.isEmpty(mobile)){
 			throw new BusinessException(ErrorCodeEnum.ERROR_20001.getCode()+"",ErrorCodeEnum.ERROR_20001.getMsg());
@@ -135,8 +110,12 @@ public class UserController {
 		if(!StringUtils.isMobileNO(mobile)){
 			throw new BusinessException(ErrorCodeEnum.ERROR_20004.getCode()+"",ErrorCodeEnum.ERROR_20004.getMsg());
 		}
-		//TODO check验证码（从redis获取短信验证码）
-		if(!"111111".equals(smsCode)){
+		// check验证码（从redis获取短信验证码）
+		String code = redisUtil.get(CACHE_KEY_PREFIX_PHONE_VERIFY_CODE+mobile);
+		if(StringUtils.isEmpty(code)){
+			throw new BusinessException(ErrorCodeEnum.ERROR_20006.getCode()+"",ErrorCodeEnum.ERROR_20006.getMsg());
+		}
+		if(!code.equals(smsCode)){
 			throw new BusinessException(ErrorCodeEnum.ERROR_20006.getCode()+"",ErrorCodeEnum.ERROR_20006.getMsg());
 		}
 		//查询用户是否已经注册
@@ -170,12 +149,10 @@ public class UserController {
      * @return
      */
 	@ApiOperation(value="微信登陆是否绑定过手机号", notes="微信登陆是否绑定过手机号")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "openId", value = "openId", required = true, dataType = "String", paramType="path")
-    })
     @PostMapping(value = "/wxIsBindMobile")
-    public Result<Object> wxIsBindMobile(String openId,HttpServletResponse response){
-		logger.info("微信登陆是否绑定过手机号请求,openId:{}",openId);
+    public Result<Object> wxIsBindMobile(@RequestBody WxIsBindMobileVo wxIsBindMobileVo,HttpServletResponse response){
+		String openId = wxIsBindMobileVo.getOpenId();
+		logger.info("微信登陆是否绑定过手机号请求,参数:{}",JSON.toJSONString(wxIsBindMobileVo));
 		//check
 		if(StringUtils.isEmpty(openId)){
 			throw new BusinessException(ErrorCodeEnum.ERROR_20008.getCode()+"",ErrorCodeEnum.ERROR_20008.getMsg());
@@ -186,7 +163,7 @@ public class UserController {
 		user.setOpenid(openId);
 		User queryUser = userBizService.queryByParam(user);
 		logger.info("查询微信登陆是否绑定过手机号,参数:{},结果:{}",JSON.toJSONString(user),JSON.toJSONString(queryUser));
-		//未注册、注册用户
+		//已注册、并已经绑定过手机号返回true
 		if(queryUser != null && !StringUtils.isEmpty(queryUser.getMobile())){
 			flag = true;
 		}
@@ -227,14 +204,15 @@ public class UserController {
      * @return
      */
 	@ApiOperation(value="获取手机验证码", notes="获取手机验证码")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "mobile", value = "手机号码", required = true, dataType = "String", paramType="path"),
-            @ApiImplicitParam(name = "deviceId", value = "手机唯一标识", required = true, dataType = "String", paramType="path"),
-            @ApiImplicitParam(name = "imgCode", value = "图形验证码", required = true, dataType = "String", paramType="path")
-    })
     @PostMapping(value = "/getSmsCode")
-    public Result<Object> getSmsCode(String mobile,String deviceId,String imgCode,HttpServletRequest request){
-		logger.info("获取手机验证码请求,手机号码:{},图形验证码:{}",mobile,imgCode);
+    public Result<Object> getSmsCode(@RequestBody GetSmsCodeVo getSmsCodeVo,HttpServletRequest request){
+		//手机号
+		String mobile = getSmsCodeVo.getMobile();
+		//短信验证码
+		String imgCode = getSmsCodeVo.getImgCode();
+		//deviceId
+		String deviceId = getSmsCodeVo.getDeviceId();
+		logger.info("获取手机验证码请求,参数:{}",JSON.toJSONString(getSmsCodeVo));
 		//check
 		if(StringUtils.isEmpty(mobile)){
 			throw new BusinessException(ErrorCodeEnum.ERROR_20001.getCode()+"",ErrorCodeEnum.ERROR_20001.getMsg());
@@ -246,7 +224,11 @@ public class UserController {
 			throw new BusinessException(ErrorCodeEnum.ERROR_20004.getCode()+"",ErrorCodeEnum.ERROR_20004.getMsg());
 		}
 		//验证图形验证码（从redis获取短信验证码）
-	    String code = redisUtil.get(deviceId).replaceAll("\"", "");
+	    String code = redisUtil.get(deviceId);
+		if(StringUtils.isEmpty(code)){
+			throw new BusinessException(ErrorCodeEnum.ERROR_20005.getCode()+"",ErrorCodeEnum.ERROR_20005.getMsg());
+		}
+		code = code.replaceAll("\"", "");
 		if(!code.equals(imgCode)){
 			throw new BusinessException(ErrorCodeEnum.ERROR_20005.getCode()+"",ErrorCodeEnum.ERROR_20005.getMsg());
 		}
@@ -266,9 +248,9 @@ public class UserController {
 		 * TODO 发送短信
 		 */
 		//发送验证码--间隔时间
-		redisUtil.set(CACHE_KEY_PREFIX_SEND_VERIFY_INTERVAL_CODE+mobile, newVerify,CACHE_TIMEOUT_SEND_VERIFY_INTERVAL_CODE);
+		redisUtil.set(CACHE_KEY_PREFIX_SEND_VERIFY_INTERVAL_CODE + mobile, newVerify,CACHE_TIMEOUT_SEND_VERIFY_INTERVAL_CODE);
 		//手机验证码--失效时间
-		redisUtil.set(CACHE_KEY_PREFIX_PHONE_VERIFY_CODE+mobile, newVerify,CACHE_TIMEOUT_PHONE_VERIFY_CODE);
+		redisUtil.set(CACHE_KEY_PREFIX_PHONE_VERIFY_CODE + mobile, newVerify,CACHE_TIMEOUT_PHONE_VERIFY_CODE);
 		return new Result<Object>();
     	
     }
@@ -277,19 +259,18 @@ public class UserController {
      * @return
      */
 	@ApiOperation(value="获取图形验证码", notes="获取图形验证码")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "deviceId", value = "手机唯一标识", required = true, dataType = "String", paramType="path")
-    })
     @PostMapping(value = "/getImgCode")
-    public Result<Object> getImgCode(String deviceId,HttpServletRequest request,HttpServletResponse response){
-		logger.info("获取图形验证码请求");
+    public Result<Object> getImgCode(@RequestBody GetImgCodeVo getImgCodeVo,HttpServletRequest request,HttpServletResponse response){
+		//deviceId
+		String deviceId = getImgCodeVo.getDeviceId();
+		logger.info("获取图形验证码请求,参数:{}",JSON.toJSONString(getImgCodeVo));
 		//check
 		if(StringUtils.isEmpty(deviceId)){
 			throw new BusinessException(ErrorCodeEnum.ERROR_20007.getCode()+"",ErrorCodeEnum.ERROR_20007.getMsg());
 		}
 		Object[] objs = VerifyUtils.createImage();
 		logger.info("图形验证码:{}",objs[0]);
-	    redisUtil.set(deviceId, objs[0], 10000L);
+	    redisUtil.set(deviceId, objs[0], 600L);
 		try {
 		    /*//将图片输出给浏览器  
 		    BufferedImage image = (BufferedImage) objs[1];
