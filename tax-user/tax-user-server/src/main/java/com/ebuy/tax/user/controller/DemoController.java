@@ -1,12 +1,8 @@
 package com.ebuy.tax.user.controller;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ebuy.tax.common.constants.SysConstant;
-import com.ebuy.tax.common.vo.Result;
 import com.ebuy.tax.user.entity.User;
 
 import io.swagger.annotations.Api;

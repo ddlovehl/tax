@@ -4,7 +4,7 @@
 	
 
 	<artifactId>tax-eureka-server</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<modelVersion>4.0.0</modelVersion>
 
 	<name>tax-eureka-server</name>

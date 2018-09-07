@@ -1,11 +1,13 @@
-package com.ebuy.tax.common.vo;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
+package com.ebuy.tax.user.vo;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * 
@@ -19,9 +21,16 @@ public class Result<T> implements Serializable {
     private static final String MSG = "msg";
     private static final long serialVersionUID = 2633283546876721434L;
 
+    @ApiModelProperty(value="返回码")
     private Integer code=200;
+    
+    @ApiModelProperty(value="返回值描述")
     private String msg="操作成功";
+    
+    @ApiModelProperty(value="描述信息")
     private String description;
+    
+    @ApiModelProperty(value="返回数据")
     private T data;
 
     private HashMap<String,Object> exend;

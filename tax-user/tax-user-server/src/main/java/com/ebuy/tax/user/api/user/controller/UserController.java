@@ -1,11 +1,6 @@
 package com.ebuy.tax.user.api.user.controller;
 
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +24,6 @@ import com.ebuy.tax.common.enums.ErrorCodeEnum;
 import com.ebuy.tax.common.exception.BusinessException;
 import com.ebuy.tax.common.utils.StringUtils;
 import com.ebuy.tax.common.utils.VerifyUtils;
-import com.ebuy.tax.common.vo.Result;
 import com.ebuy.tax.user.api.user.entity.User;
 import com.ebuy.tax.user.api.user.service.UserBizService;
 import com.ebuy.tax.user.api.user.vo.GetImgCodeVo;
@@ -37,6 +31,10 @@ import com.ebuy.tax.user.api.user.vo.GetSmsCodeVo;
 import com.ebuy.tax.user.api.user.vo.RegisterVo;
 import com.ebuy.tax.user.api.user.vo.WxIsBindMobileVo;
 import com.ebuy.tax.user.redis.RedisUtil;
+import com.ebuy.tax.user.vo.Result;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * @Project new_project
