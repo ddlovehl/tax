@@ -7,7 +7,6 @@ G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\implementat
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\implementation\user\mapper\UserMapper.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\accountDetail\service\AccountDetailQueryService.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\implementation\company\service\CompanyQueryServiceImpl.java
-G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\user\vo\GetImgCodeVo.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\merchant\dao\IMerchantDao.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\company\dao\ICompanyDao.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\implementation\invited\dao\InvitedDaoImpl.java
@@ -24,7 +23,6 @@ G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\model\Login
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\role\dao\IRoleDao.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\role\service\RoleQueryService.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\userAccount\service\UserAccountQueryService.java
-G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\controller\DemoController.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\implementation\accountDetail\dao\AccountDetailDaoImpl.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\user\vo\GetSmsCodeVo.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\customer\entity\Customer.java
@@ -48,7 +46,6 @@ G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\merchan
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\merchant\service\MerchantDmlService.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\implementation\role\service\RoleDmlServiceImpl.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\user\vo\RegisterVo.java
-G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\controller\LoginController.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\user\entity\User.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\invited\dao\IInvitedDao.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\user\service\UserDmlService.java
@@ -79,6 +76,7 @@ G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\vo\Result.j
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\customer\service\CustomerQueryService.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\implementation\invited\mapper\InvitedMapper.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\TaxUserServerApplication.java
+G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\user\vo\GetImgCodeResp.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\api\invited\service\InvitedBizService.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\implementation\role\service\RoleQueryServiceImpl.java
 G:\ebuy\tax\tax-user\tax-user-server\src\main\java\com\ebuy\tax\user\implementation\userAccount\service\UserAccountDmlServiceImpl.java

@@ -10,7 +10,7 @@
   
    <artifactId>tax-h5</artifactId>
    <name>tax-h5</name>
-   <packaging>jar</packaging>
+   <packaging>war</packaging>
   
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -67,4 +67,13 @@
 	     
 	     
      </dependencies>
+     
+     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
