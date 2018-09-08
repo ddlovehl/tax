@@ -21,7 +21,7 @@ public interface CompanyQueryService{
      * @Description 根据id查询
      * @date        2018-09-07 15:01:17
      */
-    public Company queryById(BigInteger id);
+    public Company queryById(String id);
 
     /**
      * @author      hdq

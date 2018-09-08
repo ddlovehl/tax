@@ -87,7 +87,7 @@ public class CompanyBizServiceImpl implements CompanyBizService {
      * @date        2018-09-07 15:01:17
      */
     @Override
-    public Company queryById(BigInteger id) {
+    public Company queryById(String id) {
         return companyQueryService.queryById(id);
     }
 

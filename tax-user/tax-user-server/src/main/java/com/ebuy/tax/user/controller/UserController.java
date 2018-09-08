@@ -1,4 +1,4 @@
-package com.ebuy.tax.user.api.user.controller;
+package com.ebuy.tax.user.controller;
 
 
 import java.awt.image.BufferedImage;
@@ -7,20 +7,27 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ebuy.tax.common.entity.ResponseBase;
+import com.ebuy.tax.common.utils.ResponseUtil;
+import com.ebuy.tax.common.utils.ValidateUtil;
+import com.ebuy.tax.user.model.QueryUserInfoRequest;
+import com.ebuy.tax.user.model.QueryUserInfoResponse;
+import com.ebuy.tax.user.model.UpdateUserInfoRequest;
+import io.swagger.annotations.*;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSON;
 import com.ebuy.tax.common.enums.ErrorCodeEnum;
 import com.ebuy.tax.common.exception.BusinessException;
 import com.ebuy.tax.common.utils.StringUtils;
@@ -33,9 +40,6 @@ import com.ebuy.tax.user.api.user.vo.RegisterVo;
 import com.ebuy.tax.user.api.user.vo.WxIsBindMobileVo;
 import com.ebuy.tax.user.redis.RedisUtil;
 import com.ebuy.tax.user.vo.Result;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
 /**
  * @Project new_project
@@ -265,7 +269,7 @@ public class UserController {
 		
 		String verifyID = UUID.randomUUID().toString().replace("-", "");
 		Object[] objs = VerifyUtils.createImage();
-		logger.info("图片token{}图形验证码:{}",verifyID,objs[0]);
+		log.info("图片token{}图形验证码:{}",verifyID,objs[0]);
 	    redisUtil.set(verifyID, objs[0], 600L);
 	    
 	    String imgStr = "";

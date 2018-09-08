@@ -130,16 +130,18 @@ public class CompanyController {
 	 *  @see   [obj]
 	 */
 	@ApiOperation(value="获取公司信息", notes="获取公司信息")
-	@PostMapping(value = "/updateCompany")
-	public ResponseBase queryCompany(@RequestBody @ApiParam(name="UpdateCompanyRequest",value="传入json格式",required=true) UpdateCompanyRequest req) throws Exception {
+	@ApiResponses({
+			@ApiResponse(code=200,message="成功",response= QueryCompanyResponse.class),
+	})
+	@PostMapping(value = "/queryCompany")
+	public ResponseBase queryCompany(@RequestBody @ApiParam(name="QueryCompanyRequest",value="传入json格式",required=true) QueryCompanyRequest req) throws Exception {
 		log.info("获取公司信息参数：{}",req);
 		//参数校验
 		ValidateUtil.valid(req);
-		Company company = new Company();
-		BeanUtils.copyProperties(req,company);
-		company.setId(req.getCompanyId());
-		companyBizService.update(company);
-		return ResponseUtil.successResponse();
+		Company company = companyBizService.queryById(req.getCompanyId());
+		QueryCompanyResponse res = new QueryCompanyResponse();
+		BeanUtils.copyProperties(company,res);
+		return ResponseUtil.fillResponse(res);
 	}
 }
 

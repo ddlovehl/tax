@@ -17,5 +17,10 @@ import lombok.Data;
 @Data
 public class QueryCompanyRequest {
 
-
+    /**
+     * 公司id
+     */
+    @Validator(isEmpty = false,maxLength = 32,description = "公司id")
+    @ApiModelProperty(value="公司id",name="companyId")
+    private String companyId;
 }
