@@ -4,12 +4,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+
+import org.apache.commons.codec.binary.Base64;
 
 public class VerifyUtils {
 	// 验证码字符集
@@ -68,6 +71,26 @@ public class VerifyUtils {
 		}
 		// 7.返回验证码和图片
 		return new Object[] { sb.toString(), image };
+	}
+	
+	/**
+	 * BufferedImage转base64
+	* @author dd
+	* @date 2018年9月7日
+	 */
+	public static String imageToBase64(BufferedImage image) throws IOException {
+
+	    String imageString = null;
+	    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+	    try {
+	        ImageIO.write(image, "png", bos);
+	        byte[] imageBytes = bos.toByteArray();
+	        imageString = Base64.encodeBase64String(imageBytes);
+	        bos.close();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	    return "data:image/png;base64,"+imageString;
 	}
 
 	/**

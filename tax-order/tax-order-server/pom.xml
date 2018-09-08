@@ -10,6 +10,7 @@
   
   <artifactId>tax-order-server</artifactId>
   <name>tax-order-server</name>
+  <packaging>jar</packaging>
   
   	<dependencies>
 		<dependency>

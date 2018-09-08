@@ -1,39 +1,41 @@
-package com.ebuy.tax.user.controller;
+package com.ebuy.tax.user.api.user.controller;
 
 
-import com.ebuy.tax.common.entity.ResponseBase;
-import com.ebuy.tax.common.enums.ErrorCodeEnum;
-import com.ebuy.tax.common.exception.BusinessException;
-import com.ebuy.tax.common.utils.*;
-import com.ebuy.tax.common.vo.Result;
-import com.ebuy.tax.user.api.user.entity.User;
-import com.ebuy.tax.user.api.user.service.UserBizService;
-import com.ebuy.tax.user.api.user.vo.GetImgCodeVo;
-import com.ebuy.tax.user.api.user.vo.GetSmsCodeVo;
-import com.ebuy.tax.user.api.user.vo.RegisterVo;
-import com.ebuy.tax.user.api.user.vo.WxIsBindMobileVo;
-import com.ebuy.tax.user.model.QueryUserInfoRequest;
-import com.ebuy.tax.user.model.QueryUserInfoResponse;
-import com.ebuy.tax.user.model.UpdateUserInfoRequest;
-import com.ebuy.tax.user.redis.RedisUtil;
-import io.swagger.annotations.*;
-import lombok.extern.slf4j.Slf4j;
+import java.awt.image.BufferedImage;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.lang3.RandomUtils;
-import org.springframework.beans.BeanUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import com.alibaba.fastjson.JSON;
+import com.ebuy.tax.common.enums.ErrorCodeEnum;
+import com.ebuy.tax.common.exception.BusinessException;
+import com.ebuy.tax.common.utils.StringUtils;
+import com.ebuy.tax.common.utils.VerifyUtils;
+import com.ebuy.tax.user.api.user.entity.User;
+import com.ebuy.tax.user.api.user.service.UserBizService;
+import com.ebuy.tax.user.api.user.vo.GetImgCodeResp;
+import com.ebuy.tax.user.api.user.vo.GetSmsCodeVo;
+import com.ebuy.tax.user.api.user.vo.RegisterVo;
+import com.ebuy.tax.user.api.user.vo.WxIsBindMobileVo;
+import com.ebuy.tax.user.redis.RedisUtil;
+import com.ebuy.tax.user.vo.Result;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * @Project new_project
@@ -199,6 +201,7 @@ public class UserController {
      * 获取手机验证码
      * @return
      */
+	@SuppressWarnings("unchecked")
 	@ApiOperation(value="获取手机验证码", notes="获取手机验证码")
     @PostMapping(value = "/getSmsCode")
     public Result<Object> getSmsCode(@RequestBody GetSmsCodeVo getSmsCodeVo,HttpServletRequest request){
@@ -206,32 +209,32 @@ public class UserController {
 		String mobile = getSmsCodeVo.getMobile();
 		//短信验证码
 		String imgCode = getSmsCodeVo.getImgCode();
-		//deviceId
-		String deviceId = getSmsCodeVo.getDeviceId();
+		//imgToken
+		String imgToken = getSmsCodeVo.getVerifyId();
 		log.info("获取手机验证码请求,参数:{}",getSmsCodeVo);
 		//check
 		if(StringUtils.isEmpty(mobile)){
-			throw new BusinessException(ErrorCodeEnum.ERROR_20001.getCode()+"",ErrorCodeEnum.ERROR_20001.getMsg());
+			return Result.failure(ErrorCodeEnum.ERROR_20001.getCode(), ErrorCodeEnum.ERROR_20001.getMsg());
 		}
 		if(StringUtils.isEmpty(imgCode)){
-			throw new BusinessException(ErrorCodeEnum.ERROR_20002.getCode()+"",ErrorCodeEnum.ERROR_20002.getMsg());
+			return Result.failure(ErrorCodeEnum.ERROR_20002.getCode(), ErrorCodeEnum.ERROR_20002.getMsg());
 		}
 		if(!StringUtils.isMobileNO(mobile)){
-			throw new BusinessException(ErrorCodeEnum.ERROR_20004.getCode()+"",ErrorCodeEnum.ERROR_20004.getMsg());
+			return Result.failure(ErrorCodeEnum.ERROR_20004.getCode(), ErrorCodeEnum.ERROR_20004.getMsg());
 		}
 		//验证图形验证码（从redis获取短信验证码）
-	    String code = redisUtil.get(deviceId);
+	    String code = redisUtil.get(imgToken);
 		if(StringUtils.isEmpty(code)){
-			throw new BusinessException(ErrorCodeEnum.ERROR_20005.getCode()+"",ErrorCodeEnum.ERROR_20005.getMsg());
+			return Result.failure(ErrorCodeEnum.ERROR_20005.getCode(), ErrorCodeEnum.ERROR_20005.getMsg());
 		}
 		code = code.replaceAll("\"", "");
-		if(!code.equals(imgCode)){
-			throw new BusinessException(ErrorCodeEnum.ERROR_20005.getCode()+"",ErrorCodeEnum.ERROR_20005.getMsg());
+		if(code.compareToIgnoreCase(imgCode)!=0){
+			return Result.failure(ErrorCodeEnum.ERROR_20005.getCode(), ErrorCodeEnum.ERROR_20005.getMsg());
 		}
 		//判断60s内是否重复获取验证码
 		String sCode = redisUtil.get(CACHE_KEY_PREFIX_SEND_VERIFY_INTERVAL_CODE+mobile);
 		if(!StringUtils.isEmpty(sCode)){
-			throw new BusinessException(ErrorCodeEnum.ERROR_20009.getCode()+"",ErrorCodeEnum.ERROR_20009.getMsg());
+			return Result.failure(ErrorCodeEnum.ERROR_20009.getCode(), ErrorCodeEnum.ERROR_20009.getMsg());
 		}
 		// 随机生成6位数的验证码
 		String newVerify = String.valueOf(RandomUtils.nextInt(101030, 1000000));
@@ -256,30 +259,26 @@ public class UserController {
      */
 	@ApiOperation(value="获取图形验证码", notes="获取图形验证码")
     @PostMapping(value = "/getImgCode")
-    public Result<Object> getImgCode(@RequestBody GetImgCodeVo getImgCodeVo,HttpServletRequest request,HttpServletResponse response){
-		//deviceId
-		String deviceId = getImgCodeVo.getDeviceId();
-		log.info("获取图形验证码请求,参数:{}", getImgCodeVo);
-		//check
-		if(StringUtils.isEmpty(deviceId)){
-			throw new BusinessException(ErrorCodeEnum.ERROR_20007.getCode()+"",ErrorCodeEnum.ERROR_20007.getMsg());
-		}
+    public Result<GetImgCodeResp> getImgCode(HttpServletRequest request,HttpServletResponse response){
+		
+		Result<GetImgCodeResp> result = new Result<GetImgCodeResp>();
+		
+		String verifyID = UUID.randomUUID().toString().replace("-", "");
 		Object[] objs = VerifyUtils.createImage();
-		log.info("图形验证码:{}",objs[0]);
-	    redisUtil.set(deviceId, objs[0], 600L);
+		logger.info("图片token{}图形验证码:{}",verifyID,objs[0]);
+	    redisUtil.set(verifyID, objs[0], 600L);
+	    
+	    String imgStr = "";
 		try {
-		    /*//将图片输出给浏览器  
+		    //将图片输出给浏览器  
 		    BufferedImage image = (BufferedImage) objs[1];
-		    response.setContentType("image/png");
-			OutputStream os = response.getOutputStream();
-			ImageIO.write(image, "png", os);*/
+		    imgStr = VerifyUtils.imageToBase64(image);
 		} catch (Exception e) {
 			log.error("获取图形验证码异常，error:{}",e);
 		}
-	    
-		Result<Object> code = new Result<Object>();
-		code.setData(objs[0]);
-		return code;
+		GetImgCodeResp resp = new GetImgCodeResp(verifyID,imgStr);
+		result.setData(resp);
+		return result;
     	
     }
 

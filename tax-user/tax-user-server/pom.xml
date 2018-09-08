@@ -9,9 +9,9 @@
   </parent>
   
   <artifactId>tax-user-server</artifactId>
-    <packaging>jar</packaging>
   <name>tax-user-server</name>
-
+  <packaging>jar</packaging>
+  
   	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -61,6 +61,12 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
+		
+		<!-- fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+		</dependency>
 		
   	</dependencies>
 	
