@@ -43,8 +43,22 @@
           <version>RELEASE</version>
           <scope>compile</scope>
       </dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		</dependency>
+		<!--  cache -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <!--  redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
 
-      <!-- swagger2 -->
+      <!-- swagger -->
       <dependency>
           <groupId>io.springfox</groupId>
           <artifactId>springfox-swagger2</artifactId>
@@ -53,5 +67,12 @@
           <groupId>io.springfox</groupId>
           <artifactId>springfox-swagger-ui</artifactId>
       </dependency>
+
+      <!-- fastjson -->
+      <dependency>
+          <groupId>com.alibaba</groupId>
+          <artifactId>fastjson</artifactId>
+      </dependency>
+
   </dependencies>
 </project>

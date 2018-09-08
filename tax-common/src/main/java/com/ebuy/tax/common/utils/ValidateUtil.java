@@ -91,7 +91,7 @@ public class ValidateUtil {
                         break;
                     case PHONENUMBER:
                         if (!RegexUtils.isPhoneNumber(value.toString())) {
-                            throw new ValidationException(description + "不是数字");
+                            throw new ValidationException(description + "格式不正确");
                         }
                         break;
                     default:
@@ -99,7 +99,7 @@ public class ValidateUtil {
                 }
             }
             if (!dv.regexExpression().equals("")) {
-                if (value.toString().matches(dv.regexExpression())) {
+                if (!value.toString().matches(dv.regexExpression())) {
                     throw new ValidationException(description + "格式不正确");
                 }
             }

@@ -18,7 +18,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author hdq
- * @since 2018-09-05
+ * @since 2018-09-07
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -30,73 +30,73 @@ public class Invited extends SuperEntity<Invited> {
 private static final long serialVersionUID = 1L;
 
     /**
-    * å”¯ä¸€æ ‡è¯†
+    * id
     */
     private String id;
     /**
-    * é‚€è¯·äººid
+    * 邀请人id
     */
     @TableField("invite_user_id")
     private String inviteUserId;
     /**
-    * è¢«é‚€è¯·äººid
+    * 被邀请人id
     */
     @TableField("invited_user_id")
     private String invitedUserId;
     /**
-    * è¢«é‚€è¯·äººå§“å
+    * 被邀请人姓名
     */
     @TableField("invited_name")
     private String invitedName;
     /**
-    * è¢«é‚€è¯·äººæ‰‹æœºå·
+    * 被邀请人手机号
     */
     @TableField("invited_mobile")
     private String invitedMobile;
     /**
-    * æ€§åˆ«
+    * 被邀请人性别
     */
     @TableField("invited_sex")
     private Integer invitedSex;
     /**
-    * è¢«é‚€è¯·å¯çœ‹å…¬å¸id
+    * 被邀请可看公司id
     */
     @TableField("company_id")
     private String companyId;
     /**
-    * å¹´é¾„
+    * 年龄
     */
     @TableField("invited_age")
     private Integer invitedAge;
     /**
-    * èŒä½
+    * 职位
     */
     @TableField("invited_position")
     private String invitedPosition;
     /**
-    * é¢„ç•™å­—æ®µ1
+    * 预留字段1
     */
     private String reseve1;
     /**
-    * é¢„ç•™å­—æ®µ1
+    * 预留字段2
     */
     private String reseve2;
     /**
-    * é¢„ç•™å­—æ®µ3
+    * 预留字段3
     */
     private String reseve3;
     /**
-    * æ˜¯å¦åˆ é™¤ï¼ˆ0ï¼šæ­£å¸¸ï¼Œ9åˆ é™¤ï¼‰
+    * 是否删除（0：正常，9删除）
     */
     @TableField("is_del")
     private Integer isDel;
     /**
-    * åˆ›å»ºæ—¥æœŸ
+    * 创建时间
     */
     @TableField("create_time")
     private Date createTime;
     /**
-    * æ›´æ–°æ—¥æœŸ
+    * 更新时间
     */
     @TableField("update_time")
     private Date updateTime;

@@ -5,6 +5,7 @@ import com.ebuy.tax.user.api.role.dao.IRoleDao;
 import com.ebuy.tax.user.api.role.service.RoleQueryService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -13,9 +14,10 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.implementation.role.dao
  * @author hdq
- * @Date 2018-09-05 18:26:55
+ * @Date 2018-09-07 15:01:18
  * @Description è§’è‰²è¡¨ 查询服务
  */
+@Service(value = "roleQueryService")
 @CacheConfig(cacheNames = {"RoleCache"})
 public class RoleQueryServiceImpl implements RoleQueryService{
 
@@ -27,7 +29,7 @@ public class RoleQueryServiceImpl implements RoleQueryService{
      * @see         [Role]
      * @return      boolean
      * @Description 根据id查询
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     @Override
     public Role queryById(BigInteger id){
@@ -39,7 +41,7 @@ public class RoleQueryServiceImpl implements RoleQueryService{
      * @see         [Role]
      * @return      boolean
      * @Description 根据ids查询列表
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
         @Override
     public List<Role> queryByIds(List<BigInteger> ids){
@@ -51,7 +53,7 @@ public class RoleQueryServiceImpl implements RoleQueryService{
      * @see         [Role]
      * @return      boolean
      * @Description 查询列表总数
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     @Override
     public int queryCountRole(Role role){
@@ -63,7 +65,7 @@ public class RoleQueryServiceImpl implements RoleQueryService{
      * @see         [Role]
      * @return      boolean
      * @Description 查询列表
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     @Override
     public List<Role> queryAllRole(Role role){
@@ -75,7 +77,7 @@ public class RoleQueryServiceImpl implements RoleQueryService{
      * @see         [Role]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     @Override
     public List<Role> queryListForPageRole(Role role,Integer pageNo,Integer pageSize){
@@ -87,7 +89,7 @@ public class RoleQueryServiceImpl implements RoleQueryService{
      * @see         [Role]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     @Override
     public Role queryEntityByRoleEntity(Role role){

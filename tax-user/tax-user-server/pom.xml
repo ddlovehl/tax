@@ -9,9 +9,9 @@
   </parent>
   
   <artifactId>tax-user-server</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
   <name>tax-user-server</name>
-  
+
   	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

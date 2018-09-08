@@ -10,7 +10,7 @@ public enum  RegexEnum {
     SPECIALCHAR,
     CHINESE,
     EMAIL,
-    IP,
     NUMBER,
     PHONENUMBER
 }
+

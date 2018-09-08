@@ -14,11 +14,11 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * ç”¨æˆ·è¡¨
+ * 用户entity
  * </p>
  *
  * @author hdq
- * @since 2018-09-05
+ * @since 2018-09-07
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -30,93 +30,93 @@ public class User extends SuperEntity<User> {
 private static final long serialVersionUID = 1L;
 
     /**
-    * å”¯ä¸€æ ‡è¯†
+    *  id
     */
     private String id;
     /**
-    * ç”¨æˆ·å
+    *  用户名
     */
     private String username;
     /**
-    * å¯†ç 
+    * 用户名
     */
     private String password;
     /**
-    * ç®¡ç†è§’è‰²è¡¨id
+    * 角色id
     */
     @TableField("role_id")
     private String roleId;
     /**
-    * å¾®ä¿¡å”¯ä¸€æ ‡è¯†
+    * openid
     */
     private String openid;
     /**
-    * æ‰‹æœºå·
+    * 手机号
     */
     private String mobile;
     /**
-    * é‚®ç®±å·
+    * 邮件
     */
     private String mail;
     /**
-    * å§“å
+    * 姓名
     */
     private String name;
     /**
-    * æ€§åˆ«(1:ç”·ï¼Œ2:å¥³ï¼Œ3:æœªçŸ¥)
+    * 性别
     */
     private Integer sex;
     /**
-    * å¹´é¾„
+    * 年龄
     */
     private Integer age;
     /**
-    * èŒä½
+    * 职位
     */
     private String position;
     /**
-    * å¤´åƒé™„ä»¶id
+    * 头像附件
     */
     @TableField("profile_pic_attach_id")
     private String profilePicAttachId;
     /**
-    * ç±»åˆ«ï¼ˆ1:ä¸šåŠ¡è´Ÿè´£äººï¼›2:å…¶ä»–è”ç³»äººï¼‰
+    * 类别（1:业务负责人；2:其他联系人）
     */
     @TableField("user_category")
     private Integer userCategory;
     /**
-    * çˆ¶çº§ç”¨æˆ·
+    * 父级id
     */
     @TableField("parent_id")
     private String parentId;
     /**
-    * ç”¨æˆ·çŠ¶æ€(0:æ­£å¸¸ï¼Œ1:ç¦ç”¨ï¼Œ9:åˆ é™¤)
+    * 用户状态(0:正常，1:禁用，9:删除)
     */
     @TableField("user_status")
     private Integer userStatus;
     /**
-    * é¢„ç•™å­—æ®µ1
+    * 预留字段1
     */
     private String reserve1;
     /**
-    * é¢„ç•™å­—æ®µ2
+    * 预留字段2
     */
     private String reserve2;
     /**
-    * é¢„ç•™å­—æ®µ3
+    * 预留字段3
     */
     private String reserve3;
     /**
-    * å¤‡æ³¨
+    * 备注
     */
     private String remark;
     /**
-    * æ·»åŠ æ—¶é—´
+    * 创建时间
     */
     @TableField("create_time")
     private Date createTime;
     /**
-    * æ›´æ–°æ—¶é—´
+    * 修改时间
     */
     @TableField("update_time")
     private Date updateTime;

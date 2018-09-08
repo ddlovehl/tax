@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @Package com.ebuy.tax.user.implementation.company.dao
  * @author hdq
- * @Date 2018-09-05 18:26:55
+ * @Date 2018-09-07 15:01:17
  * @Description å…¬å¸è¡¨ Mapper 接口
  */
 public interface CompanyMapper extends SuperMapper<Company> {

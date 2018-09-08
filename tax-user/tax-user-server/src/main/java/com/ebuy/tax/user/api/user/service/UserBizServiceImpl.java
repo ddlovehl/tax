@@ -1,29 +1,30 @@
 package com.ebuy.tax.user.api.user.service;
 
+import com.ebuy.tax.common.constants.ResponseConstant;
+import com.ebuy.tax.common.constants.SysConstant;
+import com.ebuy.tax.common.utils.CommonExceptionUtils;
+import com.ebuy.tax.common.utils.DateUtil;
 import com.ebuy.tax.user.api.user.entity.User;
 
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 import java.math.BigInteger;
 import java.util.LinkedList;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import com.ebuy.tax.common.entity.PageResult;
 
 /**
  * @Package com.ebuy.tax.user.api.user.dao
  * @author hdq
- * @Date 2018-09-05 18:26:56
+ * @Date 2018-09-07 15:01:18
  * @Description
  */
+@Slf4j
 @Service(value = "userBizService")
-public class UserBizServiceImpl implements UserBizService{
-
-    private static final Logger logger = LoggerFactory.getLogger(UserBizServiceImpl.class);
+public class UserBizServiceImpl implements UserBizService {
 
     @Resource(name = "userDmlService")
     private UserDmlService userDmlService;
@@ -32,107 +33,122 @@ public class UserBizServiceImpl implements UserBizService{
     private UserQueryService userQueryService;
 
     /**
-     * @author      hdq
+     * @author hdq
      * @see         [User]
-     * @return      List<User>
+     * @return List<User>
      * @Description 查询列表
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
-    public List<User> queryList(User user){
+    public List<User> queryList(User user) {
         return userQueryService.queryAllUser(user);
     }
 
     /**
-     * @author      hdq
+     * @author hdq
      * @see         [User] [pageNo] [pageSize]
-     * @return          PageResult
+     * @return PageResult
      * @Description 查询列表(分页)
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
-    public PageResult queryListPage(User user, Integer pageNo, Integer  pageSize){
+    public PageResult queryListPage(User user, Integer pageNo, Integer pageSize) {
         //查询分页列表总数
         int count = userQueryService.queryCountUser(user);
         List<User> list = new LinkedList<User>();
-        if(count > 0) {
-            list = userQueryService.queryListForPageUser(user,pageNo,pageSize);
+        if (count > 0) {
+            list = userQueryService.queryListForPageUser(user, pageNo, pageSize);
         }
-        return  new PageResult(list,(long)count);
+        return new PageResult(list, (long) count);
     }
 
     /**
-     * @author      hdq
+     * @author hdq
      * @see         [id]
      * @return      User
      * @Description 按id查询
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
-    public User queryById(BigInteger id){
+    public User queryById(BigInteger id) {
         return userQueryService.queryById(id);
     }
 
     /**
-     * @author      hdq
+     * @author hdq
      * @see         [ids]
-     * @return      List<User>
+     * @return List<User>
      * @Description 按ids查询列表
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
-    public List<User> queryByIds(List<BigInteger> ids){
+    public List<User> queryByIds(List<BigInteger> ids) {
         return userQueryService.queryByIds(ids);
     }
 
     /**
-     * @author      hdq
+     * @author hdq
      * @see         [User]
      * @return      User
-     * @Description 根据entity查询一条记录
-     * @date        2018-09-05 18:26:56
+     * @Description 根据entity查询一条记录  （用户）
+     * @date        2018-09-07 15:01:18
      */
     @Override
-    public User queryByParam(User user){
+    public User queryByParam(User user) {
+        user.setUserStatus(SysConstant.USER_STATUS.NORMAL.getValue());
         return userQueryService.queryEntityByUserEntity(user);
     }
 
     /**
-     * @author      hdq
+     * @author hdq
      * @see         [User]
      * @return
      * @Description 添加
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
-    public void insert(User user){
-        userDmlService.insertUser(user);
+    public void insert(User user) {
+            userDmlService.insertUser(user);
     }
 
     /**
-     * @author      hdq
+     * @author hdq
      * @see         [User]
      * @return
      * @Description 添加or更新
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
-    public void insertOrUpdate(User user){
-        userDmlService.insertOrUpdateUser(user);
+    public void insertOrUpdate(User user) {
+            userDmlService.insertOrUpdateUser(user);
     }
 
     /**
-     * @author      hdq
+     * @author hdq
      * @see         [User]
      * @return
      * @Description 更新
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
-    public void update(User user){
+    public void update(User user) throws Exception {
+        /*User userParam = new User();
+        userParam.setMobile(user.getId());
+        User result = userQueryService.queryEntityByUserEntity(userParam);
+        //判断是否存在，否则抛出异常及返回码
+        CommonExceptionUtils.isNull(result, ResponseConstant.ERR_CODE_USER.USER_NONE_ERROR,ResponseConstant.ERR_INFO_USER.USER_NONE_ERROR);
+        if(SysConstant.USER_STATUS.DISABLED.getValue()==result.getUserStatus().intValue()){
+            CommonExceptionUtils.throwBusinessException(ResponseConstant.ERR_CODE_USER.USER_DISABLE_ERROR,ResponseConstant.ERR_INFO_USER.USER_DISABLE_ERROR);
+        }
+        User param = new User();
+        param.setId(result.getId());
+        param.setName(result.getName());
+        param.setUsername(result.getUsername());
+        param.setSex(result.getSex());
+        param.setMail(result.getMail());*/
+        user.setUpdateTime(new Date());
         userDmlService.updateUser(user);
     }
-
 
 }
 

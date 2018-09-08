@@ -5,6 +5,7 @@ import com.ebuy.tax.user.api.userAccount.dao.IUserAccountDao;
 import com.ebuy.tax.user.api.userAccount.service.UserAccountQueryService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -13,9 +14,10 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.implementation.userAccount.dao
  * @author hdq
- * @Date 2018-09-05 18:26:56
+ * @Date 2018-09-07 15:01:18
  * @Description è´¦æˆ·è¡¨ 查询服务
  */
+@Service(value = "userAccountQueryService")
 @CacheConfig(cacheNames = {"UserAccountCache"})
 public class UserAccountQueryServiceImpl implements UserAccountQueryService{
 
@@ -27,7 +29,7 @@ public class UserAccountQueryServiceImpl implements UserAccountQueryService{
      * @see         [UserAccount]
      * @return      boolean
      * @Description 根据id查询
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
     public UserAccount queryById(BigInteger id){
@@ -39,7 +41,7 @@ public class UserAccountQueryServiceImpl implements UserAccountQueryService{
      * @see         [UserAccount]
      * @return      boolean
      * @Description 根据ids查询列表
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
         @Override
     public List<UserAccount> queryByIds(List<BigInteger> ids){
@@ -51,7 +53,7 @@ public class UserAccountQueryServiceImpl implements UserAccountQueryService{
      * @see         [UserAccount]
      * @return      boolean
      * @Description 查询列表总数
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
     public int queryCountUserAccount(UserAccount userAccount){
@@ -63,7 +65,7 @@ public class UserAccountQueryServiceImpl implements UserAccountQueryService{
      * @see         [UserAccount]
      * @return      boolean
      * @Description 查询列表
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
     public List<UserAccount> queryAllUserAccount(UserAccount userAccount){
@@ -75,7 +77,7 @@ public class UserAccountQueryServiceImpl implements UserAccountQueryService{
      * @see         [UserAccount]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
     public List<UserAccount> queryListForPageUserAccount(UserAccount userAccount,Integer pageNo,Integer pageSize){
@@ -87,7 +89,7 @@ public class UserAccountQueryServiceImpl implements UserAccountQueryService{
      * @see         [UserAccount]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
     public UserAccount queryEntityByUserAccountEntity(UserAccount userAccount){

@@ -20,11 +20,11 @@ import javax.annotation.Resource;
 /**
  * @Package com.ebuy.tax.user.implementation.user.dao
  * @author hdq
- * @Date 2018-09-05 18:26:56
- * @Description ç”¨æˆ·è¡¨ 操作服务
+ * @Date 2018-09-07 15:01:18
+ * @Description 用户操作服务
  */
 @Service(value = "userDmlService")
-@CacheConfig(cacheNames = {"UserCache}"})
+@CacheConfig(cacheNames = {"UserCache"})
 public class UserDmlServiceImpl implements UserDmlService {
 
     private static final Logger log = LoggerFactory.getLogger(UserDmlServiceImpl.class);
@@ -37,7 +37,7 @@ public class UserDmlServiceImpl implements UserDmlService {
      * @see         [User]
      * @return      boolean
      * @Description 添加信息
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -57,7 +57,7 @@ public class UserDmlServiceImpl implements UserDmlService {
      * @see         [User]
      * @return      boolean
      * @Description 批量增加
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -77,7 +77,7 @@ public class UserDmlServiceImpl implements UserDmlService {
      * @see         [User]
      * @return      boolean
      * @Description 增加or更新
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -98,7 +98,7 @@ public class UserDmlServiceImpl implements UserDmlService {
      * @see         [User]
      * @return      boolean
      * @Description 更新
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -118,7 +118,7 @@ public class UserDmlServiceImpl implements UserDmlService {
      * @see         [User]
      * @return      boolean
      * @Description 更新
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -138,7 +138,7 @@ public class UserDmlServiceImpl implements UserDmlService {
      * @see         [User]
      * @return      boolean
      * @Description 删除
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -158,7 +158,7 @@ public class UserDmlServiceImpl implements UserDmlService {
      * @see         [User]
      * @return      boolean
      * @Description 根据id批量删除
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)

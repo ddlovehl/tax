@@ -9,7 +9,7 @@ import java.util.List;
  * @Project new_project
  * @Package com.ebuy.tax.user.api.merchant.dao
  * @Author hdq
- * @Date 2018-09-05 18:26:55
+ * @Date 2018-09-07 15:01:18
  * @Description ImerchantDao
  */
 public interface IMerchantDao extends IService<Merchant> {
@@ -19,7 +19,7 @@ public interface IMerchantDao extends IService<Merchant> {
      * @see         [Merchant]
      * @return      java.lang.Long
      * @Description 查询列表总数
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public int queryCount(Merchant merchant);
 
@@ -28,7 +28,7 @@ public interface IMerchantDao extends IService<Merchant> {
      * @see         [Merchant]
      * @return      List<Merchant>
      * @Description 查询列表
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public List<Merchant> queryList(Merchant merchant);
 
@@ -37,7 +37,7 @@ public interface IMerchantDao extends IService<Merchant> {
      * @see         List<Merchant>
      * @return      java.lang.Long
      * @Description 查询列表
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public List<Merchant>  queryListForPage(Merchant merchant,Integer pageNo,Integer pageSize);
 
@@ -46,7 +46,7 @@ public interface IMerchantDao extends IService<Merchant> {
      * @see         [Merchant]
      * @return      List<Merchant>
      * @Description 查询列表
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public Merchant queryEntityByMerchantEntity(Merchant merchant);
 }

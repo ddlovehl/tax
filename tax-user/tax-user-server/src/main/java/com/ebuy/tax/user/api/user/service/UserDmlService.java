@@ -9,7 +9,7 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.api.user.dao
  * @author hdq
- * @Date 2018-09-05 18:26:56
+ * @Date 2018-09-07 15:01:18
  * @Description User操作服务
  */
 public interface UserDmlService{
@@ -19,7 +19,7 @@ public interface UserDmlService{
      * @see         [User]
      * @return      boolean
      * @Description 添加信息
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     public boolean insertUser(User user);
 
@@ -28,7 +28,7 @@ public interface UserDmlService{
      * @see         [User]
      * @return      boolean
      * @Description 批量增加
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     public boolean insertUsers(List<User> list);
 
@@ -37,7 +37,7 @@ public interface UserDmlService{
      * @see         [User]
      * @return      boolean
      * @Description 增加or更新
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     public boolean insertOrUpdateUser(User user);
 
@@ -46,7 +46,7 @@ public interface UserDmlService{
      * @see         [User]
      * @return      boolean
      * @Description 更新
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     public boolean updateUser(User user);
 
@@ -55,7 +55,7 @@ public interface UserDmlService{
      * @see         [User]
      * @return      boolean
      * @Description 更新
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     public boolean updateUsers(List<User> list);
 
@@ -64,7 +64,7 @@ public interface UserDmlService{
      * @see         [User]
      * @return      boolean
      * @Description 删除
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     public boolean deleteUser(BigInteger id);
 
@@ -73,7 +73,7 @@ public interface UserDmlService{
      * @see         [User]
      * @return      boolean
      * @Description 根据id批量删除
-     * @date        2018-09-05 18:26:56
+     * @date        2018-09-07 15:01:18
      */
     public boolean deleteUsers(List<BigInteger> ids);
 }

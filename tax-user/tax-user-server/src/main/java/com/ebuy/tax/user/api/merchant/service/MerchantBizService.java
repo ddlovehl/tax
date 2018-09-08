@@ -11,7 +11,7 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.api.merchant.dao
  * @author hdq
- * @Date 2018-09-05 18:26:55
+ * @Date 2018-09-07 15:01:18
  * @Description
  */
 public interface MerchantBizService{
@@ -21,7 +21,7 @@ public interface MerchantBizService{
      * @see         [Merchant]
      * @return      List<Merchant>
      * @Description 查询列表
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public List<Merchant> queryList(Merchant merchant);
 
@@ -30,7 +30,7 @@ public interface MerchantBizService{
      * @see         [Merchant] [pageNo] [pageSize]
      * @return          PageResult
      * @Description 查询列表(分页)
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public PageResult queryListPage(Merchant merchant, Integer pageNo, Integer  pageSize);
 
@@ -39,7 +39,7 @@ public interface MerchantBizService{
      * @see         [id]
      * @return      Merchant
      * @Description 按id查询
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public Merchant queryById(BigInteger id);
 
@@ -48,7 +48,7 @@ public interface MerchantBizService{
      * @see         [ids]
      * @return      List<Merchant>
      * @Description 按ids查询列表
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public List<Merchant> queryByIds(List<BigInteger> ids);
 
@@ -57,7 +57,7 @@ public interface MerchantBizService{
      * @see         [Merchant]
      * @return      Merchant
      * @Description 根据entity查询一条记录
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public Merchant queryByParam(Merchant merchant);
 
@@ -66,7 +66,7 @@ public interface MerchantBizService{
      * @see         [Merchant]
      * @return
      * @Description 添加
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public void insert(Merchant merchant);
 
@@ -75,7 +75,7 @@ public interface MerchantBizService{
      * @see         [Merchant]
      * @return
      * @Description 添加or更新
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public void insertOrUpdate(Merchant merchant);
 
@@ -84,7 +84,7 @@ public interface MerchantBizService{
      * @see         [Merchant]
      * @return
      * @Description 更新
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public void update(Merchant merchant);
 

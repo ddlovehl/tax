@@ -24,7 +24,7 @@
     	<module>tax-user</module>
     	<module>tax-common</module>
     	<module>tax-order</module>
-    	<module>tax-auth-server</module>
+    	<module>tax-h5</module>
 	</modules>
 
 	<properties>
@@ -49,6 +49,24 @@
 		<groupId>org.projectlombok</groupId>
 		<artifactId>lombok</artifactId>
 	 </dependency>
+	 <!--引入spring boot的web-->
+     <!-- <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-web</artifactId>
+         排除内置的tomcat
+         <exclusions>
+             <exclusion>
+                 <groupId>org.springframework.boot</groupId>
+                 <artifactId>spring-boot-starter-tomcat</artifactId>
+             </exclusion>
+         </exclusions>
+     </dependency> -->
+
+     <!--引入 servlet api-->
+     <!-- <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>javax.servlet-api</artifactId>
+     </dependency> -->
 	</dependencies>
 
 	<dependencyManagement>
@@ -102,6 +120,14 @@
                 <version>${json-lib-version}</version>
                 <classifier>jdk15</classifier>
             </dependency>
+            
+            <!-- fastjson -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
+			</dependency>
+			
 			<!--commons-code-->
 			<dependency>
 				<groupId>commons-codec</groupId>

@@ -9,7 +9,7 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.api.userAccount.dao
  * @author hdq
- * @Date 2018-09-05 18:26:55
+ * @Date 2018-09-07 15:01:18
  * @Description è´¦æˆ·è¡¨ 查询服务
  */
 public interface UserAccountQueryService{
@@ -19,7 +19,7 @@ public interface UserAccountQueryService{
      * @see         [UserAccount]
      * @return      boolean
      * @Description 根据id查询
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public UserAccount queryById(BigInteger id);
 
@@ -28,7 +28,7 @@ public interface UserAccountQueryService{
      * @see         [UserAccount]
      * @return      boolean
      * @Description 根据ids查询列表
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public List<UserAccount> queryByIds(List<BigInteger> ids);
 
@@ -37,7 +37,7 @@ public interface UserAccountQueryService{
      * @see         [UserAccount]
      * @return      boolean
      * @Description 查询列表总数
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public int queryCountUserAccount(UserAccount userAccount);
 
@@ -46,7 +46,7 @@ public interface UserAccountQueryService{
      * @see         [UserAccount]
      * @return      boolean
      * @Description 查询列表
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public List<UserAccount> queryAllUserAccount(UserAccount userAccount);
 
@@ -55,7 +55,7 @@ public interface UserAccountQueryService{
      * @see         [UserAccount]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public List<UserAccount> queryListForPageUserAccount(UserAccount userAccount,Integer pageNo,Integer pageSize);
 
@@ -64,7 +64,7 @@ public interface UserAccountQueryService{
      * @see         [UserAccount]
      * @return      boolean
      * @Description 查询列表分页
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public UserAccount queryEntityByUserAccountEntity(UserAccount userAccount);
 

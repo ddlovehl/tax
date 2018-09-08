@@ -9,7 +9,7 @@ import java.util.List;
  * @Project new_project
  * @Package com.ebuy.tax.user.api.role.dao
  * @Author hdq
- * @Date 2018-09-05 18:26:55
+ * @Date 2018-09-07 15:01:18
  * @Description IroleDao
  */
 public interface IRoleDao extends IService<Role> {
@@ -19,7 +19,7 @@ public interface IRoleDao extends IService<Role> {
      * @see         [Role]
      * @return      java.lang.Long
      * @Description 查询列表总数
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public int queryCount(Role role);
 
@@ -28,7 +28,7 @@ public interface IRoleDao extends IService<Role> {
      * @see         [Role]
      * @return      List<Role>
      * @Description 查询列表
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public List<Role> queryList(Role role);
 
@@ -37,7 +37,7 @@ public interface IRoleDao extends IService<Role> {
      * @see         List<Role>
      * @return      java.lang.Long
      * @Description 查询列表
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public List<Role>  queryListForPage(Role role,Integer pageNo,Integer pageSize);
 
@@ -46,7 +46,7 @@ public interface IRoleDao extends IService<Role> {
      * @see         [Role]
      * @return      List<Role>
      * @Description 查询列表
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:18
      */
     public Role queryEntityByRoleEntity(Role role);
 }

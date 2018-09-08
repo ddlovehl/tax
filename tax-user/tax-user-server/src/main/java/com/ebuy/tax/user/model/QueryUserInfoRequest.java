@@ -1,5 +1,7 @@
 package com.ebuy.tax.user.model;
 
+import com.ebuy.tax.common.annotations.Validator;
+import com.ebuy.tax.common.enums.RegexEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -16,9 +18,10 @@ import lombok.Data;
 public class QueryUserInfoRequest {
 
     /**
-     *  手机号
+     *  用户id
      */
-    @ApiModelProperty(value="手机号",name="mobile")
-    private String mobile;
+    @Validator(isEmpty = false,maxLength = 32,description = "用户id")
+    @ApiModelProperty(value="用户id",name="userId")
+    private String userId;
 
 }

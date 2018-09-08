@@ -10,20 +10,23 @@ import java.util.regex.Pattern;
  */
 public class RegexUtils {
 
-    public static String REGEX_IP = "^(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|[1-9])\\."
+    public static final String REGEX_IP = "^(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|[1-9])\\."
             + "(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)\\."
             + "(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)\\."
             + "(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)$";
 
-    public static String REGEX_EMAIL = "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+    public static final String REGEX_EMAIL = "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
 
-    public static String REGEX_CHINESE = "[\u4e00-\u9fa5]";
+    public static final String REGEX_CHINESE = "[\u4e00-\u9fa5]";
 
-    public static String REGEX_NUMBER = "[0-9]*";
+    public static final String REGEX_NUMBER = "[0-9]*";
 
-    public static String REGEX_SPECIALCHAR = "[a-z]*[A-Z]*\\d*-*_*\\s*";
+    public static final String REGEX_SPECIALCHAR = "[a-z]*[A-Z]*\\d*-*_*\\s*";
 
-    public static String REGEX_MOBILE = "^1[3|4|7|5|8][0-9]\\d{8}$";
+    public static final String REGEX_MOBILE = "^1[3|4|7|5|8][0-9]\\d{8}$";
+
+    public static final String REGEX_SEX = "[1-3]";
+
     /**
      * 判断是否是正确的IP地址
      * @param ip

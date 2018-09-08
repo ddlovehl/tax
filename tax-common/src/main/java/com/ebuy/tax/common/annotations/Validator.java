@@ -11,7 +11,7 @@ import java.lang.annotation.*;
  * 自定义注解，因各个接口都需要参数校验，减少代码量，紧耦合
  */
 @Documented
-@Target(ElementType.METHOD)
+@Target(ElementType.FIELD)
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
 public  @interface Validator {

@@ -1,5 +1,6 @@
 package com.ebuy.tax.user.implementation.company.service;
 
+import com.ebuy.tax.common.constants.SysConstant;
 import com.ebuy.tax.user.api.company.entity.Company;
 import com.ebuy.tax.user.api.company.dao.ICompanyDao;
 import com.ebuy.tax.user.api.company.service.CompanyDmlService;
@@ -12,6 +13,7 @@ import java.math.BigInteger;
 
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.ebuy.tax.common.exception.SystemException;
 import javax.annotation.Resource;
@@ -19,10 +21,11 @@ import javax.annotation.Resource;
 /**
  * @Package com.ebuy.tax.user.implementation.company.dao
  * @author hdq
- * @Date 2018-09-05 18:26:55
+ * @Date 2018-09-07 15:01:17
  * @Description å…¬å¸è¡¨ 操作服务
  */
-@CacheConfig(cacheNames = {"CompanyCache}"})
+@Service(value = "companyDmlService")
+@CacheConfig(cacheNames = {"CompanyCache"})
 public class CompanyDmlServiceImpl implements CompanyDmlService {
 
     private static final Logger log = LoggerFactory.getLogger(CompanyDmlServiceImpl.class);
@@ -35,13 +38,16 @@ public class CompanyDmlServiceImpl implements CompanyDmlService {
      * @see         [Company]
      * @return      boolean
      * @Description 添加信息
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:17
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
     public boolean insertCompany(Company company){
         boolean flag = true;
         try{
+            if(null==company.getIsDefault()){
+                company.setIsDefault(SysConstant.IS_DEFAULT.NO.getValue());
+            }
             flag = companyDao.insert(company);
         } catch (Exception e){
             log.error("CompanyDmlServiceImpl-insertCompany添加异常", e);
@@ -55,7 +61,7 @@ public class CompanyDmlServiceImpl implements CompanyDmlService {
      * @see         [Company]
      * @return      boolean
      * @Description 批量增加
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:17
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -75,7 +81,7 @@ public class CompanyDmlServiceImpl implements CompanyDmlService {
      * @see         [Company]
      * @return      boolean
      * @Description 增加or更新
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:17
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -96,7 +102,7 @@ public class CompanyDmlServiceImpl implements CompanyDmlService {
      * @see         [Company]
      * @return      boolean
      * @Description 更新
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:17
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -116,7 +122,7 @@ public class CompanyDmlServiceImpl implements CompanyDmlService {
      * @see         [Company]
      * @return      boolean
      * @Description 更新
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:17
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -136,7 +142,7 @@ public class CompanyDmlServiceImpl implements CompanyDmlService {
      * @see         [Company]
      * @return      boolean
      * @Description 删除
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:17
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
@@ -156,7 +162,7 @@ public class CompanyDmlServiceImpl implements CompanyDmlService {
      * @see         [Company]
      * @return      boolean
      * @Description 根据id批量删除
-     * @date        2018-09-05 18:26:55
+     * @date        2018-09-07 15:01:17
      */
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)

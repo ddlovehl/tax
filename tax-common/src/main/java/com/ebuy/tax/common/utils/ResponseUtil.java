@@ -23,7 +23,7 @@ public class ResponseUtil {
      * @date 2018年7月18日 上午11:29:38
      * @desc 通用填充返回信息，转成json字符串
      */
-    public static String fillResponseToJson(Object obj) throws Exception {
+    public static ResponseBase fillResponse(Object obj) throws Exception {
         log.debug("------填充返回信息，转成json字符串------");
         ResponseBase response = successResponse();
         try {
@@ -32,7 +32,8 @@ public class ResponseUtil {
             log.error("填充返回信息，转成json字符串失败", e);
             CommonExceptionUtils.throwSystemException("json字符串转换失败");
         }
-        return JsonUtil.beanToJsonStr(response).toString();
+        log.info("返回信息：{}",response);
+        return response;
     }
 
     /**
@@ -58,22 +59,10 @@ public class ResponseUtil {
     }
 
     /**
-    * @author      hdq
-    * @see         []
-    * @return      java.lang.String
-    * @Description 成功返回json
-    * @date        2018/7/27 13:56
-    */
-    public static String responseToJson(){
-        ResponseBase response = successResponse();
-        return JsonUtil.beanToJsonStr(response).toString();
-    }
-
-    /**
      * @author      hdq
      * @see         []
      * @return      java.lang.String
-     * @Description 成功返回码填充
+     * @Description 成功返回信息填充
      * @date        2018/7/27 13:56
      */
     public static ResponseBase successResponse(){
@@ -99,6 +88,7 @@ public class ResponseUtil {
             log.error("填充返回信息，转成json字符串失败", e);
             CommonExceptionUtils.throwSystemException("json字符串转换失败");
         }
+        log.info("返回信息：{}",response);
         return JsonUtil.beanToJsonStr(response).toString();
     }
 }
