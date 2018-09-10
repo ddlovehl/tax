@@ -31,7 +31,7 @@ public class UserQueryServiceImpl implements UserQueryService{
      * @date        2018-09-07 15:01:18
      */
     @Override
-    public User queryById(BigInteger id){
+    public User queryById(String id){
         return userDao.selectById(id);
     }
 

@@ -22,10 +22,15 @@ public class RegexUtils {
     public static final String REGEX_NUMBER = "[0-9]*";
 
     public static final String REGEX_SPECIALCHAR = "[a-z]*[A-Z]*\\d*-*_*\\s*";
-
+    /** 手机号*/
     public static final String REGEX_MOBILE = "^1[3|4|7|5|8][0-9]\\d{8}$";
-
+    /** 性别*/
     public static final String REGEX_SEX = "[1-3]";
+
+    /** 页码*/
+    public static final String REGEX_PAGENO = "[1-9]\\d{0,9}"; //TODO 暂定10位数字
+    /** 页面大小*/
+    public static final String REGEX_PAGESIZE = "[1-9]\\d{0,9}"; //TODO 暂定10位数字
 
     /**
      * 判断是否是正确的IP地址
@@ -155,4 +160,5 @@ public class RegexUtils {
         }
         return false;
     }
+
 }

@@ -3,6 +3,7 @@ package com.ebuy.tax.user.api.company.service;
 import com.ebuy.tax.user.api.company.entity.Company;
 
 import com.ebuy.tax.common.entity.PageResult;
+import com.ebuy.tax.user.dto.CompanyDto;
 import com.ebuy.tax.user.dto.QueryCompanyListForCtDto;
 import com.ebuy.tax.user.dto.QueryCompanyListForItDto;
 
@@ -69,7 +70,7 @@ public interface CompanyBizService{
      * @Description 新增公司
      * @date        2018-09-07 15:01:17
      */
-    public void insert(Company company);
+    public void insert(CompanyDto companyDto);
 
     /**
      * @author      hdq
@@ -91,20 +92,20 @@ public interface CompanyBizService{
 
     /**
      * @return java.lang.String
-     * @param userId
+     * @param userId pageNo pageSize
      * @author hdq
-     * @Description 查询我的公司--创建列表
+     * @Description 查询我的公司--创建列表 (分页)
      * @date 2018/9/7 19:20
      */
-    public List<QueryCompanyListForCtDto> queryCompanyListForCt(String userId);
+    public PageResult queryCompanyListForCt(String userId, Integer pageNo, Integer pageSize);
 
     /**
      * @return java.lang.String
-     * @param userId
+     * @param userId pageNo pageSize
      * @author hdq
      * @Description 查询我的公司--邀请列表
      * @date 2018/9/7 19:20
      */
-    public List<QueryCompanyListForItDto> queryCompanyListForIt(String userId);
+    public PageResult queryCompanyListForIt(String userId, Integer pageNo, Integer pageSize);
 }
 

@@ -20,4 +20,5 @@ public interface UserMapper extends SuperMapper<User> {
     List<User> queryListForPage( @Param("entity")User user, @Param("start")Integer start, @Param("pageSize")Integer pageSize);
 
     User queryEntityByUserEntity(User user);
+
 }

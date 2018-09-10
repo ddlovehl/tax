@@ -16,8 +16,8 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public  @interface Validator {
 
-    //是否为空, 默认true可以为空， false 不能为空
-    boolean isEmpty() default true;
+    //是否为空, 默认true 不为空， false 可以为空
+    boolean isNotNull() default false;
     //最大长度
     int maxLength() default 0;
     //最小长度

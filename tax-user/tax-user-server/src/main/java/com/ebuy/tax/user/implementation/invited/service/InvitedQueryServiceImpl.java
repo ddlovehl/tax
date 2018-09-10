@@ -3,6 +3,7 @@ package com.ebuy.tax.user.implementation.invited.service;
 import com.ebuy.tax.user.api.invited.entity.Invited;
 import com.ebuy.tax.user.api.invited.dao.IInvitedDao;
 import com.ebuy.tax.user.api.invited.service.InvitedQueryService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.math.BigInteger;
  * @Date 2018-09-07 15:01:17
  * @Description è¢«é‚€è¯·è¡¨ 查询服务
  */
+@Slf4j
 @Service(value = "invitedQueryService")
 @CacheConfig(cacheNames = {"InvitedCache"})
 public class InvitedQueryServiceImpl implements InvitedQueryService{
@@ -43,7 +45,7 @@ public class InvitedQueryServiceImpl implements InvitedQueryService{
      * @Description 根据ids查询列表
      * @date        2018-09-07 15:01:17
      */
-        @Override
+    @Override
     public List<Invited> queryByIds(List<BigInteger> ids){
         return (List<Invited>)invitedDao.selectBatchIds(ids);
     }
@@ -57,7 +59,10 @@ public class InvitedQueryServiceImpl implements InvitedQueryService{
      */
     @Override
     public int queryCountInvited(Invited invited){
-        return invitedDao.queryCount(invited);
+        log.info("查询分页列表总数 入参:",invited);
+        int result = invitedDao.queryCount(invited);
+        log.info("查询分页列表总数 结果:",result);
+        return result;
     }
 
     /**

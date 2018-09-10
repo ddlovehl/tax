@@ -2,6 +2,7 @@ package com.ebuy.tax.user.controller;
 
 
 import java.awt.image.BufferedImage;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,6 +21,7 @@ import com.ebuy.tax.user.model.QueryUserInfoResponse;
 import com.ebuy.tax.user.model.UpdateUserInfoRequest;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -294,7 +296,7 @@ public class UserController {
 	 * @date 2018-09-05 09:57:24
 	 *  @see   [obj]
 	 */
-	@ApiOperation(value="获取用户信息", notes="获取用户信息, 暂需要传userid，待完善登录接口保存用户信息后，不需要传参数，直接获取用户信息")// 使用该注解描述接口方法信息
+	@ApiOperation(value="我的资料--获取用户信息", notes="获取用户信息,")
 	@PostMapping(value = "/queryUserInfo")
 	@ApiResponses({
 			@ApiResponse(code=200,message="成功",response= QueryUserInfoResponse.class),
@@ -303,9 +305,7 @@ public class UserController {
 		log.info("获取用户信息，参数：{}",req);
 		//参数校验
 		ValidateUtil.valid(req);
-		User user = new User();
-		user.setMobile(req.getUserId());
-		User result = userBizService.queryByParam(user);
+		User result = userBizService.queryById(req.getUserId());
 		//QueryUserInfoResponse用于返回转化json字符串的封装类
 		QueryUserInfoResponse res = new QueryUserInfoResponse();
 		BeanUtils.copyProperties(result,res);
@@ -319,7 +319,7 @@ public class UserController {
 	 * @date 2018-09-05 09:57:24
 	 *  @see   [obj]
 	 */
-	@ApiOperation(value="更新用户信息", notes="更新用户信息---暂需要传userid，待完善登录接口保存用户信息后，不需要传userid")// 使用该注解描述接口方法信息
+	@ApiOperation(value="我的资料--更新用户信息", notes="更新用户信息")
 	@PostMapping(value = "/updateUserInfo")
 	public ResponseBase updateUserInfo(@RequestBody @ApiParam(name="QueryUserInfoRequest",value="传入json格式",required=true) UpdateUserInfoRequest req) throws Exception {
 		log.info("更新用户信息参数：{}",req);
@@ -327,8 +327,11 @@ public class UserController {
 		ValidateUtil.valid(req);
 		User user = new User();
 		BeanUtils.copyProperties(req,user);
+		user.setId(req.getUserId());
+		user.setSex(Integer.parseInt(req.getSex()));
 		userBizService.update(user);
 		return ResponseUtil.successResponse();
 	}
+
 }
 

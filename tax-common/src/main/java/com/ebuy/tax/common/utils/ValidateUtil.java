@@ -53,7 +53,7 @@ public class ValidateUtil {
         description = dv.description().equals("") ? field.getName() : dv
                 .description();
         /************* 注解解析工作开始 ******************/
-        if (!dv.isEmpty()) {
+        if (dv.isNotNull()) {
             if (value == null || "".equals(value.toString())) {
                 throw new ValidationException(description + "不能为空");
             }
@@ -65,42 +65,54 @@ public class ValidateUtil {
             if (value.toString().length() < dv.minLength() && dv.minLength() != 0) {
                 throw new ValidationException(description + "长度不能小于" + dv.minLength());
             }
-            if (dv.regexType() != RegexEnum.NONE) {
-                switch (dv.regexType()) {
-                    case NONE:
-                        break;
-                    case SPECIALCHAR:
-                        if (RegexUtils.hasSpecialChar(value.toString())) {
-                            throw new ValidationException(description + "不能含有特殊字符");
-                        }
-                        break;
-                    case CHINESE:
-                        if (RegexUtils.isChinese2(value.toString())) {
-                            throw new ValidationException(description + "不能含有中文字符");
-                        }
-                        break;
-                    case EMAIL:
-                        if (!RegexUtils.isEmail(value.toString())) {
-                            throw new ValidationException(description + "地址格式不正确");
-                        }
-                        break;
-                    case NUMBER:
-                        if (!RegexUtils.isNumber(value.toString())) {
-                            throw new ValidationException(description + "不是数字");
-                        }
-                        break;
-                    case PHONENUMBER:
-                        if (!RegexUtils.isPhoneNumber(value.toString())) {
-                            throw new ValidationException(description + "格式不正确");
-                        }
-                        break;
-                    default:
-                        break;
+            if(!StringUtils.isBlank(value.toString())) {
+                if (dv.regexType() != RegexEnum.NONE) {
+                    switch (dv.regexType()) {
+                        case NONE:
+                            break;
+                        case SPECIALCHAR:
+                            if (RegexUtils.hasSpecialChar(value.toString())) {
+                                throw new ValidationException(description + "不能含有特殊字符");
+                            }
+                            break;
+                        case CHINESE:
+                            if (RegexUtils.isChinese2(value.toString())) {
+                                throw new ValidationException(description + "不能含有中文字符");
+                            }
+                            break;
+                        case EMAIL:
+                            if (!RegexUtils.isEmail(value.toString())) {
+                                throw new ValidationException(description + "地址格式不正确");
+                            }
+                            break;
+                        case NUMBER:
+                            if (!RegexUtils.isNumber(value.toString())) {
+                                throw new ValidationException(description + "不是数字");
+                            }
+                            break;
+                        case PHONENUMBER:
+                            if (!RegexUtils.isPhoneNumber(value.toString())) {
+                                throw new ValidationException(description + "格式不正确");
+                            }
+                            break;
+                        case PAGENO:
+                            if (!RegexUtils.isPhoneNumber(value.toString())) {
+                                throw new ValidationException(description + "格式不正确");
+                            }
+                            break;
+                        case PAGESIZE:
+                            if (!RegexUtils.isPhoneNumber(value.toString())) {
+                                throw new ValidationException(description + "格式不正确");
+                            }
+                            break;
+                        default:
+                            break;
+                    }
                 }
-            }
-            if (!dv.regexExpression().equals("")) {
-                if (!value.toString().matches(dv.regexExpression())) {
-                    throw new ValidationException(description + "格式不正确");
+                if (!dv.regexExpression().equals("")) {
+                    if (!value.toString().matches(dv.regexExpression())) {
+                        throw new ValidationException(description + "格式不正确");
+                    }
                 }
             }
         }

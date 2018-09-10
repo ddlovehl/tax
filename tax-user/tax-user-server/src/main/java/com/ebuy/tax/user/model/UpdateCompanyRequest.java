@@ -19,14 +19,14 @@ public class UpdateCompanyRequest {
     /**
      * 公司id
      */
-    @Validator(isEmpty = false,maxLength = 32,description = "公司id")
+    @Validator(isNotNull = true,maxLength = 32,description = "公司id")
     @ApiModelProperty(value="公司id",name="companyId")
     private String companyId;
 
     /**
      *  公司名称
      */
-    @Validator(isEmpty = false,maxLength = 100,description = "公司名称")
+    @Validator(isNotNull = true,maxLength = 100,description = "公司名称")
     @ApiModelProperty(value="公司名称",name="companyName")
     private String companyName;
 
@@ -40,26 +40,26 @@ public class UpdateCompanyRequest {
     /**
      * 行业id
      */
-    @Validator(isEmpty = false,maxLength = 32,description = "行业id")
+    @Validator(isNotNull = true,maxLength = 32,description = "行业id")
     @ApiModelProperty(value="行业id",name="industryId")
     private String industryId;
 
     /**
      * 所在地（省）
      */
-    @Validator(isEmpty = false,maxLength = 20,description = "所在地（省）")
+    @Validator(isNotNull = true,maxLength = 20,description = "所在地（省）")
     @ApiModelProperty(value="所在地（省",name="locationProvince")
     private String locationProvince;
     /**
      * 所在地（市）
      */
-    @Validator(isEmpty = false,maxLength = 20,description = "所在地（市）")
+    @Validator(isNotNull = true,maxLength = 20,description = "所在地（市）")
     @ApiModelProperty(value="所在地（市）",name="locationCity")
     private String locationCity;
     /**
      * 所在地（县、区）
      */
-    @Validator(isEmpty = false,maxLength = 20,description = "所在地（县、区）")
+    @Validator(isNotNull = true,maxLength = 20,description = "所在地（县、区）")
     @ApiModelProperty(value="所在地（县、区）",name="locationCounty")
     private String locationCounty;
 

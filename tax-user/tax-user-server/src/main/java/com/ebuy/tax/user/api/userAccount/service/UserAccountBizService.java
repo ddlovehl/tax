@@ -96,6 +96,6 @@ public interface UserAccountBizService{
      * @Description 获取我的账户余额
      * @date 2018/9/8 18:39
      */
-    public BigDecimal queryAccountBalance();
+    public BigDecimal queryAccountBalance(String userId);
 }
 

@@ -2,6 +2,8 @@ package com.ebuy.tax.user.api.company.service;
 
 import com.ebuy.tax.common.constants.ResponseConstant;
 import com.ebuy.tax.common.utils.CommonExceptionUtils;
+import com.ebuy.tax.common.utils.PageUtils;
+import com.ebuy.tax.common.utils.StringUtils;
 import com.ebuy.tax.user.api.company.entity.Company;
 
 import javax.annotation.Resource;
@@ -16,16 +18,18 @@ import com.ebuy.tax.user.api.customer.service.CustomerDmlService;
 import com.ebuy.tax.user.api.customer.service.CustomerQueryService;
 import com.ebuy.tax.user.api.invited.entity.Invited;
 import com.ebuy.tax.user.api.invited.service.InvitedQueryService;
+import com.ebuy.tax.user.dto.CompanyDto;
 import com.ebuy.tax.user.dto.QueryCompanyListForCtDto;
 import com.ebuy.tax.user.dto.QueryCompanyListForItDto;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import com.ebuy.tax.common.entity.PageResult;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @Package com.ebuy.tax.user.api.company.dao
  * @author hdq
+ * @Package com.ebuy.tax.user.api.company.dao
  * @Date 2018-09-07 15:01:17
  * @Description
  */
@@ -50,11 +54,11 @@ public class CompanyBizServiceImpl implements CompanyBizService {
     private InvitedQueryService invitedQueryService;
 
     /**
-     * @author hdq
-     * @see         [Company]
      * @return List<Company>
+     * @author hdq
      * @Description 查询列表
-     * @date        2018-09-07 15:01:17
+     * @date 2018-09-07 15:01:17
+     * @see [Company]
      */
     @Override
     public List<Company> queryList(Company company) {
@@ -62,11 +66,11 @@ public class CompanyBizServiceImpl implements CompanyBizService {
     }
 
     /**
-     * @author hdq
-     * @see         [Company] [pageNo] [pageSize]
      * @return PageResult
+     * @author hdq
      * @Description 查询列表(分页)
-     * @date        2018-09-07 15:01:17
+     * @date 2018-09-07 15:01:17
+     * @see [Company] [pageNo] [pageSize]
      */
     @Override
     public PageResult queryListPage(Company company, Integer pageNo, Integer pageSize) {
@@ -80,11 +84,11 @@ public class CompanyBizServiceImpl implements CompanyBizService {
     }
 
     /**
+     * @return Company
      * @author hdq
-     * @see         [id]
-     * @return      Company
      * @Description 按id查询
-     * @date        2018-09-07 15:01:17
+     * @date 2018-09-07 15:01:17
+     * @see [id]
      */
     @Override
     public Company queryById(String id) {
@@ -92,11 +96,11 @@ public class CompanyBizServiceImpl implements CompanyBizService {
     }
 
     /**
-     * @author hdq
-     * @see         [ids]
      * @return List<Company>
+     * @author hdq
      * @Description 按ids查询列表
-     * @date        2018-09-07 15:01:17
+     * @date 2018-09-07 15:01:17
+     * @see [ids]
      */
     @Override
     public List<Company> queryByIds(List<String> ids) {
@@ -104,11 +108,11 @@ public class CompanyBizServiceImpl implements CompanyBizService {
     }
 
     /**
+     * @return Company
      * @author hdq
-     * @see         [Company]
-     * @return      Company
      * @Description 根据entity查询一条记录
-     * @date        2018-09-07 15:01:17
+     * @date 2018-09-07 15:01:17
+     * @see [Company]
      */
     @Override
     public Company queryByParam(Company company) {
@@ -116,133 +120,157 @@ public class CompanyBizServiceImpl implements CompanyBizService {
     }
 
     /**
-     * @author hdq
-     * @see         [Company]
      * @return
+     * @author hdq
      * @Description 我的公司--新增
-     * @date        2018-09-07 15:01:17
+     * @date 2018-09-07 15:01:17
+     * @see [Company]
      */
     @Override
-    public void insert(Company company) {
+    public void insert(CompanyDto companyDto) {
         Company param = new Company();
-        param.setCompanyName(company.getCompanyName());
+        param.setCompanyName(companyDto.getCompanyName());
         //根据公司名称查询公司信息
         Company result = companyQueryService.queryEntityByCompanyEntity(param);
 
-        CommonExceptionUtils.isNull(result, ResponseConstant.ERR_CODE_USER.COMPANY_NAME_EXIST,ResponseConstant.ERR_INFO_USER.COMPANY_NAME_EXIST);
+        CommonExceptionUtils.isNotNull(result, ResponseConstant.ERR_CODE_USER.COMPANY_NAME_EXIST, ResponseConstant.ERR_INFO_USER.COMPANY_NAME_EXIST);
 
-        company.setId(System.currentTimeMillis()+"");//TODO 公司id待定
+        companyDto.setId(System.currentTimeMillis() + "");//TODO 公司id待定
+        //dto转化
+        Company company = new Company();
+        BeanUtils.copyProperties(companyDto,company);
         companyDmlService.insertCompany(company);
 
         Customer customer = new Customer();
-        customer.setCompanyId(company.getId());
-        customer.setUserId("32161321651516");//TODO 暂时写死
-        customer.setCompanyId(System.currentTimeMillis()+"");//TODO customerId待定
+        customer.setCompanyId(companyDto.getId());
+        customer.setUserId(companyDto.getUserId());
+        customer.setId(System.currentTimeMillis() + "");//TODO customerId待定
         //建立关联数据
         customerDmlService.insertCustomer(customer);
     }
 
     /**
-     * @author hdq
-     * @see         [Company]
      * @return
+     * @author hdq
      * @Description 添加or更新
-     * @date        2018-09-07 15:01:17
+     * @date 2018-09-07 15:01:17
+     * @see [Company]
      */
     @Override
     public void insertOrUpdate(Company company) {
-            companyDmlService.insertOrUpdateCompany(company);
+        companyDmlService.insertOrUpdateCompany(company);
     }
 
     /**
-     * @author hdq
-     * @see         [Company]
      * @return
+     * @author hdq
      * @Description 更新
-     * @date        2018-09-07 15:01:17
+     * @date 2018-09-07 15:01:17
+     * @see [Company]
      */
     @Override
     public void update(Company company) {
+        Company param = new Company();
+        param.setCompanyName(company.getCompanyName());
+        //根据公司名称查询公司信息
+        Company result = companyQueryService.queryEntityByCompanyEntity(param);
+
+        CommonExceptionUtils.isNotNull(result, ResponseConstant.ERR_CODE_USER.COMPANY_NAME_EXIST, ResponseConstant.ERR_INFO_USER.COMPANY_NAME_EXIST);
+
         company.setUpdateTime(new Date());
         companyDmlService.updateCompany(company);
     }
 
     /**
-     * @author hdq
-     * @see         [Company]
      * @return
-     * @Description 查询我的公司--创建列表
-     * @date        2018-09-07 15:01:17
+     * @author hdq
+     * @Description 查询我的公司--创建列表 (分页)
+     * @date 2018-09-07 15:01:17
+     * @see [Company]
      */
     @Override
-    public List<QueryCompanyListForCtDto> queryCompanyListForCt(String userId){
+    public PageResult queryCompanyListForCt(String userId, Integer pageNo, Integer pageSize) {
+
         Customer customerParam = new Customer();
         customerParam.setUserId(userId);
-        //查询客户表关联的公司数据
-        List<Customer> customerList = customerQueryService.queryAllCustomer(customerParam);
+        //查询分页列表总数
+        int count = customerQueryService.queryCountCustomer(customerParam);
 
-        //未查询到结果集直接返回
-        if(customerList.isEmpty()){
-            return null;
-        }
-        //单独取出公司id的list
-        List<String> companyIds = customerList.stream().map(Customer :: getCompanyId).collect(Collectors.toList());
-        //根据公司idlist查询公司列表信息
-        List<Company> companyList = companyQueryService.queryByIds(companyIds);
         List<QueryCompanyListForCtDto> queryCompanyListDtoListForCt = new LinkedList<QueryCompanyListForCtDto>();
-        //合并结果集
-        for(Customer customer : customerList){
-            for(Company company : companyList){
-                if(customer.getCompanyId().equals(company.getId())){
-                    QueryCompanyListForCtDto queryCompanyListForCtDto = new QueryCompanyListForCtDto();
-                    queryCompanyListForCtDto.setCompanyId(customer.getCompanyId());
-                    queryCompanyListForCtDto.setCompanyName(company.getCompanyName());
-                    queryCompanyListForCtDto.setCustomerStatus(customer.getCustomerStatus().toString());
-                    queryCompanyListForCtDto.setIsDefault("0");//TODO 需要改表结构， 暂时先写死  0否 1是
-                    queryCompanyListDtoListForCt.add(queryCompanyListForCtDto);
+
+        if (count > 0) {
+            //查询客户表关联的公司数据
+            List<Customer> customerList = customerQueryService.queryAllCustomer(customerParam);
+
+            //单独取出公司id的list
+            List<String> companyIdList = customerList.stream().map(Customer::getCompanyId).collect(Collectors.toList());
+
+            //截取分页conpanyIds
+            List<String> companyIds = PageUtils.subListForPage(companyIdList,pageNo,pageSize);
+            //根据公司idlist查询公司列表信息
+            List<Company> companyList = companyQueryService.queryByIds(companyIds);
+
+            //合并结果集
+            for (Customer customer : customerList) {
+                for (Company company : companyList) {
+                    if (customer.getCompanyId().equals(company.getId())) {
+                        QueryCompanyListForCtDto queryCompanyListForCtDto = new QueryCompanyListForCtDto();
+                        queryCompanyListForCtDto.setCompanyId(customer.getCompanyId());
+                        queryCompanyListForCtDto.setCompanyName(company.getCompanyName());
+                        queryCompanyListForCtDto.setCustomerStatus(customer.getCustomerStatus() == null ? null : customer.getCustomerStatus().toString());
+                        queryCompanyListForCtDto.setIsDefault(company.getIsDefault()==null?null:company.getIsDefault().toString());//TODO 需要改表结构， 暂时先写死  0否 1是
+                        queryCompanyListDtoListForCt.add(queryCompanyListForCtDto);
+                    }
                 }
             }
-        }
 
-        return queryCompanyListDtoListForCt;
+        }
+        return new PageResult(queryCompanyListDtoListForCt, (long) count);
+
     }
 
     /**
-     * @author hdq
-     * @see         [Company]
      * @return
-     * @Description 查询我的公司--创建列表
-     * @date        2018-09-07 15:01:17
+     * @author hdq
+     * @Description 查询我的公司--邀请列表 (分页)
+     * @date 2018-09-07 15:01:17
+     * @see [Company]
      */
     @Override
-    public List<QueryCompanyListForItDto> queryCompanyListForIt(String userId){
+    public PageResult queryCompanyListForIt(String userId, Integer pageNo, Integer pageSize) {
         Invited invitedParam = new Invited();
         invitedParam.setInvitedUserId(userId);
-        //查询被邀请的公司数据
-        List<Invited> invitedList = invitedQueryService.queryAllInvited(invitedParam);
 
-        //未查询到结果集直接返回
-        if(invitedList.isEmpty()){
-            return null;
-        }
-        //单独取出公司id的list
-        List<String> companyIds = invitedList.stream().map(Invited :: getCompanyId).collect(Collectors.toList());
-        //根据公司idlist查询公司列表信息
-        List<Company> companyList = companyQueryService.queryByIds(companyIds);
+        //查询分页列表总数
+        int count = invitedQueryService.queryCountInvited(invitedParam);
+
         List<QueryCompanyListForItDto> queryCompanyListForItDtoList = new LinkedList<QueryCompanyListForItDto>();
-        //合并结果集
-        for(Invited invited : invitedList){
-            for(Company company : companyList){
-                if(invited.getCompanyId().equals(company.getId())){
-                    QueryCompanyListForItDto queryCompanyListForItDto = new QueryCompanyListForItDto();
-                    queryCompanyListForItDto.setCompanyId(invited.getCompanyId());
-                    queryCompanyListForItDto.setCompanyName(company.getCompanyName());
-                    queryCompanyListForItDtoList.add(queryCompanyListForItDto);
+
+        if (count > 0) {
+            //查询被邀请的公司数据
+            List<Invited> invitedList = invitedQueryService.queryAllInvited(invitedParam);
+
+            //单独取出公司id的list
+            List<String> companyIdList = invitedList.stream().map(Invited::getCompanyId).collect(Collectors.toList());
+            //截取分页conpanyIds
+            List<String> conpanyIds = PageUtils.subListForPage(companyIdList,pageNo,pageSize);
+
+            //根据公司idlist查询公司列表信息
+            List<Company> companyList = companyQueryService.queryByIds(conpanyIds);
+            //合并结果集
+            for (Invited invited : invitedList) {
+                for (Company company : companyList) {
+                    if (invited.getCompanyId().equals(company.getId())) {
+                        QueryCompanyListForItDto queryCompanyListForItDto = new QueryCompanyListForItDto();
+                        queryCompanyListForItDto.setCompanyId(invited.getCompanyId());
+                        queryCompanyListForItDto.setCompanyName(company.getCompanyName());
+                        queryCompanyListForItDtoList.add(queryCompanyListForItDto);
+                    }
                 }
             }
         }
 
-        return queryCompanyListForItDtoList;
+        return new PageResult(queryCompanyListForItDtoList, (long) count);
     }
 }
 

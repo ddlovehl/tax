@@ -43,6 +43,7 @@ public class CompanyDmlServiceImpl implements CompanyDmlService {
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
     public boolean insertCompany(Company company){
+        log.info("添加信息{}",company);
         boolean flag = true;
         try{
             if(null==company.getIsDefault()){
@@ -53,6 +54,7 @@ public class CompanyDmlServiceImpl implements CompanyDmlService {
             log.error("CompanyDmlServiceImpl-insertCompany添加异常", e);
             throw new SystemException(ResponseConstant.ERR_CODE.FAIL, "添加用户信息失败");
         }
+        log.info("结果：{}",flag);
         return flag;
     }
 

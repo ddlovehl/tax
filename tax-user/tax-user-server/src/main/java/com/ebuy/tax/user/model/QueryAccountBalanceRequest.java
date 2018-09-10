@@ -1,7 +1,5 @@
 package com.ebuy.tax.user.model;
 
-import com.ebuy.tax.common.annotations.Validator;
-import com.ebuy.tax.common.enums.RegexEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -13,14 +11,13 @@ import lombok.Data;
  * @Date 2018/7/25 18:40
  * @Description
  */
-@ApiModel(value="获取用户信息接接收参数封装")
+@ApiModel(value="获取我的账户余额接口接收参数封装")
 @Data
-public class QueryUserInfoRequest {
+public class QueryAccountBalanceRequest {
 
     /**
      *  用户id
      */
-    @Validator(isNotNull = true,maxLength = 32,description = "用户id")
     @ApiModelProperty(value="用户id",name="userId")
     private String userId;
 

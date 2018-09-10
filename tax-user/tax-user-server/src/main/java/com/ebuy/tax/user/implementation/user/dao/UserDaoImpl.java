@@ -43,7 +43,8 @@ public class UserDaoImpl extends ServiceImpl<UserMapper, User> implements IUserD
         }
 
         @Override
-            public User queryEntityByUserEntity(User user) {
+        public User queryEntityByUserEntity(User user) {
             return baseMapper.queryEntityByUserEntity(user);
         }
+
 }

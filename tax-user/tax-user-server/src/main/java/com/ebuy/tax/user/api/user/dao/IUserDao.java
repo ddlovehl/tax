@@ -49,4 +49,5 @@ public interface IUserDao extends IService<User> {
      * @date        2018-09-07 15:01:18
      */
     public User queryEntityByUserEntity(User user);
+
 }

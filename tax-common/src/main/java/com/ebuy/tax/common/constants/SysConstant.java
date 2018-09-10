@@ -24,6 +24,11 @@ public class SysConstant {
     /** yyyy-MM-dd hh:mm:ss */
     public static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd hh:mm:ss";
 
+    /** 页码  默认为1 */
+    public static final Integer PAGE_NO = 1;
+
+    /** 页面大小  默认为10 */
+    public static final Integer PAGE_SIZE = 10;
 
     /**用户状态(0:正常，1:禁用，9:删除) */
     public static enum USER_STATUS {

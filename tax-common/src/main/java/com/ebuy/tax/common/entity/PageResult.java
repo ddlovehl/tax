@@ -1,5 +1,8 @@
 package com.ebuy.tax.common.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 import net.sf.json.JSONObject;
 
 import java.io.Serializable;
@@ -12,19 +15,33 @@ import java.util.List;
  * @Date 2018/7/23 23:19
  * @Description
  */
+@Data
+@ApiModel
 public class PageResult implements Serializable {
-
-    private static final long serialVersionUID = 1489870226049900709L;
 
     /**
      * 总行数
      */
+    @ApiModelProperty(value="总行数",name="count")
     protected Long count;
 
     /**
      * 结果集
      */
+    @ApiModelProperty(value="结果集",name="result")
     protected List<?> result;
+
+    /**
+     * 页码
+     */
+    @ApiModelProperty(value="页码",name="pageNo")
+    protected String pageNo;
+
+    /**
+     * 页面大小
+     */
+    @ApiModelProperty(value="页面大小",name="pageSize")
+    protected String pageSize;
 
     /**
      *
@@ -67,11 +84,4 @@ public class PageResult implements Serializable {
         return result;
     }
 
-    @Override
-    public String toString() {
-        JSONObject json = new JSONObject();
-        json.put("total", count);
-        json.put("data", result);
-        return json.toString();
-    }
 }

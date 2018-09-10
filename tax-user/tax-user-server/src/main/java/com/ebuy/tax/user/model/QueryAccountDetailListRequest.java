@@ -13,14 +13,13 @@ import lombok.Data;
  * @Date 2018/7/25 18:40
  * @Description
  */
-@ApiModel(value="获取我的公司--邀请列表接口接收参数封装")
+@ApiModel(value="获取我的账户详情列表接口接收参数封装")
 @Data
-public class QueryCompanyListForItRequest {
+public class QueryAccountDetailListRequest {
 
     /**
-     * 用户id
+     *  用户id
      */
-    @Validator(isNotNull = true,maxLength = 32,description = "用户id")
     @ApiModelProperty(value="用户id",name="userId")
     private String userId;
 

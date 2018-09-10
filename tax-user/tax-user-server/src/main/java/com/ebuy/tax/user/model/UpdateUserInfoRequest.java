@@ -14,15 +14,16 @@ import lombok.Data;
  * @Date 2018/7/25 18:40
  * @Description
  */
-@ApiModel(value="更新用户信息接口接受参数封装")
+@ApiModel(value="更新用户信息接口接收参数封装")
 @Data
 public class UpdateUserInfoRequest {
 
     /**
-     *  公司id
+     *  用户id
      */
-    @ApiModelProperty(value="公司id",name="companyId")
-    private String companyId;
+    @Validator(isNotNull = true,maxLength = 32,description = "用户id")
+    @ApiModelProperty(value="用户id",name="userId")
+    private String userId;
 
     /**
      *  姓名

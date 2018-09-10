@@ -13,7 +13,7 @@ import lombok.Data;
  */
 @ApiModel(value="获取用户信息接口返回数据封装")
 @Data
-public class QueryUserInfoResponse {
+public class QueryUserInfoResponse{
 
     /**
      *  手机号

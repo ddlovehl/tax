@@ -141,9 +141,9 @@ public class UserAccountBizServiceImpl implements UserAccountBizService {
      * @date 2018/9/8 18:39
      */
     @Override
-    public BigDecimal queryAccountBalance(){
+    public BigDecimal queryAccountBalance(String userId){
         UserAccount param = new UserAccount();
-        param.setUserId("111111");//TODO  userid 先写死
+        param.setUserId(userId);
         UserAccount result = userAccountQueryService.queryEntityByUserAccountEntity(param);
         return result.getBalance();
     }

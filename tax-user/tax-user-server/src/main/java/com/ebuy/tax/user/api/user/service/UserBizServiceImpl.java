@@ -70,7 +70,7 @@ public class UserBizServiceImpl implements UserBizService {
      * @date        2018-09-07 15:01:18
      */
     @Override
-    public User queryById(BigInteger id) {
+    public User queryById(String id) {
         return userQueryService.queryById(id);
     }
 
@@ -132,20 +132,6 @@ public class UserBizServiceImpl implements UserBizService {
      */
     @Override
     public void update(User user) throws Exception {
-        /*User userParam = new User();
-        userParam.setMobile(user.getId());
-        User result = userQueryService.queryEntityByUserEntity(userParam);
-        //判断是否存在，否则抛出异常及返回码
-        CommonExceptionUtils.isNull(result, ResponseConstant.ERR_CODE_USER.USER_NONE_ERROR,ResponseConstant.ERR_INFO_USER.USER_NONE_ERROR);
-        if(SysConstant.USER_STATUS.DISABLED.getValue()==result.getUserStatus().intValue()){
-            CommonExceptionUtils.throwBusinessException(ResponseConstant.ERR_CODE_USER.USER_DISABLE_ERROR,ResponseConstant.ERR_INFO_USER.USER_DISABLE_ERROR);
-        }
-        User param = new User();
-        param.setId(result.getId());
-        param.setName(result.getName());
-        param.setUsername(result.getUsername());
-        param.setSex(result.getSex());
-        param.setMail(result.getMail());*/
         user.setUpdateTime(new Date());
         userDmlService.updateUser(user);
     }

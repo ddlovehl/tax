@@ -103,6 +103,7 @@ public class UserDmlServiceImpl implements UserDmlService {
     @Override
     @CacheEvict(allEntries = true, beforeInvocation = true)
     public boolean updateUser(User user){
+        log.info("user:{}",user);
         boolean flag = true;
         try{
             flag = userDao.updateById(user);
@@ -110,6 +111,7 @@ public class UserDmlServiceImpl implements UserDmlService {
             log.error("UserDmlServiceImpl-updateUser更新异常",e);
             throw new SystemException(ResponseConstant.ERR_CODE.FAIL, "更新用户信息失败");
         }
+        log.info("更细结果:{}",flag);
         return flag;
     }
 

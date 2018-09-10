@@ -31,57 +31,57 @@ public class AccountDetail extends SuperEntity<AccountDetail> {
 private static final long serialVersionUID = 1L;
 
     /**
-    * å”¯ä¸€Id
+    * Id
     */
     private String id;
     /**
-    * ç”¨æˆ·id
+    * 用户id
     */
     @TableField("user_id")
     private String userId;
     /**
-    * å‘ç”Ÿé‡‘é¢
+    * 发生金额
     */
     @TableField("occur_amt")
     private BigDecimal occurAmt;
     /**
-    * é‡‘é¢æ–¹å‘ï¼ˆ1:æ”¶å…¥ï¼›-1:æ”¯å‡ºï¼‰
+    * 金额方向（1:收入；-1:支出）
     */
     @TableField("amt_dir")
     private Integer amtDir;
     /**
-    * å½“å‰ä½™é¢
+    * 当前余额
     */
     @TableField("curr_bal")
     private BigDecimal currBal;
     /**
-    * äº¤æ˜“ç±»åž‹
+    * 交易类型
     */
     private String type;
     /**
-    * å‘ç”Ÿé‡‘é¢æè¿°
+    * 发生金额描述
     */
     @TableField("occur_type_desc")
     private String occurTypeDesc;
     /**
-    * å‘ç”Ÿé‡‘é¢æ—¥æœŸ
+    * 发生金额日期
     */
     @TableField("occur_time")
     private Date occurTime;
     /**
-    * é¢„ç•™å­—æ®µ
+    * 预留字段1
     */
     private String reseve1;
     /**
-    * é¢„ç•™å­—æ®µ
+    * 预留字段2
     */
     private String reseve2;
     /**
-    * é¢„ç•™å­—æ®µ
+    * 预留字段3
     */
     private String reseve3;
     /**
-    * å¤‡æ³¨
+    * 备注
     */
     private String remark;
     @TableField("create_time")

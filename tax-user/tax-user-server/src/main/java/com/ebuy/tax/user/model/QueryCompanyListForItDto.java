@@ -1,7 +1,5 @@
 package com.ebuy.tax.user.model;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.ebuy.tax.common.annotations.Validator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -13,14 +11,20 @@ import lombok.Data;
  * @Date 2018/7/25 18:40
  * @Description
  */
-@ApiModel(value="获取公司信息接口接收参数封装")
+@ApiModel(value="获取我的公司--邀请列表接口返回数据")
 @Data
-public class QueryCompanyRequest {
+public class QueryCompanyListForItDto {
 
     /**
-     * 公司id
+     *  公司id
      */
-    @Validator(isNotNull = true,maxLength = 32,description = "公司id")
     @ApiModelProperty(value="公司id",name="companyId")
     private String companyId;
+
+    /**
+     *  公司名称
+     */
+    @ApiModelProperty(value="公司名称",name="companyName")
+    private String companyName;
+
 }

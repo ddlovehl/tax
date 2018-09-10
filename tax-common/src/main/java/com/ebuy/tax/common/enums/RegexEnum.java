@@ -11,6 +11,8 @@ public enum  RegexEnum {
     CHINESE,
     EMAIL,
     NUMBER,
-    PHONENUMBER
+    PHONENUMBER,
+    PAGENO,
+    PAGESIZE
 }
 

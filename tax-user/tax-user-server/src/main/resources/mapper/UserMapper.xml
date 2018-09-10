@@ -219,4 +219,8 @@
         <include refid="UserAll_table" />
         <include refid="UserAll_where" />
     </select>
+
+    <update id="update" parameterType="com.ebuy.tax.user.api.user.entity.User">
+
+    </update>
 </mapper>

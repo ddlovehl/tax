@@ -21,7 +21,7 @@ public interface UserQueryService{
      * @Description 根据id查询
      * @date        2018-09-07 15:01:18
      */
-    public User queryById(BigInteger id);
+    public User queryById(String id);
 
     /**
      * @author      hdq
