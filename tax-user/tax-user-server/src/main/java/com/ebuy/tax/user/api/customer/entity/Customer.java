@@ -18,7 +18,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author hdq
- * @since 2018-09-05
+ * @since 2018-09-07
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -30,82 +30,82 @@ public class Customer extends SuperEntity<Customer> {
 private static final long serialVersionUID = 1L;
 
     /**
-    * å®¢æˆ·ç¼–å·ï¼šå”¯ä¸€
+    * id
     */
     private String id;
     /**
-    * ç”¨æˆ·id
+    * 用户id
     */
     @TableField("user_id")
     private String userId;
     /**
-    * å…¬å¸id
+    * 公司id
     */
     @TableField("company_id")
     private String companyId;
     /**
-    * æŒ‡æ´¾å•†æˆ·Id
+    * 指派商户id
     */
     @TableField("allot_merchant_id")
     private String allotMerchantId;
     /**
-    * åˆ†é…å®¢æœç”¨æˆ·id
+    * 分配客户用户id
     */
     @TableField("allot_kefu_user_id")
     private String allotKefuUserId;
     /**
-    * åˆ†é…ä¼šè®¡ç”¨æˆ·id
+    * 分配会计用户id
     */
     @TableField("allot_bursar_user_id")
     private String allotBursarUserId;
     /**
-    * åˆ†é…å•†æˆ·çŠ¶æ€ï¼ˆ1ï¼šå·²åˆ†é…ï¼Œ2ï¼šæœªåˆ†é…ï¼‰
+    * 分配商户状态（1：已分配，2：未分配）
     */
     @TableField("allot_merchant_status")
     private Integer allotMerchantStatus;
     /**
-    * åˆ†é…å®¢æœçŠ¶æ€ï¼ˆ1ï¼šå¾…åˆ†é…ï¼›2ï¼šå·²åˆ†é…ï¼‰
+    * 分配客服状态（1：待分配；2：已分配）
     */
     @TableField("allot_kefu_status")
     private Integer allotKefuStatus;
     /**
-    * åˆ†é…ä¼šè®¡çŠ¶æ€ï¼ˆ1:æœªåˆ†é…ï¼›2ï¼šå·²åˆ†é…ï¼‰
+    * 分配会计状态（1:未分配；2：已分配）
     */
     @TableField("allot_bursar_stauts")
     private Integer allotBursarStauts;
     /**
-    * å®¢æˆ·çŠ¶æ€ï¼ˆ1:æ½œåœ¨å®¢æˆ·ï¼›2:æ­£å¼å®¢æˆ·ï¼‰
+    * 客户状态（0:;1:潜在客户；2:正式客户）
     */
     @TableField("customer_status")
     private Integer customerStatus;
     /**
-    * å®¢æˆ·æ¥æº
+    * 客户来源
     */
     @TableField("customer_source")
     private String customerSource;
     /**
-    * é¢„ç•™å­—æ®µ
+    * 预留字段1
     */
     private String reserve1;
     /**
-    * é¢„ç•™å­—æ®µ
+    * 预留字段2
     */
     private String reserve2;
     /**
-    * é¢„ç•™å­—æ®µ
+    * 预留字段3
     */
     private String reserve3;
     /**
-    * å¤‡æ³¨
+    * 备注
     */
     private String remark;
     /**
-    * åˆ›å»ºæ—¥æœŸ
+    * 创建日期
     */
     @TableField("create_time")
     private Date createTime;
     /**
-    * æ›´æ–°æ—¥æœŸ
+    * 更新日期
     */
     @TableField("update_time")
     private Date updateTime;

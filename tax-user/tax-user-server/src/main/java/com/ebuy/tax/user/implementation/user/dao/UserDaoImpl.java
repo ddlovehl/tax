@@ -7,6 +7,7 @@ import com.ebuy.tax.user.api.user.dao.IUserDao;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ebuy.tax.common.constants.SysConstant;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,14 +17,13 @@ import java.util.List;
  * @Project new_project
  * @Package com.ebuy.tax.user.implementation.user.dao
  * @author hdq
- * @Date 2018-09-05 18:26:56
+ * @Date 2018-09-07 15:01:18
  * @Description
  */
+@Slf4j
 @Repository(value = "userDao")
-@Service
-public class UserDaoImpl extends ServiceImpl<UserMapper, User> implements IUserDao {
 
-        private static final Logger logger = LoggerFactory.getLogger(IUserDao.class);
+public class UserDaoImpl extends ServiceImpl<UserMapper, User> implements IUserDao {
 
         @Override
         public int queryCount(User user) {

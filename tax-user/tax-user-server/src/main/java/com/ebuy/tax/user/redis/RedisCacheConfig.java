@@ -33,7 +33,7 @@ public class RedisCacheConfig {
          redisTemplate.setKeySerializer(new StringRedisSerializer());
          redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
          redisTemplate.afterPropertiesSet();
-         return redisTemplate;    
+         return redisTemplate;
 	}
     
 }

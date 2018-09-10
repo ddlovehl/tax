@@ -11,7 +11,7 @@ import java.math.BigInteger;
 /**
  * @Package com.ebuy.tax.user.api.invited.dao
  * @author hdq
- * @Date 2018-09-05 18:26:54
+ * @Date 2018-09-07 15:01:17
  * @Description
  */
 public interface InvitedBizService{
@@ -21,7 +21,7 @@ public interface InvitedBizService{
      * @see         [Invited]
      * @return      List<Invited>
      * @Description 查询列表
-     * @date        2018-09-05 18:26:54
+     * @date        2018-09-07 15:01:17
      */
     public List<Invited> queryList(Invited invited);
 
@@ -30,7 +30,7 @@ public interface InvitedBizService{
      * @see         [Invited] [pageNo] [pageSize]
      * @return          PageResult
      * @Description 查询列表(分页)
-     * @date        2018-09-05 18:26:54
+     * @date        2018-09-07 15:01:17
      */
     public PageResult queryListPage(Invited invited, Integer pageNo, Integer  pageSize);
 
@@ -39,7 +39,7 @@ public interface InvitedBizService{
      * @see         [id]
      * @return      Invited
      * @Description 按id查询
-     * @date        2018-09-05 18:26:54
+     * @date        2018-09-07 15:01:17
      */
     public Invited queryById(BigInteger id);
 
@@ -48,7 +48,7 @@ public interface InvitedBizService{
      * @see         [ids]
      * @return      List<Invited>
      * @Description 按ids查询列表
-     * @date        2018-09-05 18:26:54
+     * @date        2018-09-07 15:01:17
      */
     public List<Invited> queryByIds(List<BigInteger> ids);
 
@@ -57,7 +57,7 @@ public interface InvitedBizService{
      * @see         [Invited]
      * @return      Invited
      * @Description 根据entity查询一条记录
-     * @date        2018-09-05 18:26:54
+     * @date        2018-09-07 15:01:17
      */
     public Invited queryByParam(Invited invited);
 
@@ -66,7 +66,7 @@ public interface InvitedBizService{
      * @see         [Invited]
      * @return
      * @Description 添加
-     * @date        2018-09-05 18:26:54
+     * @date        2018-09-07 15:01:17
      */
     public void insert(Invited invited);
 
@@ -75,7 +75,7 @@ public interface InvitedBizService{
      * @see         [Invited]
      * @return
      * @Description 添加or更新
-     * @date        2018-09-05 18:26:54
+     * @date        2018-09-07 15:01:17
      */
     public void insertOrUpdate(Invited invited);
 
@@ -84,7 +84,7 @@ public interface InvitedBizService{
      * @see         [Invited]
      * @return
      * @Description 更新
-     * @date        2018-09-05 18:26:54
+     * @date        2018-09-07 15:01:17
      */
     public void update(Invited invited);
 

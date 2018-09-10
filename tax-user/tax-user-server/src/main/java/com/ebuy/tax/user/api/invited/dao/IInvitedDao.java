@@ -9,7 +9,7 @@ import java.util.List;
  * @Project new_project
  * @Package com.ebuy.tax.user.api.invited.dao
  * @Author hdq
- * @Date 2018-09-05 18:26:54
+ * @Date 2018-09-07 15:01:17
  * @Description IinvitedDao
  */
 public interface IInvitedDao extends IService<Invited> {
@@ -19,7 +19,7 @@ public interface IInvitedDao extends IService<Invited> {
      * @see         [Invited]
      * @return      java.lang.Long
      * @Description 查询列表总数
-     * @date        2018-09-05 18:26:54
+     * @date        2018-09-07 15:01:17
      */
     public int queryCount(Invited invited);
 
@@ -28,7 +28,7 @@ public interface IInvitedDao extends IService<Invited> {
      * @see         [Invited]
      * @return      List<Invited>
      * @Description 查询列表
-     * @date        2018-09-05 18:26:54
+     * @date        2018-09-07 15:01:17
      */
     public List<Invited> queryList(Invited invited);
 
@@ -37,7 +37,7 @@ public interface IInvitedDao extends IService<Invited> {
      * @see         List<Invited>
      * @return      java.lang.Long
      * @Description 查询列表
-     * @date        2018-09-05 18:26:54
+     * @date        2018-09-07 15:01:17
      */
     public List<Invited>  queryListForPage(Invited invited,Integer pageNo,Integer pageSize);
 
@@ -46,7 +46,7 @@ public interface IInvitedDao extends IService<Invited> {
      * @see         [Invited]
      * @return      List<Invited>
      * @Description 查询列表
-     * @date        2018-09-05 18:26:54
+     * @date        2018-09-07 15:01:17
      */
     public Invited queryEntityByInvitedEntity(Invited invited);
 }

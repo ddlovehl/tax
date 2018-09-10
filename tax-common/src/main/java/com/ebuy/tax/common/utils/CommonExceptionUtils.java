@@ -18,16 +18,16 @@ import java.util.List;
 public class CommonExceptionUtils {
 
     /**
-     * 通用异常  - code:99  info:系统错误
+     * 系统通用异常  - code:9999  info:系统错误
      *
      * @throws Exception
      */
     public static void throwException() throws Exception {
-        throw new ParamException(ResponseConstant.ERR_CODE.FAIL, ResponseConstant.ERR_INFO.FAIL);
+        throw new SystemException(ResponseConstant.ERR_CODE.FAIL, ResponseConstant.ERR_INFO.FAIL);
     }
 
     /**
-     * 通用异常  - code:01          参数级别
+     * 参数级别通用异常  - code:1000    自定义info
      *
      * @param info
      * @throws ParamException
@@ -37,7 +37,17 @@ public class CommonExceptionUtils {
     }
 
     /**
-     * 通用异常  - code:02        业务级别
+     * 参数级别通用异常   自定义code  自定义info
+     *
+     * @param code info
+     * @throws BusinessException
+     */
+    public static void throwException(String code, String info) throws Exception {
+        throw new ParamException(code, info);
+    }
+
+    /**
+     * 业务级别通用异常  - code:2000   自定义info
      *
      * @param info
      * @throws BusinessException
@@ -47,23 +57,23 @@ public class CommonExceptionUtils {
     }
 
     /**
-     * 通用异常  - code:02        系统级别
+     * 业务级别通用异常 自定义code  自定义info
+     *
+     * @param info
+     * @throws BusinessException
+     */
+    public static void throwBusinessException(String code,String info) throws BusinessException {
+        throw new BusinessException(code, info);
+    }
+
+    /**
+     *  系统级别通用异常  - code:9999  自定义info
      *
      * @param info
      * @throws BusinessException
      */
     public static void throwSystemException(String info) throws BusinessException {
         throw new SystemException(ResponseConstant.ERR_CODE.FAIL, info);
-    }
-
-    /**
-     * 通用异常  -        参数级别
-     *
-     * @param code info
-     * @throws BusinessException
-     */
-    public static void throwException(String code, String info) throws Exception {
-        throw new ParamException(code, info);
     }
 
     /**

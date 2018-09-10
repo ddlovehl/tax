@@ -7,6 +7,7 @@ import com.ebuy.tax.user.api.company.dao.ICompanyDao;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ebuy.tax.common.constants.SysConstant;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,14 +17,13 @@ import java.util.List;
  * @Project new_project
  * @Package com.ebuy.tax.user.implementation.company.dao
  * @author hdq
- * @Date 2018-09-05 18:26:55
+ * @Date 2018-09-07 15:01:17
  * @Description
  */
+@Slf4j
 @Repository(value = "companyDao")
 
 public class CompanyDaoImpl extends ServiceImpl<CompanyMapper, Company> implements ICompanyDao {
-
-        private static final Logger logger = LoggerFactory.getLogger(ICompanyDao.class);
 
         @Override
         public int queryCount(Company company) {

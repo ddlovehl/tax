@@ -138,7 +138,12 @@ public class UserController {
 		}else{
 			if(!StringUtils.isEmpty(openId)){
 				user.setId(queryUser.getId());
-				userBizService.update(user);
+				try {
+					userBizService.update(user);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		//保存登陆信息

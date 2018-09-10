@@ -19,7 +19,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author hdq
- * @since 2018-09-05
+ * @since 2018-09-07
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -31,45 +31,45 @@ public class UserAccount extends SuperEntity<UserAccount> {
 private static final long serialVersionUID = 1L;
 
     /**
-    * å”¯ä¸€æ ‡è¯†
+    * id
     */
     private String id;
     /**
-    * ç”¨æˆ·id
+    * 用户id
     */
     @TableField("user_id")
     private String userId;
     /**
-    * è´¦æˆ·ä½™é¢
+    * 余额
     */
     private BigDecimal balance;
     /**
-    * å¤‡æ³¨
+    * 备注
     */
     private String remak;
     /**
-    * çŠ¶æ€(0:æ­£å¸¸ï¼Œ9å†»ç»“)
+    * 状态(0:正常，9冻结)
     */
     private Integer status;
     /**
-    * é¢„ç•™å­—æ®µ
+    * 预留字段1
     */
     private String reseve1;
     /**
-    * é¢„ç•™å­—æ®µ
+    * 预留字段2
     */
     private String reseve2;
     /**
-    * é¢„ç•™å­—æ®µ
+    * 预留字段3
     */
     private String reseve3;
     /**
-    * åˆ›å»ºæ—¶é—´
+    * 创建时间
     */
     @TableField("create_time")
     private Date createTime;
     /**
-    * æ›´æ–°æ—¶é—´
+    * 更新时间
     */
     @TableField("update_time")
     private Date updateTime;

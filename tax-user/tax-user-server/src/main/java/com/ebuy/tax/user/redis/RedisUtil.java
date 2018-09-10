@@ -26,7 +26,7 @@ public class RedisUtil {
 
 	/**
 	 * 批量删除对应的value
-	 * 
+	 *
 	 * @param keys
 	 */
 	public void del(final String... keys) {
@@ -37,7 +37,7 @@ public class RedisUtil {
 
 	/**
 	 * 批量删除key
-	 * 
+	 *
 	 * @param pattern
 	 */
 	public void delPattern(final String pattern) {
@@ -48,7 +48,7 @@ public class RedisUtil {
 
 	/**
 	 * 删除对应的value
-	 * 
+	 *
 	 * @param key
 	 */
 	public void del(final String key) {
@@ -59,7 +59,7 @@ public class RedisUtil {
 
 	/**
 	 * 判断缓存中是否有对应的value
-	 * 
+	 *
 	 * @param key
 	 * @return
 	 */
@@ -69,7 +69,7 @@ public class RedisUtil {
 
 	/**
 	 * 读取缓存
-	 * 
+	 *
 	 * @param key
 	 * @return
 	 */
@@ -87,7 +87,7 @@ public class RedisUtil {
 
 	/**
 	 * 写入缓存
-	 * 
+	 *
 	 * @param key
 	 * @param value
 	 * @return
@@ -107,7 +107,7 @@ public class RedisUtil {
 
 	/**
 	 * 写入缓存
-	 * 
+	 *
 	 * @param key
 	 * @param value
 	 * @param expireTime  单位秒

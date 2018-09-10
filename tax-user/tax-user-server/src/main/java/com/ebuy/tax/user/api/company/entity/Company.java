@@ -14,11 +14,11 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * å…¬å¸è¡¨
+ * 公司表entity
  * </p>
  *
  * @author hdq
- * @since 2018-09-05
+ * @since 2018-09-07
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -30,147 +30,147 @@ public class Company extends SuperEntity<Company> {
 private static final long serialVersionUID = 1L;
 
     /**
-    * å”¯ä¸€æ ‡è¯†
+    * 公司id
     */
     private String id;
     /**
-    * å…¬å¸åç§°
+    * 公司名称
     */
     @TableField("company_name")
     private String companyName;
     /**
-    * å…¬å¸ç”µè¯
+    *  公司电话
     */
     @TableField("company_tel")
     private String companyTel;
     /**
-    * å…¬å¸è§„æ¨¡ï¼ˆA:å¾®åž‹ä¼ä¸šï¼ˆ20äººä»¥ä¸‹ï¼‰ï¼›B:å°åž‹ä¼ä¸š(20-99äºº)ï¼›C:ä¸­åž‹ä¼ä¸š(100-299äºº)ï¼›D:å¤§åž‹ä¼ä¸š(300äººä»¥ä¸Š)ï¼›)
+    * 公司规模（A:微型企业（20人以下）；B:小型企业(20-99人)；C:中型企业(100-299人)；D:大型企业(300人以上)；)
     */
     @TableField("company_scope")
     private String companyScope;
     /**
-    * å…¬å¸ç®€ç§°
+    * 公司简称
     */
     @TableField("company_name_short")
     private String companyNameShort;
     /**
-    * æ³•äººä»£è¡¨å§“å
+    * 法人代表姓名
     */
     @TableField("legal_name")
     private String legalName;
     /**
-    * æ³•äººä»£è¡¨ç”µè¯
+    * 法人代表电话
     */
     @TableField("legal_mobile")
     private String legalMobile;
     /**
-    * ç¨ŽåŠ¡ç™»è®°å·
+    * 税务登记号
     */
     @TableField("tax_reg_no")
     private String taxRegNo;
     /**
-    * ä¼ä¸šè¥ä¸šæ‰§ç…§å·
+    * 企业营业执照号
     */
     @TableField("business_license_no")
     private String businessLicenseNo;
     /**
-    * å…¬å¸è¯ä»¶å›¾ç‰‡é™„ä»¶idsï¼ˆå¤šå¼ é€—å·åˆ†éš”ï¼‰
+    * 公司中间图片附件ids，（多张逗号分隔）
     */
     @TableField("certificate_pic_attach_ids")
     private String certificatePicAttachIds;
     /**
-    * è´Ÿè´£äººè¯ä»¶æ­£é¢é™„ä»¶id
+    * 负责人证件正面附件id
     */
     @TableField("legal_certificate_front__attach_id")
     private String legalCertificateFrontAttachId;
     /**
-    * è´Ÿè´£äººè¯ä»¶åé¢é™„ä»¶id
+    * 负责人证件反面附件id
     */
     @TableField("legal_certificate_back__attach_id")
     private String legalCertificateBackAttachId;
     /**
-    * å…¬å¸æˆç«‹æ—¶é—´
+    * 公司成立时间
     */
     @TableField("build_time")
     private String buildTime;
     /**
-    * æ‰€åœ¨åœ°-çœ
+    * 所在地（省）
     */
     @TableField("location_province")
     private String locationProvince;
     /**
-    * æ‰€åœ¨åœ°-å¸‚
+    * 所在地（市）
     */
     @TableField("location_city")
     private String locationCity;
     /**
-    * æ‰€åœ¨åœ°-åŽ¿ï¼ˆåŒºï¼‰
+    * 所在地（县、区）
     */
     @TableField("location_county")
     private String locationCounty;
     /**
-    * æ‰€åœ¨åœ°è¯¦ç»†åœ°å€
+    * 所在地 详细地址
     */
     @TableField("location_detail")
     private String locationDetail;
     /**
-    * çº³ç¨Žæ€§è´¨ï¼ˆA:å°è§„æ¨¡;B:ä¸€èˆ¬çº³ç¨Žäºº;ï¼‰
+    * 纳税性质
     */
     @TableField("pay_tax_property")
     private String payTaxProperty;
     /**
-    * è¡Œä¸šid
+    * 行业id
     */
     @TableField("industry_id")
     private String industryId;
     /**
-    * å®˜æ–¹ç½‘ç«™
+    * 官方网站
     */
     @TableField("official_website")
     private String officialWebsite;
     /**
-    * ä¸šåŠ¡è´Ÿè´£äººid
+    * 业务负责人id
     */
     @TableField("bear_id")
     private String bearId;
     /**
-    * ä¸šåŠ¡è´Ÿè´£äººå§“å
+    * 业务负责人姓名
     */
     @TableField("bear_name")
     private String bearName;
     /**
-    * ä¸šåŠ¡è´£ä»»æ‰‹æœºå·
+    * 业务负责人手机号
     */
     @TableField("bear_mobile")
     private String bearMobile;
     /**
-    * ä¸šåŠ¡è´Ÿè´£äººèŒä½
+    * 业务负责人职位
     */
     @TableField("bear_position")
     private String bearPosition;
     /**
-    * é¢„ç•™å­—æ®µ1
+    * 预留字段1
     */
     private String reseve1;
     /**
-    * é¢„ç•™å­—æ®µ2
+    * 预留字段2
     */
     private String reseve2;
     /**
-    * é¢„ç•™å­—æ®µ3
+    * 预留字段3
     */
     private String reseve3;
     /**
-    * å¤‡æ³¨
+    * 备注
     */
     private String remark;
     /**
-    * æ˜¯å¦é»˜è®¤(0:å¦ï¼›1:æ˜¯)
+    * 是否默认
     */
     @TableField("is_default")
     private Integer isDefault;
     /**
-    * æ˜¯å¦åˆ é™¤(0:æ­£å¸¸,9:åˆ é™¤)
+    * 是否删除（0正常 9删除）
     */
     @TableField("is_del")
     private Integer isDel;
