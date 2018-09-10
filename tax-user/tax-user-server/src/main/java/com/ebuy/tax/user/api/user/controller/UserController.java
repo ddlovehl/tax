@@ -25,6 +25,7 @@ import com.ebuy.tax.common.enums.ErrorCodeEnum;
 import com.ebuy.tax.common.exception.BusinessException;
 import com.ebuy.tax.common.utils.StringUtils;
 import com.ebuy.tax.common.utils.VerifyUtils;
+import com.ebuy.tax.user.api.sequence.service.SequenceBizService;
 import com.ebuy.tax.user.api.user.entity.User;
 import com.ebuy.tax.user.api.user.service.UserBizService;
 import com.ebuy.tax.user.api.user.vo.GetImgCodeResp;
@@ -49,6 +50,8 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/v1/userAdmin")
 public class UserController {
+	@Autowired
+	private SequenceBizService sequenceBizService;
 	@Autowired
     private UserBizService userBizService;
 
@@ -127,7 +130,7 @@ public class UserController {
 		}
 		//未注册、注册用户
 		if(queryUser == null){
-			user.setId(System.currentTimeMillis()+"");
+			user.setId(sequenceBizService.genCustomerUserId());
 			user.setCreateTime(new Date());
 			user.setUpdateTime(new Date());
 			user.setName(mobile);
