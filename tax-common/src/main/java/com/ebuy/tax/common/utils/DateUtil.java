@@ -10,7 +10,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-import com.sun.javaws.Main;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

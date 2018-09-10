@@ -1,4 +1,4 @@
-package com.ebuy.tax.user.controller;
+package com.ebuy.tax.user.api.user.controller;
 
 
 import java.awt.image.BufferedImage;
@@ -8,32 +8,26 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ebuy.tax.common.entity.ResponseBase;
-import com.ebuy.tax.common.utils.ResponseUtil;
-import com.ebuy.tax.common.utils.ValidateUtil;
-import com.ebuy.tax.user.model.QueryUserInfoRequest;
-import com.ebuy.tax.user.model.QueryUserInfoResponse;
-import com.ebuy.tax.user.model.UpdateUserInfoRequest;
-import io.swagger.annotations.*;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang3.RandomUtils;
-import org.springframework.beans.BeanUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSON;
 import com.ebuy.tax.common.enums.ErrorCodeEnum;
 import com.ebuy.tax.common.exception.BusinessException;
 import com.ebuy.tax.common.utils.StringUtils;
 import com.ebuy.tax.common.utils.VerifyUtils;
+import com.ebuy.tax.user.api.sequence.service.SequenceBizService;
 import com.ebuy.tax.user.api.user.entity.User;
 import com.ebuy.tax.user.api.user.service.UserBizService;
 import com.ebuy.tax.user.api.user.vo.GetImgCodeResp;
@@ -43,6 +37,9 @@ import com.ebuy.tax.user.api.user.vo.WxIsBindMobileVo;
 import com.ebuy.tax.user.redis.RedisUtil;
 import com.ebuy.tax.user.vo.Result;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 /**
  * @Project new_project
  * @Package com.ebuy.tax.user.api.user.dao
@@ -51,17 +48,20 @@ import com.ebuy.tax.user.vo.Result;
  * @Description userController
  */
 
-@Slf4j
 @Api("用户信息controller")
 @RestController
 @RequestMapping("/v1/userAdmin")
 public class UserController {
-	@Resource(name = "userBizService")
+	@Autowired
+	private SequenceBizService sequenceBizService;
+	@Autowired
     private UserBizService userBizService;
 
 	@Autowired
 	private RedisUtil redisUtil;
 
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+   
 	/**
     * cookie路径
     */
@@ -96,14 +96,14 @@ public class UserController {
      */
 	@ApiOperation(value="注册、登陆、微信登陆", notes="注册、登陆、微信登陆")
     @PostMapping(value = "/register")
-    public Result<Object> register(@RequestBody RegisterVo registerVo,HttpServletResponse response) throws Exception{
+    public Result<Object> register(@RequestBody RegisterVo registerVo,HttpServletResponse response){
 		//手机号
 		String mobile = registerVo.getMobile();
 		//短信验证码
 		String smsCode = registerVo.getSmsCode();
 		//openid
 		String openId = registerVo.getOpenId();
-		log.info("用户发起注册用户或登陆请求,参数:{}", registerVo);
+		logger.info("用户发起注册用户或登陆请求,参数:{}",JSON.toJSONString(registerVo));
 		//check
 		if(StringUtils.isEmpty(mobile)){
 			throw new BusinessException(ErrorCodeEnum.ERROR_20001.getCode()+"",ErrorCodeEnum.ERROR_20001.getMsg());
@@ -126,13 +126,13 @@ public class UserController {
 		User user = new User();
 		user.setMobile(mobile);
 		User queryUser = userBizService.queryByParam(user);
-		log.info("查询用户信息,参数:{},结果:{}",user,queryUser);
+		logger.info("查询用户信息,参数:{},结果:{}",JSON.toJSONString(user),JSON.toJSONString(queryUser));
 		if(!StringUtils.isEmpty(openId)){
 			user.setOpenid(openId);
 		}
 		//未注册、注册用户
 		if(queryUser == null){
-			user.setId(System.currentTimeMillis()+"");
+			user.setId(sequenceBizService.genCustomerUserId());
 			user.setCreateTime(new Date());
 			user.setUpdateTime(new Date());
 			user.setName(mobile);
@@ -140,7 +140,12 @@ public class UserController {
 		}else{
 			if(!StringUtils.isEmpty(openId)){
 				user.setId(queryUser.getId());
-				userBizService.update(user);
+				try {
+					userBizService.update(user);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		//保存登陆信息
@@ -156,7 +161,7 @@ public class UserController {
     @PostMapping(value = "/wxIsBindMobile")
     public Result<Object> wxIsBindMobile(@RequestBody WxIsBindMobileVo wxIsBindMobileVo,HttpServletResponse response){
 		String openId = wxIsBindMobileVo.getOpenId();
-		log.info("微信登陆是否绑定过手机号请求,参数:{}",wxIsBindMobileVo);
+		logger.info("微信登陆是否绑定过手机号请求,参数:{}",JSON.toJSONString(wxIsBindMobileVo));
 		//check
 		if(StringUtils.isEmpty(openId)){
 			throw new BusinessException(ErrorCodeEnum.ERROR_20008.getCode()+"",ErrorCodeEnum.ERROR_20008.getMsg());
@@ -166,7 +171,7 @@ public class UserController {
 		User user = new User();
 		user.setOpenid(openId);
 		User queryUser = userBizService.queryByParam(user);
-		log.info("查询微信登陆是否绑定过手机号,参数:{},结果:{}",user,queryUser);
+		logger.info("查询微信登陆是否绑定过手机号,参数:{},结果:{}",JSON.toJSONString(user),JSON.toJSONString(queryUser));
 		//已注册、并已经绑定过手机号返回true
 		if(queryUser != null && !StringUtils.isEmpty(queryUser.getMobile())){
 			flag = true;
@@ -217,7 +222,7 @@ public class UserController {
 		String imgCode = getSmsCodeVo.getImgCode();
 		//imgToken
 		String imgToken = getSmsCodeVo.getVerifyId();
-		log.info("获取手机验证码请求,参数:{}",getSmsCodeVo);
+		logger.info("获取手机验证码请求,参数:{}",JSON.toJSONString(getSmsCodeVo));
 		//check
 		if(StringUtils.isEmpty(mobile)){
 			return Result.failure(ErrorCodeEnum.ERROR_20001.getCode(), ErrorCodeEnum.ERROR_20001.getMsg());
@@ -244,7 +249,7 @@ public class UserController {
 		}
 		// 随机生成6位数的验证码
 		String newVerify = String.valueOf(RandomUtils.nextInt(101030, 1000000));
-		log.info("手机号：" + mobile + ",产生的验证码:" + newVerify);
+		logger.info("手机号：" + mobile + ",产生的验证码:" + newVerify);
 		//TODO 发送短信
 		/**
 		 * TODO 发送短信
@@ -271,7 +276,7 @@ public class UserController {
 		
 		String verifyID = UUID.randomUUID().toString().replace("-", "");
 		Object[] objs = VerifyUtils.createImage();
-		log.info("图片token{}图形验证码:{}",verifyID,objs[0]);
+		logger.info("图片token{}图形验证码:{}",verifyID,objs[0]);
 	    redisUtil.set(verifyID, objs[0], 600L);
 	    
 	    String imgStr = "";
@@ -280,7 +285,7 @@ public class UserController {
 		    BufferedImage image = (BufferedImage) objs[1];
 		    imgStr = VerifyUtils.imageToBase64(image);
 		} catch (Exception e) {
-			log.error("获取图形验证码异常，error:{}",e);
+			logger.error("获取图形验证码异常，error:{}",e);
 		}
 		GetImgCodeResp resp = new GetImgCodeResp(verifyID,imgStr);
 		result.setData(resp);
